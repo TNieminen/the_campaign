@@ -1,0 +1,14 @@
+C:\Users\tuomo\programming\the_campaign\bin\Debug\net8.0\the_campaign.exe
+C:\Users\tuomo\programming\the_campaign\bin\Debug\net8.0\the_campaign.deps.json
+C:\Users\tuomo\programming\the_campaign\bin\Debug\net8.0\the_campaign.runtimeconfig.json
+C:\Users\tuomo\programming\the_campaign\bin\Debug\net8.0\the_campaign.dll
+C:\Users\tuomo\programming\the_campaign\bin\Debug\net8.0\the_campaign.pdb
+C:\Users\tuomo\programming\the_campaign\obj\Debug\net8.0\the_campaign.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tuomo\programming\the_campaign\obj\Debug\net8.0\the_campaign.AssemblyInfoInputs.cache
+C:\Users\tuomo\programming\the_campaign\obj\Debug\net8.0\the_campaign.AssemblyInfo.cs
+C:\Users\tuomo\programming\the_campaign\obj\Debug\net8.0\the_campaign.csproj.CoreCompileInputs.cache
+C:\Users\tuomo\programming\the_campaign\obj\Debug\net8.0\the_campaign.dll
+C:\Users\tuomo\programming\the_campaign\obj\Debug\net8.0\refint\the_campaign.dll
+C:\Users\tuomo\programming\the_campaign\obj\Debug\net8.0\the_campaign.pdb
+C:\Users\tuomo\programming\the_campaign\obj\Debug\net8.0\the_campaign.genruntimeconfig.cache
+C:\Users\tuomo\programming\the_campaign\obj\Debug\net8.0\ref\the_campaign.dll
