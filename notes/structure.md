@@ -9,11 +9,16 @@ When in doubt, put it here rather than in `src/`.
 - `notes/story/`
   - World, factions, characters, plot arcs, quests, and narrative structure.
 - `notes/development/`
-  - Technical design notes, tasks and TODOs, implementation plans, and experiments.
+  - Technical design notes, tasks and TODOs, implementation plans, and experiments.\
+- `notes/unity/`
+  - Unity specific notes, how the editor internals works. Low and high level concepts
+- `notes/csharp/`
+  - C# related notes about coding practices, templates etc
 - `notes/ai/`
   - Rules, conventions, and guidance for AI assistants working on this project.
 - `notes/art/`
   - Visual art direction, asset lists, budgeting estimates, and audio (music/SFX) planning.
+
 
 ### How to use this folder
 
