@@ -46,6 +46,9 @@ Unity opens the project at `src/`, which contains the standard Unity folders:
     - `CampSonLeadsChargeDenyOutcome.cs`
   - `Chapter1Entry.cs` composes these into a `StoryEngine` instance and defines the starting node.
 
+- `StoryEngine/Runtime/Import/YarnImporter.cs`
+  - Parses Yarn Spinner (`.yarn`) source and builds `StoryNode`/`Choice` instances. Use `YarnImporter.CreateEngine(yarnContent)` to run a story from a string. The Unity `StorySceneController` can optionally load from a Yarn `TextAsset` instead of the built-in Chapter 1. See `notes/development/yarn-import.md`.
+
 - `tools/Cli/Program.cs`
   - Simple command-line runner for the story engine.
   - Currently runs **Chapter 1** via `Chapter1Entry.CreateEngine()`:

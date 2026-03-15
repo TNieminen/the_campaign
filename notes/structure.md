@@ -9,7 +9,8 @@ When in doubt, put it here rather than in `src/`.
 - `notes/story/`
   - World, factions, characters, plot arcs, quests, and narrative structure.
 - `notes/development/`
-  - Technical design notes, tasks and TODOs, implementation plans, and experiments.\
+  - Technical design notes, tasks and TODOs, implementation plans, and experiments.
+  - See `running-tests.md` for how to run the unit tests (xUnit, from repo root).
 - `notes/unity/`
   - Unity specific notes, how the editor internals works. Low and high level concepts
 - `notes/csharp/`

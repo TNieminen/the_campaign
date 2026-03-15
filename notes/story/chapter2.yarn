@@ -1,0 +1,54 @@
+start: Chapter2CommandersReport
+
+title: Chapter2CommandersReport
+position: -423,-35
+---
+Night hangs over the camp as commanders crowd around the war table.
+Reports of enemy movements pile up, each more urgent than the last.
+You can wait for the scouts to return, or make your decision now.
+
+[[Wait for the scouts' report before committing to an attack.|Chapter2ScoutReport]]
+<<jump Chapter2ScoutReport>>
+[[Decide now, without waiting for more information.|Chapter2SonLeadsChargeDecision]]
+<<jump Chapter2SonLeadsChargeDecision>>
+===
+
+title: Chapter2ScoutReport
+position: 192,-233
+---
+Mud-streaked scouts burst into the tent, breathless.
+"Their main force is forming up on the ridge," one gasps.
+"If we strike before dawn, we might catch them unprepared."
+
+[[Return to the war council and decide who will lead the attack.|Chapter2SonLeadsChargeDecision]]
+<<jump Chapter2SonLeadsChargeDecision>>
+===
+
+title: Chapter2SonLeadsChargeDecision
+position: -63,318
+---
+Your son steps forward, eyes burning with determination.
+"Father, let me lead the charge. Our men will rally if they see me at the front."
+The war council falls silent, all eyes on you.
+
+[[Allow your son to lead the charge.|Chapter2AllowOutcome]]
+<<jump Chapter2AllowOutcome>>
+[[Deny your son and lead the charge yourself.|Chapter2DenyOutcome]]
+<<jump Chapter2DenyOutcome>>
+===
+
+title: Chapter2AllowOutcome
+position: 455,190
+---
+The banners rise and your son rides at the front.
+The charge shatters the enemy line, but when the dust settles, his banner lies torn in the mud.
+Your son is dead, and victory tastes like ash.
+===
+
+title: Chapter2DenyOutcome
+position: 384,-61
+---
+You place a hand on his shoulder. "No. I will lead them."
+His jaw tightens, but he steps back as you ride out.
+The men hesitate; the charge falters. By dusk, the field is lost and your banners burn on the horizon.
+===

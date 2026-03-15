@@ -1,24 +1,17 @@
 namespace TheCampaign.StoryEngine
 {
-/// <summary>
-/// Entry point and composition for Chapter 1 story nodes.
-/// Unity-side copy so the story engine is available to the Unity assemblies.
-/// </summary>
-public static class Chapter1Entry
-{
-    public static StoryEngine CreateEngine()
+    /// <summary>
+    /// Chapter 1 story: loads all .yarn files from notes/story (nodes can cross files).
+    /// </summary>
+    public static class Chapter1Entry
     {
-        var nodes = new[]
+        /// <summary>
+        /// Creates a StoryEngine by loading all .yarn files from the given notes/story directory.
+        /// Start node comes from the first file (alphabetically) that defines "start:", or the first node in that file.
+        /// </summary>
+        public static StoryEngine CreateEngineFromDirectory(string notesStoryDirectoryPath, GameState? initialState = null)
         {
-            CampPreludeCommandersReport.CreateNode(),
-            CampPreludeScoutReport.CreateNode(),
-            CampSonLeadsChargeDecision.CreateNode(),
-            CampSonLeadsChargeAllowOutcome.CreateNode(),
-            CampSonLeadsChargeDenyOutcome.CreateNode()
-        };
-
-        var state = new GameState();
-        return new StoryEngine(nodes, startNodeId: CampPreludeCommandersReport.Id, initialState: state);
+            return YarnImporter.CreateEngineFromDirectory(notesStoryDirectoryPath, null, initialState);
+        }
     }
-}
 }

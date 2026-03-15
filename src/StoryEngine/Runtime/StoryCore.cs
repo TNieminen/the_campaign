@@ -6,12 +6,19 @@ namespace TheCampaign.StoryEngine;
 
 public sealed class GameState
 {
+    public const int MoraleMin = 0;
+    public const int MoraleMax = 100;
+    public const int MoraleDefault = 50;
+
     private readonly Dictionary<string, bool> _flags = new();
     private readonly Dictionary<string, string> _strings = new();
+    private int _morale = MoraleDefault;
 
     public IReadOnlyDictionary<string, bool> Flags => _flags;
 
     public IReadOnlyDictionary<string, string> Strings => _strings;
+
+    public int Morale => _morale;
 
     public bool GetFlag(string key) => _flags.TryGetValue(key, out var value) && value;
 
@@ -20,6 +27,17 @@ public sealed class GameState
     public string? GetString(string key) => _strings.TryGetValue(key, out var value) ? value : null;
 
     public void SetString(string key, string value) => _strings[key] = value;
+
+    public void SetMorale(int value) => _morale = ClampMorale(value);
+
+    public void AddMorale(int delta) => _morale = ClampMorale(_morale + delta);
+
+    private static int ClampMorale(int value)
+    {
+        if (value < MoraleMin) return MoraleMin;
+        if (value > MoraleMax) return MoraleMax;
+        return value;
+    }
 }
 
 public interface ICondition

@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Linq;
 using TheCampaign.StoryEngine;
 
@@ -8,8 +9,9 @@ internal static class Program
 {
     private static void Main(string[] args)
     {
-        // For now we always run Chapter 1, starting at the camp prelude.
-        var engine = Chapter1Entry.CreateEngine();
+        // For now we always run Chapter 1, loading from notes/story (relative to current directory).
+        var notesStoryPath = Path.Combine(Directory.GetCurrentDirectory(), "notes", "story");
+        var engine = Chapter1Entry.CreateEngineFromDirectory(notesStoryPath);
         engine.NodeChanged += node => RenderNode(engine, node);
 
         RenderNode(engine, engine.GetCurrentNode());

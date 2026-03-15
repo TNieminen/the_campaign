@@ -1,0 +1,31 @@
+start: Chapter3Start
+
+title: Chapter3Start
+position: 0,0
+---
+A rider has come in from the northern road—dust on his cloak, his mount lathered.
+Word spreads through the camp: reinforcements, or so the rumour goes.
+You can hear him out here, or join the war council and the scouts' report instead.
+
+[[Hear the rider's news here.|Chapter3Middle]]
+<<jump Chapter3Middle>>
+[[Leave this to your captains and return to the war council.|Chapter2ScoutReport]]
+<<jump Chapter2ScoutReport>>
+===
+
+title: Chapter3Middle
+position: 200,0
+---
+The rider kneels, voice raw. "The northern column won't reach us before dawn. Maybe not at all—the pass is contested."
+So you fight with what you have. The war table will tell you the rest.
+
+[[Dismiss him and go to the council.|Chapter3End]]
+<<jump Chapter3End>>
+===
+
+title: Chapter3End
+position: 400,0
+---
+You send the rider to the healers and turn toward the command tent.
+The night is short. The scouts have returned; the choice of who leads the charge will not wait.
+===

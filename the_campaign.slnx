@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="the_campaign.csproj" />
+  <Project Path="tests/TheCampaign.Tests/TheCampaign.Tests.csproj" />
+</Solution>

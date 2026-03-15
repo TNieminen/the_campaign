@@ -1,3 +1,4 @@
+using System.IO;
 using System.Linq;
 using StoryRuntime = TheCampaign.StoryEngine;
 using UnityEngine;
@@ -22,12 +23,16 @@ namespace TheCampaign.Unity
         [SerializeField] private Transform choicesContainer;
         [SerializeField] private Button choiceButtonPrefab;
 
+        [Header("Story source")]
+        [Tooltip("Optional. Start node id (e.g. CommandersReport). If empty, uses the first 'start:' from .yarn files.")]
+        [SerializeField] private string startNodeId;
+
         private StoryRuntime.StoryEngine _engine;
 
         private void Start()
         {
-            // Construct the Chapter 1 story engine from the framework-agnostic runtime.
-            _engine = StoryRuntime.Chapter1Entry.CreateEngine();
+            string notesStoryPath = Path.GetFullPath(Path.Combine(Application.dataPath, "..", "..", "notes", "story"));
+            _engine = StoryRuntime.YarnImporter.CreateEngineFromDirectory(notesStoryPath, string.IsNullOrEmpty(startNodeId) ? null : startNodeId);
             _engine.NodeChanged += OnNodeChanged;
 
             // Render the initial node immediately.
