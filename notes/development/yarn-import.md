@@ -10,6 +10,13 @@ The story engine **always loads from the repo's `notes/story` folder**. All **`.
 - **Only `.yarn` files are read.** `.md` and other extensions are ignored.
 - **Unity** resolves the path at runtime as `Application.dataPath/../../notes/story` (when the project is at `src/`). No need to copy Yarn into `Assets/` for the editor.
 
+### Yarn Spinner project file (editors / VS Code)
+
+For the **Yarn Spinner VS Code extension** and other official tooling, the project file must be named with the **`.yarnproject`** extension (not a plain `yarn_project` file). This repo has **`notes/the_campaign.yarnproject`**.
+
+- **`sourceFiles`** globs are **relative to the folder that contains the `.yarnproject` file** (here, `notes/`). We use `story/**/*.yarn` so every `.yarn` under `notes/story/` is included (cross-file node links resolve in the graph).
+- The C# game still loads only via `YarnImporter` from `notes/story/`; the `.yarnproject` is for **authoring** (validation, graph preview), not required at runtime.
+
 ## Node naming standard
 
 **Use the `ChapterX` prefix for node titles** so it's clear which file a node belongs to and cross-file links stay readable.

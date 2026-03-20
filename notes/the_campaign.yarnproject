@@ -1,0 +1,10 @@
+{
+  "projectFileVersion": 3,
+  "sourceFiles": [
+    "story/**/*.yarn"
+  ],
+  "excludeFiles": [],
+  "localisation": {},
+  "baseLanguage": "en",
+  "compilerOptions": {}
+}

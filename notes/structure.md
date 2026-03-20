@@ -8,6 +8,7 @@ When in doubt, put it here rather than in `src/`.
 
 - `notes/story/`
   - World, factions, characters, plot arcs, quests, and narrative structure.
+  - Yarn scripts (`.yarn`) live here; see also `notes/the_campaign.yarnproject` for Yarn Spinner editor/VS Code (see `development/yarn-import.md`).
 - `notes/development/`
   - Technical design notes, tasks and TODOs, implementation plans, and experiments.
   - See `running-tests.md` for how to run the unit tests (xUnit, from repo root).
