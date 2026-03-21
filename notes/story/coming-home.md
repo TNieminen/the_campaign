@@ -1,0 +1,54 @@
+start: TheVictoryParade
+
+// NOTE: This is a long winding intro. Perhaps instead he can have flashbacks to battles
+// during the walk, which will teach him the mechanics of the game
+
+title: TheVictoryParade
+position: 9,-16
+---
+
+It is over. two long years in the mud,
+in the dark and cold, fighting an enemy that would not yield. Yet we prevailed,
+and now I am home, I am safe, I am whole.
+
+The people shout my name as I ride through the streets,
+Tavian the Brave they call me. I reach for them, and the roar grows louder.
+I scan the crowd, looking for a face I recognize, looking for my wife, looking for my family.
+I pass under the arch of marshals, the banners of Pridonia hanging from the walls with their bright reds and yellows
+crimsom and golden in the morning sun. Flowers are thrown down, lilies for those we lost and daffodils for those who came back.
+I am a hero, I am their savior, I am their hope.
+
+I arrive at the agriont, the council and the king looking at the procession from the balcony.
+I dismount and with a final flourish of a bow I make my way up the spiraling stairs.
+The king addresses the crowd, his voice echoing off the ancient stone walls. He speaks
+of our victory, about strength and about hope. I stand there, barely listening, still
+looking out to the crowd, looking for my wife, but she's not there.
+Why do I feel relieved? As the speech comes to a close the overcast sky clears and a beam
+of light shines down on the king's road, reflecting off the breastplates of the crimsom knights.
+A good omen.
+
+The procession comes to an end, the king turns to me and extends his hand.
+We clasp hands. "You have done well, I knew we could count on you."
+The head of the council approaches "My lord, congratulations on your victory. If you could follow us to
+the council chambers, we would of course like to hear a full report".
+
+I smile and nod: "Of course sire, lead the way, I will meet you there."
+
+As I'm about to follow, a figure bursts up the stairs. A young man, wearing the gear
+of the city guard. Mennolt, my son. He's smiling eear to ear as he rushes over, stops
+shy of hugging me and instead clasping my hand. I wish he hadkkjlkljklklkjklsdkkjk. "Father, welcome back home! Mother could not make it
+but she'll meet you back at home", "of course son, I'll be there soon".
+
+
+[[Leal.|ComingHomeEnd]]
+<<jump ComingHomeEnd>>
+===
+
+title: ComingHomeEnd
+position: 405,-18
+---
+
+
+[[Dismiss him and go to the council.|Chapter3End]]
+<<jump Chapter3End>>
+===
