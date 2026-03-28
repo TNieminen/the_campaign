@@ -1,0 +1,166 @@
+## Overview
+
+### Factions
+
+There are 3 kingdoms at play, there are other but these are the main ones:
+
+- Kutur
+- Savol
+- Jalvela
+
+### About the world
+
+There has been war, glorified "heroic" was between the kingdoms. Kutur has generally been the most poverful one, Savol and Jalvela either helping each other fend off
+Kutur or stabbing each other in the back.
+
+Kutur enjoyed a decisive victroy, driving the other kingdoms to the coast, only protected by the Western mountain range. This was the end of Tavian's grand campaign, with
+the midland in peace and under Kutur rule.
+
+In the past year, a severed drought has hit the region, water and food are both scarce. Also, many extreme weather events have struck the nations, from floods to tornadoes.
+This has weaked Kuturs grasp on the riches of the midland and in the chaos Savol and Jalvela are clawing their way back. Uprisings and riots are widespread, some 
+local lords turn to tyranny and knowingly letting people starve or actively killing them. Skirmishes on the border region are erupting. Strange creatures are seen in the 
+woods. One night there is a thunderstorm, a grand one, the lighting hitting harder and harder, until suddenly the entire nightsky is filled with light and a crackling
+boom is heard around the kingdom. Weeks later scouts report a signting of a ball of energy in the midland, one that cannot be approached and those who do quickly fall
+unconcious.
+
+A strange man appears, telling a tale, you have 30 days, bring all you can as the end of days is here
+
+
+
+2 years has passed, Tavian has grown bored and bitter
+
+
+
+I want to start planning the campaign itself from a resource management POV. 
+
+These are the main parts that will be included in the game
+
+1. Arriving from a previous campaign. Settling in the society, mignling with the elite a bit, short family life. Flashbacks to previous wards when he sleeps, him commanding troops. Without the players knowledge they are already setting the stage for the base morale and condition of their troops and their influence in the city.
+2. The last campaign. There is a zone of energy that cannot be passed. A mysterious oracle has promised all will be revealed in 30 days, after which they dissappeared.
+
+
+
+start: TheVictoryParade
+
+// NOTE: This is a long winding intro. Perhaps instead he can have flashbacks to battles
+// during the walk, which will teach him the mechanics of the game
+
+// The kingdom is Kutur
+title: TheVictoryParade
+position: 9,-16
+---
+
+It is over. two long years in the mud,
+in the dark and cold, fighting an enemy that would not yield. Yet we prevailed,
+and now I am home, I am safe, I am whole. The capital is finally in view, the great walls 
+of the city surrounded by morning mist. The great gates are open, the drawbridge lowered, awaiting our return.
+The crimsom knights march behind, the backbone of our army, my most trusted men. Their armor battered
+their banners worn, but with the smell home and the old familiar dusty road, spring seems to return
+to their steps, their heads held a bit higher.
+
+Still, only half made it back, many a widow will be made today.
+It was meant to be a swift victory
+
+
+What does the Magi want?
+    - He's tired of humans and their petty squabbles. For long have they been manipulated by the elders, but they have come far, soon they might pose a threat. I must kill as many as a I can, I must cause instability.
+    - The Magi goes on to try to poison the land and drive the kingdoms to war.
+    - He might join you and give you bad counsel.
+    -!!!!!!! What about if he is trying to get the creator to intervene? Someone who cares about the people and could come forth to the last battle in a ball of light?
+    - Once that happens, the Magi will destroy him (depending what you do) and take his place.!!!!!!!!!
+    - Maybe from this 
+    - You might find a power stone accidentally, you migth lose the campaign, you might win and destroy the other major armies.
+    - There is a power at the peaks, old wise men who fight like the shadows.
+    - You can choose to go for the power stone at a couple of points, this is the canon choice after some losses
+    - You can Fight the kingdoms for some arable land, perhaps there are strategic points on the map to capture
+
+You goals
+- Something is bloooming at the center, a white power coming to existence
+- You are trying to control the main resources and prepare for whatever is to come
+- SO: there is a sense of urgency to reach the center, but you also need to divert troops to take over and protect resources, not to mention your supply lines.
+- Maybe there is a prophecy the something of immense power will arrive in 14, 30 days. It's your job to seize it for the good of the realm.
+- Maybe the light is on a stone pillar with large cravasses around it. Armies moving to take control of it, some staying back as a precaution.
+- Three armies will arrive at the location, amassing in power.
+
+WHAT WAS THE CONFLICT?
+- There is a massive drought, the kingdoms of men are fighting over resources.
+- Saevol has taken over the Northern Aquaduct, a massive aqueduct that brings water to the kingdom from the north.
+- With the local springs running dry, this cannot stand
+- Kingdom of Kutur vs Kingdom of Saevol
+- Saevol is desperate, they are quite literally fighting for the last man for this source
+- This conflict should be the seed to the next one, something was overlooked, it was a distraction etc
+- What is the next campaign about then?
+- 
+
+
+IDEA bank
+- 3 kingdoms, they will have a grand fight at some point
+- A Magi is orchestrating everything.
+- Maybe there a grand power stone in addition to the 3 the magi possess. But they don't know where
+
+
+
+ matched by the castle guard, the gold edge of the armor plates glinting in the morning sun.
+Blood and fire, the guiding passion of these people. The same furvor that drove me to the front lines.
+
+
+
+
+The people shout my name as I ride through the streets,
+Tavian the Brave they call me. I reach for them, and the roar grows louder.
+The crowd moves like a living beast, their faces blending to one another. 
+Their sounds merging to shreaks and screams. I am there again, in front of me eanos, the 
+great river dividing us from the kingdom of Saevol. I see the faces across the river,
+the faces of my enemy. We must cross, if we delay the next chance we'll get will be in a month.
+We cannot give them the chance to reinforce the banks. We must cross now.
+
+
+I've sent my cavalry up north to cross the river at shallows our scouts have found.
+Our main force will rush the bridge and fight for inches untill the cavalry arrives.
+
+
+
+I scan the crowd, looking for a face I recognize, looking for my wife, looking for my family.
+
+
+
+
+
+I pass under the arch of marshals, the banners of Pridonia hanging from the walls with their bright reds and yellows
+crimsom and golden in the morning sun. Flowers are thrown down, lilies for those we lost and daffodils for those who came back.
+I am a hero, I am their savior, I am their hope.
+
+I arrive at the agriont, the council and the king looking at the procession from the balcony.
+I dismount and with a final flourish of a bow I make my way up the spiraling stairs.
+The king addresses the crowd, his voice echoing off the ancient stone walls. He speaks
+of our victory, about strength and about hope. I stand there, barely listening, still
+looking out to the crowd, looking for my wife, but she's not there.
+Why do I feel relieved? As the speech comes to a close the overcast sky clears and a beam
+of light shines down on the king's road, reflecting off the breastplates of the crimsom knights.
+A good omen.
+
+The procession comes to an end, the king turns to me and extends his hand.
+We clasp hands. "You have done well, I knew we could count on you."
+The head of the council approaches "My lord, congratulations on your victory. If you could follow us to
+the council chambers, we would of course like to hear a full report".
+
+I smile and nod: "Of course sire, lead the way, I will meet you there."
+
+As I'm about to follow, a figure bursts up the stairs. A young man, wearing the gear
+of the city guard. Mennolt, my son. He's smiling eear to ear as he rushes over, stops
+shy of hugging me and instead clasping my hand. I wish he hadkkjlkljklklkjklsdkkjk. "Father, welcome back home! Mother could not make it
+but she'll meet you back at home", "of course son, I'll be there soon".
+
+
+[[Leal.|ComingHomeEnd]]
+<<jump ComingHomeEnd>>
+===
+
+title: ComingHomeEnd
+position: 405,-18
+---
+
+
+[[Dismiss him and go to the council.|Chapter3End]]
+<<jump Chapter3End>>
+===
