@@ -1,5 +1,37 @@
 ## Overview
 
+### Early stages of the world
+
+- The magi and the magical beings of the land have always been there, formed over time from the earth itself, from the waves, the will and power of nature
+- The magi seek to understand the land, how it works, understand the twisting sky above them
+- In their research the Magi need resources, but their magic is limited. Some tried to harness creation itself, creating the shards of creation eventually
+- Some Magi wanted to sculpt helpers to gather resources. They created differnet beings and eventually the man
+- The form (muoto) was a tool, a mule of burden. 
+- Then one time one of the  was touched by the shard of creation, and gained free will. Hence was created, Formara as called by the Magi
+- This one was kept sercet by one of the Magi, let reproduce, they formed over time, into what we see as men and women now.
+- Maybe in the first era people are sexless? 
+- At least people should be equal and not wall under gender norms
+- To protect their creations they gave them gifts, ways to keep them safe
+    - Or maybe they betrayed their master and took the gifts by force, casting the Magi to the side to go at their own destiny
+
+
+### The world
+
+- Instead of a sun, there is a band across the sky producing light, perhaps small clusters of concentrated stars
+    - The band rotates slowly around the world, it has dimmer and brighter side. On the dimmer side rains from the other side of the globe arrive, a rainy and dry season.
+- Strong auroras
+- Nature is bioluminsencet at many places
+- A dry season that happens for 2 years every 20 years. The band in the sky brightens and humidity escapes from the land.
+- A year is a rotation of the band across the sky
+- How big is the world? 
+- A great river mirrors the shape and direction of the band in the sky, it rotates around the world
+    - The pridonian coast is part of the original highlands
+- What is a day in the world?
+    - The ring dimms, it has sort of an internal pulse in addition to the dimmer and brighter side 
+- The great river drained and formed the sea. The earth reformed, rains lasted for years
+- The river valleys produce food
+- The mountains condense water that runs down making the north plains more fertile
+
 ### Factions
 
 There are 3 kingdoms at play, there are other but these are the main ones:
@@ -8,9 +40,37 @@ There are 3 kingdoms at play, there are other but these are the main ones:
 - Savol
 - Jalvela
 
+### Sources of conflict
+
+- Limited resources, water, metals, food
+- There is a dry season that comes and lasts for 2 years every 20 years. Factions need to collect water and food to prepare for it
+- 
+
 ### About the world
 
-There has been war, glorified "heroic" was between the kingdoms. Kutur has generally been the most poverful one, Savol and Jalvela either helping each other fend off
+
+
+
+Types of conflicts:
+- Almost sportmanlike
+- Over resources
+- Trade and money
+- Security and fear
+- Dynasty and succession
+- Religion and ideology
+- Ethnicity
+- Internal politics 
+- Reputation
+-      
+
+
+## Ideas
+
+- The world is being swallowed under water
+- The mist in the center, you can send troops in 
+
+
+There has been war, glorified "heroic" war between the kingdoms. Kutur has generally been the most poverful one, Savol and Jalvela either helping each other fend off
 Kutur or stabbing each other in the back.
 
 Kutur enjoyed a decisive victroy, driving the other kingdoms to the coast, only protected by the Western mountain range. This was the end of Tavian's grand campaign, with
@@ -24,6 +84,8 @@ boom is heard around the kingdom. Weeks later scouts report a signting of a ball
 unconcious.
 
 A strange man appears, telling a tale, you have 30 days, bring all you can as the end of days is here
+
+NEXT UP: Flush out the conflict, conflict areas and the steps (like main push to the area, preparations there, trying to gain upper hand, keeping tabs on resource)
 
 
 
