@@ -34,7 +34,9 @@
           <button class="tab active" data-tab="encounter">Encounters</button>
           <button class="tab" data-tab="loot">Loot &amp; Discovery</button>
           <button class="tab" data-tab="bestiary">Bestiary</button>
+          <button class="tab" data-tab="environment">Environments</button>
           <button class="tab" data-tab="reference">Reference</button>
+          <button class="tab" data-tab="scaling">Scaling</button>
         </nav>
         <button id="logout" class="logout" title="Lock">Lock</button>
       </header>
@@ -102,9 +104,31 @@
           </div>
         </section>
 
+        <!-- Environmental hazards -->
+        <section id="panel-environment" class="panel">
+          <div class="bestiary">
+            <div class="bestiary-side">
+              <input id="env-search" type="search" placeholder="Search hazards&hellip;" />
+              <div id="env-list" class="list"></div>
+            </div>
+            <div id="env-detail" class="bestiary-detail" data-md-card></div>
+          </div>
+        </section>
+
         <!-- Reference -->
         <section id="panel-reference" class="panel">
           <div id="ref-out" class="reference"></div>
+        </section>
+
+        <!-- Party scaling guide -->
+        <section id="panel-scaling" class="panel">
+          <div class="controls scaling-controls">
+            <div class="field"><label>Party size</label><input id="sc-party-size" type="number" min="1" value="4" /></div>
+            <div class="field"><label>Level</label><input id="sc-level" type="number" min="1" max="20" value="6" /></div>
+            <div class="field wide"><label>Levels (overrides, e.g. 4,6,6,7)</label><input id="sc-levels" type="text" placeholder="optional" /></div>
+            <button id="sc-run" class="primary">Update examples</button>
+          </div>
+          <div id="scaling-out" class="reference scaling-guide"></div>
         </section>
       </main>
     </div>

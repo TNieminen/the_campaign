@@ -301,7 +301,7 @@ button.ghost:hover { border-color: var(--accent); }
 
 .bestiary-side { display: flex; flex-direction: column; gap: 0.5rem; }
 
-#mon-search {
+#mon-search, #env-search {
   padding: 0.55rem 0.7rem;
   border-radius: 8px;
   border: 1px solid var(--border);
@@ -329,8 +329,22 @@ button.ghost:hover { border-color: var(--accent); }
   color: var(--text);
 }
 .list-item:hover { border-color: var(--accent); }
+.list-item.active {
+  border-color: var(--accent);
+  background: rgba(90, 169, 230, 0.12);
+}
 .li-name { font-weight: 600; }
 .li-meta { font-size: 0.78rem; color: var(--muted); }
+
+.entry-link {
+  color: var(--accent);
+  text-decoration: none;
+}
+.entry-link:hover { text-decoration: underline; }
+.result-head .entry-link { color: var(--accent-2); }
+.member-list .entry-link { color: var(--accent); }
+.guardian .entry-link { color: var(--warn); }
+.guardian .entry-link:hover { color: #f0c060; }
 
 .bestiary-detail, .reference {
   background: var(--panel);
@@ -339,6 +353,20 @@ button.ghost:hover { border-color: var(--accent); }
   padding: 1rem 1.5rem;
   min-height: 200px;
 }
+
+.scaling-guide .scaling-example {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+}
+.scaling-guide .scaling-example h2 {
+  margin-top: 0;
+  color: var(--accent-2);
+  font-size: 1.15rem;
+}
+.scaling-controls { margin-bottom: 1rem; }
 
 .statblock h1, .statblock h2 { color: var(--accent-2); }
 .statblock table { border-collapse: collapse; width: 100%; margin: 0.5rem 0; }
