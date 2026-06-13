@@ -10,17 +10,17 @@ Nothing Found
 =============
 
 The party finds no treasure on this beat. Roll **d12** (or run `tools/loot.py`)
-for a bit of flavour.
+for a bit of flavour. These are atmosphere, not items, so they carry no source link.
 
-1. Quiet day of travel
-2. Animal tracks leading nowhere
-3. Old campsite
-4. Strange but harmless sounds
-5. Ruined structure long picked clean
-6. Beautiful view
-7. A doe and fawn watching from the treeline
-8. Birdsong and an easy, pleasant trail
-9. A cold spring of clean, sweet water
-10. Woodsmoke on the wind from somewhere distant
-11. A field of wildflowers blooming out of season
-12. A weathered cairn marking a forgotten grave
+1. A quiet, uneventful day of travel under an open sky.
+2. Animal tracks crisscross the trail, leading nowhere in particular.
+3. The cold, scattered ashes of an old campsite, long abandoned.
+4. Strange but harmless sounds drift through the trees and slowly fade.
+5. A ruined structure, roofless and long since picked clean by scavengers.
+6. A breathtaking view opens up across the wooded valley below.
+7. A doe and her fawn watch warily from the treeline before bolting.
+8. Birdsong and an easy, pleasant trail make for good, untroubled miles.
+9. A cold spring bubbles up from the rocks, its water clean and sweet.
+10. Woodsmoke drifts on the wind from somewhere distant and unseen.
+11. A field of wildflowers blooms improbably out of season.
+12. A weathered cairn marks a forgotten grave beside the path.

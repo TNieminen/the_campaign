@@ -51,6 +51,13 @@ def category_for_roll(roll):
 LIST_ITEM_RE = re.compile(r"^\s*(?:\d+[.)]|[-*])\s+(.*\S)\s*$")
 HEADING_RE = re.compile(r"^\s*#{1,6}\s+(.*\S)\s*$")
 
+# Gold amounts inside an item string: dice ("4d10 gp", "2d10 x 10 gp") or a flat
+# value ("25 gp"). The dice branch is listed first so it wins over the flat one.
+GOLD_RE = re.compile(
+    r"(\d+)d(\d+)(?:\s*[x\u00d7*]\s*(\d+))?\s*gp\b|(\d+)\s*gp\b",
+    re.IGNORECASE,
+)
+
 
 # --------------------------------------------------------------------------- #
 # Data loading
@@ -171,6 +178,64 @@ def all_items(sections):
 
 
 # --------------------------------------------------------------------------- #
+# Gold scaling
+# --------------------------------------------------------------------------- #
+def gold_multiplier(levels):
+    """How much to scale coin/value rewards for this party.
+
+    Table gold is tuned for a baseline party of four at low level (tier 1).
+    Bigger parties scale linearly (party_size / 4); higher level scales by
+    rough 5e treasure tier (x1 at 1-4, x2 at 5-10, x4 at 11-16, x8 at 17-20).
+    """
+    party_scale = len(levels) / 4.0
+    avg_level = sum(levels) / len(levels)
+    if avg_level <= 4:
+        tier = 1.0
+    elif avg_level <= 10:
+        tier = 2.0
+    elif avg_level <= 16:
+        tier = 4.0
+    else:
+        tier = 8.0
+    return party_scale * tier
+
+
+def _avg_gp(match):
+    """Average gp value of a single GOLD_RE match."""
+    if match.group(4):  # flat "N gp"
+        return float(int(match.group(4)))
+    dice, faces = int(match.group(1)), int(match.group(2))
+    factor = int(match.group(3)) if match.group(3) else 1
+    return dice * (faces + 1) / 2 * factor
+
+
+def _fmt_factor(factor):
+    return f"{factor:g}"
+
+
+def scale_gold(text, factor):
+    """Apply ``factor`` to every gp amount in ``text``.
+
+    Flat values are rewritten to the scaled amount ("25 gp" -> "75 gp"). Dice
+    expressions stay rollable and are annotated with the multiplier and an
+    average ("4d10 gp" -> "4d10 gp x3 (~66 gp)"). Returns ``(new_text, changed)``.
+    """
+    if factor == 1:
+        return text, False
+    changed = False
+
+    def repl(match):
+        nonlocal changed
+        changed = True
+        scaled = max(1, int(round(_avg_gp(match) * factor)))
+        if match.group(4):  # flat amount
+            return f"{scaled} gp"
+        return f"{match.group(0)} \u00d7{_fmt_factor(factor)} (\u2248{scaled} gp)"
+
+    return GOLD_RE.sub(repl, text), changed
+
+
+# --------------------------------------------------------------------------- #
 # Guardian (boss monster / environmental) integration
 # --------------------------------------------------------------------------- #
 def _encounter_module():
@@ -236,15 +301,20 @@ def print_result(slug, roll, levels, sections, rng):
     print(f"Party: {party_size} character(s) (levels {levels_desc})")
     print(f"Travel roll: {roll}  ->  {name}  (d20 {drange})\n")
 
+    factor = gold_multiplier(levels)
     if slug == "magic":
         tier, item = pick_magic(sections, avg_level, party_size, rng)
+        item, _ = scale_gold(item, factor)
         print(f"  Magic item [{tier}]: {item}")
     else:
         item = rng.choice(all_items(sections))
+        item, scaled = scale_gold(item, factor)
         print(f"  Result: {item}")
-        if slug == "mundane" and party_size != 4:
-            mult = party_size / 4
-            print(f"  (suggested coin/value scale for a party of {party_size}: x{mult:.2f})")
+        if scaled:
+            print(
+                f"  (gold scaled x{factor:g} for {party_size} PC(s) at "
+                f"avg level {avg_level:g})"
+            )
 
     if slug == "wondrous":
         guardian = roll_guardian(levels, rng)
@@ -273,7 +343,8 @@ a category, then randomizes the actual reward inside it:
 Rolls 1-10 are encounters - use ../encounters.md and tools/encounter.py instead.
 
 Party level (and, a little, party size) skews which magic-item rarity tier is
-rolled. A wondrous discovery also rolls a scaled boss-tier guardian.
+rolled. Coin and value rewards are auto-scaled by party size and average level
+(see gold_multiplier). A wondrous discovery also rolls a scaled boss guardian.
 
 examples
 --------
@@ -283,7 +354,7 @@ examples
   # The party rolled a natural 20 (rolls a guardian), mixed-level party
   loot.py --levels 5,6,6,7 --roll 20
 
-  # The party rolled a 15 (mundane) with a big party (prints a value hint)
+  # The party rolled a 15 (mundane); coin values auto-scale for a big party
   loot.py --party-size 6 --level 5 --roll 15
 """
     parser = argparse.ArgumentParser(

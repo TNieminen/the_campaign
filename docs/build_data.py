@@ -21,6 +21,7 @@ import json
 import os
 import shutil
 import sys
+from urllib.parse import quote_plus
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -46,10 +47,17 @@ def body_of(text):
     return loot.strip_frontmatter(text).strip()
 
 
+def dndbeyond_url(name, category):
+    """A clickable D&D Beyond search link for a creature or item by name."""
+    return f"https://www.dndbeyond.com/search?q={quote_plus(name)}&f={category}"
+
+
 def build_monsters():
     out = []
     for m in encounter.load_monsters(MONSTERS_DIR):
         text = read(os.path.join(MONSTERS_DIR, m.slug + ".md"))
+        url = dndbeyond_url(m.name, "monsters")
+        body = body_of(text) + f"\n\n**Source:** [{m.name} on D&D Beyond]({url})"
         out.append({
             "name": m.name,
             "cr": m.cr,
@@ -58,7 +66,8 @@ def build_monsters():
             "type": m.type,
             "summary": m.summary,
             "slug": m.slug,
-            "body": body_of(text),
+            "source": url,
+            "body": body,
         })
     out.sort(key=lambda d: (d["xp"], d["name"]))
     return out

@@ -55,6 +55,11 @@ def md(text):
     return window.marked.parse(text)
 
 
+def md_inline(text):
+    """Render a single line of markdown (no wrapping <p>), for list/result items."""
+    return window.marked.parseInline(text)
+
+
 def esc(text):
     return (
         str(text)
@@ -329,6 +334,7 @@ def run_loot(event=None):
     sections = cat["sections"]
     avg_level = sum(levels) / len(levels)
     party_size = len(levels)
+    factor = loot.gold_multiplier(levels)
 
     parts = [
         f"<div class='out-top'>{copy_btn()}</div>",
@@ -346,22 +352,26 @@ def run_loot(event=None):
 
     if slug == "magic":
         tier, item = loot.pick_magic(sections, avg_level, party_size, rng)
+        item, _ = loot.scale_gold(item, factor)
         parts.append(
             f"<div class='loot-result'><span class='tag tier-{tier.lower()}'>{esc(tier)}</span> "
-            f"{esc(item)}</div>"
+            f"{md_inline(item)}</div>"
         )
         md_lines.append(f"- Magic item [{tier}]: {item}")
     else:
         item = rng.choice(loot.all_items(sections))
-        parts.append(f"<div class='loot-result'>{esc(item)}</div>")
+        item, scaled = loot.scale_gold(item, factor)
+        parts.append(f"<div class='loot-result'>{md_inline(item)}</div>")
         md_lines.append(f"- {item}")
-        if slug == "mundane" and party_size != 4:
-            mult = party_size / 4
+        if scaled:
             parts.append(
-                f"<p class='muted'>Suggested coin/value scale for a party of "
-                f"{party_size}: &times;{mult:.2f}</p>"
+                f"<p class='muted'>Gold scaled &times;{factor:g} for a party of "
+                f"{party_size} at avg level {avg_level:g}.</p>"
             )
-            md_lines.append(f"- Suggested value scale for a party of {party_size}: x{mult:.2f}")
+            md_lines.append(
+                f"- Gold scaled x{factor:g} for a party of {party_size} at "
+                f"avg level {avg_level:g}"
+            )
 
     if slug == "wondrous":
         guardian = roll_guardian_web(levels, rng)
