@@ -48,7 +48,9 @@
             <div class="field"><label>Party size</label><input id="enc-party-size" type="number" min="1" value="4" /></div>
             <div class="field"><label>Level</label><input id="enc-level" type="number" min="1" max="20" value="6" /></div>
             <div class="field wide"><label>Levels (overrides, e.g. 4,6,6,7)</label><input id="enc-levels" type="text" placeholder="optional" /></div>
-            <div class="field"><label>Difficulty</label>
+            <div class="field"><label>Travel d20 roll (1-10)</label><input id="enc-roll" type="number" min="1" max="10" placeholder="optional" /></div>
+            <button id="enc-rolld20" class="ghost">Roll d20</button>
+            <div class="field"><label>Difficulty (if no roll)</label>
               <select id="enc-difficulty">
                 <option value="low">Low</option>
                 <option value="moderate" selected>Moderate</option>

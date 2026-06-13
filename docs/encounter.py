@@ -204,6 +204,38 @@ def budget_for(levels, difficulty):
     return sum(XP_BUDGET_PER_CHARACTER[lv][idx] for lv in levels)
 
 
+# Travel d20 results 1-10 are encounters (11-20 are loot; see loot.py). Each
+# band maps to a 2024 difficulty; a natural 1 is a "deadly special" that pushes
+# the budget above High.
+ENCOUNTER_ROLL_MIN = 1
+ENCOUNTER_ROLL_MAX = 10
+DEADLY_BUDGET_MULTIPLIER = 1.75
+
+# (low, high, label, difficulty, deadly)
+TRAVEL_BANDS = (
+    (1, 1, "Deadly special", "high", True),
+    (2, 3, "Dangerous", "high", False),
+    (4, 6, "Medium", "moderate", False),
+    (7, 10, "Minor", "low", False),
+)
+
+
+def band_for_roll(roll):
+    """Map a travel d20 result (1-10) to its encounter band, or ``None``."""
+    for lo, hi, label, difficulty, deadly in TRAVEL_BANDS:
+        if lo <= roll <= hi:
+            return {"label": label, "difficulty": difficulty, "deadly": deadly}
+    return None
+
+
+def budget_for_band(levels, band):
+    """XP budget for a travel band, inflating a natural-1 'deadly special'."""
+    budget = budget_for(levels, band["difficulty"])
+    if band.get("deadly"):
+        budget = int(round(budget * DEADLY_BUDGET_MULTIPLIER))
+    return budget
+
+
 # --------------------------------------------------------------------------- #
 # Encounter search
 # --------------------------------------------------------------------------- #
@@ -288,8 +320,12 @@ def select_environments(hazards, difficulty, limit):
 # --------------------------------------------------------------------------- #
 # Output
 # --------------------------------------------------------------------------- #
-def print_header(difficulty, levels):
-    print(f"Selected difficulty: {difficulty.upper()}")
+def print_header(difficulty, levels, band=None, roll=None):
+    if band is not None:
+        deadly = " x deadly" if band["deadly"] else ""
+        print(f"Travel roll: {roll}  ->  {band['label']} ({difficulty.upper()}{deadly})")
+    else:
+        print(f"Selected difficulty: {difficulty.upper()}")
     if levels is not None:
         budgets = {d: budget_for(levels, d) for d in DIFFICULTIES}
         levels_desc = ", ".join(str(lv) for lv in levels)
@@ -372,6 +408,18 @@ This tool uses the 2024 (5.5e) Dungeon Master's Guide encounter model:
      There is NO monster-count multiplier in 2024 - you just add up monster XP.
      (2024 advises rounding difficulty UP when you land between two bands.)
 
+travel roll (1-10)
+------------------
+Instead of naming a difficulty, pass the players' travel d20 with --roll. The
+encounter half of the table (1-10) maps to a band:
+
+  1      Deadly special (High budget x{DEADLY_BUDGET_MULTIPLIER:g}, can drop PCs / TPK)
+  2-3    Dangerous       (High)
+  4-6    Medium          (Moderate)
+  7-10   Minor           (Low)
+
+Rolls 11-20 are loot - use loot.py instead.
+
 difficulty levels
 -----------------
   low       {DIFFICULTY_DESCRIPTIONS['low']}
@@ -394,6 +442,12 @@ modes (monster encounters only)
 
 examples
 --------
+  # The party rolled a 2 (Dangerous) on travel - 3 creatures for four level-6 PCs
+  encounter.py --party-size 4 --level 6 --roll 2 --count 3
+
+  # A natural 1 deadly special, boss + 4 minions
+  encounter.py --party-size 4 --level 6 --roll 1 --mode boss-minions --count 5
+
   # A hard fight of 3 creatures for four level-6 PCs
   encounter.py --party-size 4 --level 6 --difficulty high --count 3
 
@@ -418,8 +472,11 @@ examples
     party.add_argument("--level", type=int, help="level shared by all characters")
     party.add_argument("--levels", help="comma-separated per-character levels, e.g. 4,6,6,7")
 
-    parser.add_argument("--difficulty", choices=DIFFICULTIES, required=True,
-                        help="target encounter difficulty")
+    parser.add_argument("--roll", type=int, default=None,
+                        help="the players' travel d20 result (1-10); picks the "
+                             "difficulty band (11-20 is loot, see loot.py)")
+    parser.add_argument("--difficulty", choices=DIFFICULTIES, default=None,
+                        help="target encounter difficulty (omit if using --roll)")
     parser.add_argument("--filter", choices=("monster", "environmental", "both"),
                         default="both",
                         help="which encounter kinds to show (default: both)")
@@ -457,6 +514,21 @@ def main(argv=None):
     if not 0 < args.min_fill <= 1:
         sys.exit("error: --min-fill must be between 0 (exclusive) and 1 (inclusive)")
 
+    # Resolve the difficulty band, optionally from a travel d20 roll (1-10).
+    band = None
+    if args.roll is not None:
+        if not 1 <= args.roll <= 20:
+            sys.exit("error: --roll must be a d20 result (1-20)")
+        if args.roll > ENCOUNTER_ROLL_MAX:
+            sys.exit(f"error: a roll of {args.roll} is loot (d20 11-20), not an "
+                     "encounter. See loot.py.")
+        band = band_for_roll(args.roll)
+        difficulty = band["difficulty"]
+    elif args.difficulty:
+        difficulty = args.difficulty
+    else:
+        sys.exit("error: provide either --roll (1-10), or --difficulty")
+
     levels = None
     monster_results = None
     budget = 0
@@ -468,7 +540,7 @@ def main(argv=None):
             sys.exit("error: --count must be at least 1")
         levels = resolve_levels(args)
         monsters = load_monsters(args.monsters_dir or default_monsters_dir())
-        budget = budget_for(levels, args.difficulty)
+        budget = budget_for_band(levels, band) if band else budget_for(levels, difficulty)
         if args.mode == "mix":
             monster_results = find_mix(monsters, budget, args.count, args.max_types,
                                        args.min_fill, args.limit)
@@ -480,13 +552,13 @@ def main(argv=None):
     env_results = None
     if want_environment:
         hazards = load_environments(args.environments_dir or default_environments_dir())
-        env_results = select_environments(hazards, args.difficulty, args.limit)
+        env_results = select_environments(hazards, difficulty, args.limit)
 
-    print_header(args.difficulty, levels)
+    print_header(difficulty, levels, band=band, roll=args.roll)
     if want_monsters:
         print_monster_section(args, monster_results, budget)
     if want_environment:
-        print_environment_section(args.difficulty, env_results)
+        print_environment_section(difficulty, env_results)
 
 
 if __name__ == "__main__":

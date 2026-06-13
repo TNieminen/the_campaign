@@ -144,9 +144,14 @@ def render_encounter_parts(results, budget):
     return "".join(rows)
 
 
-def encounter_markdown(levels, difficulty, budget, results, hazards):
+def encounter_markdown(levels, difficulty, budget, results, hazards, band=None, roll=None):
+    if band is not None:
+        deadly = " x deadly" if band["deadly"] else ""
+        title = f"# Encounter \u2014 roll {roll}: {band['label']} ({difficulty.title()}{deadly})"
+    else:
+        title = f"# Encounter \u2014 {difficulty.title()}"
     lines = [
-        f"# Encounter \u2014 {difficulty.title()}",
+        title,
         f"Party: {party_line(levels)}  |  Budget: {budget:,} XP",
         "",
     ]
@@ -192,8 +197,31 @@ def run_encounter(event=None):
         set_html("#enc-out", "<p class='error'>Min fill must be between 0 and 1.</p>")
         return
 
+    # Optional travel d20 roll (1-10) overrides the difficulty dropdown.
+    band = None
+    roll = None
+    roll_str = el("#enc-roll").value.strip()
+    if roll_str:
+        try:
+            roll = int(roll_str)
+        except ValueError:
+            set_html("#enc-out", "<p class='error'>Enter the travel d20 roll (1-10).</p>")
+            return
+        if not 1 <= roll <= 20:
+            set_html("#enc-out", "<p class='error'>Roll must be a d20 result (1-20).</p>")
+            return
+        if roll > encounter.ENCOUNTER_ROLL_MAX:
+            set_html(
+                "#enc-out",
+                f"<p class='warn'>A roll of {roll} is <strong>loot</strong> "
+                "(d20 11-20), not an encounter. Use the Loot &amp; Discovery tab.</p>",
+            )
+            return
+        band = encounter.band_for_roll(roll)
+        difficulty = band["difficulty"]
+
     budgets = {d: encounter.budget_for(levels, d) for d in encounter.DIFFICULTIES}
-    budget = budgets[difficulty]
+    budget = encounter.budget_for_band(levels, band) if band else budgets[difficulty]
 
     if mode == "boss-minions":
         if count < 2:
@@ -205,13 +233,24 @@ def run_encounter(event=None):
     else:
         results = encounter.find_mix(MONSTERS, budget, count, max_types, min_fill, limit)
 
+    if band is not None:
+        deadly = " &times; deadly" if band["deadly"] else ""
+        selected_line = (
+            f"<div>Travel roll: <strong>{roll}</strong> &rarr; "
+            f"{esc(band['label'])} ({difficulty.upper()}{deadly}) "
+            f"&rarr; budget {budget:,} XP</div>"
+        )
+    else:
+        selected_line = (
+            f"<div>Selected: <strong>{difficulty.upper()}</strong> "
+            f"&rarr; budget {budget:,} XP</div>"
+        )
     header = (
         f"<div class='out-header'>"
         f"<div>Party: <strong>{esc(party_line(levels))}</strong></div>"
         f"<div class='muted'>Budgets: Low {budgets['low']:,} | "
         f"Moderate {budgets['moderate']:,} | High {budgets['high']:,}</div>"
-        f"<div>Selected: <strong>{difficulty.upper()}</strong> "
-        f"&rarr; budget {budget:,} XP</div>"
+        f"{selected_line}"
         f"</div>"
     )
 
@@ -241,7 +280,7 @@ def run_encounter(event=None):
             f"<ul class='member-list'>{haz}</ul></details>"
         )
 
-    md_text = encounter_markdown(levels, difficulty, budget, results, hazards)
+    md_text = encounter_markdown(levels, difficulty, budget, results, hazards, band, roll)
     top = f"<div class='out-top'>{copy_btn()}</div>"
     set_html("#enc-out", top + header + body + md_src(md_text))
 
@@ -251,6 +290,10 @@ def run_encounter(event=None):
 # --------------------------------------------------------------------------- #
 def roll_d20(event=None):
     el("#loot-roll").value = str(random.randint(11, 20))
+
+
+def roll_d20_encounter(event=None):
+    el("#enc-roll").value = str(random.randint(1, 10))
 
 
 def run_loot(event=None):
@@ -415,6 +458,7 @@ def render_reference():
 # --------------------------------------------------------------------------- #
 def setup():
     on("#enc-run", "click", run_encounter)
+    on("#enc-rolld20", "click", roll_d20_encounter)
     on("#loot-run", "click", run_loot)
     on("#loot-rolld20", "click", roll_d20)
     on("#mon-search", "input", on_bestiary_search)
