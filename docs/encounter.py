@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import random
 import sys
 from dataclasses import dataclass
 
@@ -237,6 +238,62 @@ def budget_for_band(levels, band):
 
 
 # --------------------------------------------------------------------------- #
+# Locations (faction ruins / camps an encounter takes place at)
+# --------------------------------------------------------------------------- #
+# How likely an encounter happens at a faction location, by severity. Mirrors
+# the loot location curve (see loot.py): the more dangerous the encounter, the
+# more likely it guards (or lurks at) a place, and the grander that place. A
+# natural-1 "deadly special" always has a grand setting.
+ENCOUNTER_LOCATION_CHANCE = {
+    "low": 0.25,
+    "moderate": 0.50,
+    "high": 0.75,
+    "deadly": 1.0,
+}
+
+# Which location value tier each encounter severity pulls from.
+ENCOUNTER_LOCATION_TIER = {
+    "low": "modest",
+    "moderate": "notable",
+    "high": "grand",
+    "deadly": "grand",
+}
+
+
+def encounter_severity(difficulty, deadly=False):
+    """The location-scaling key for an encounter: its difficulty, or 'deadly'."""
+    return "deadly" if deadly else difficulty
+
+
+def _loot_module():
+    """Import the sibling ``loot.py`` tool (lazy) for its location data."""
+    here = os.path.dirname(os.path.abspath(__file__))
+    if here not in sys.path:
+        sys.path.insert(0, here)
+    import loot  # noqa: E402  (sibling tool in the same folder)
+    return loot
+
+
+def roll_encounter_location(severity, rng, locations=None):
+    """Maybe pick a location the encounter takes place at, scaled to severity.
+
+    The chance scales with the encounter severity (``ENCOUNTER_LOCATION_CHANCE``);
+    on a hit the site is drawn uniformly from the matching tier
+    (``ENCOUNTER_LOCATION_TIER``), falling back to any tier if that pool is
+    empty. Returns a ``loot.Location`` or ``None``.
+    """
+    chance = ENCOUNTER_LOCATION_CHANCE.get(severity, 0.0)
+    if locations is None:
+        lt = _loot_module()
+        locations = lt.load_locations(lt.default_locations_dir())
+    if not locations or rng.random() >= chance:
+        return None
+    tier = ENCOUNTER_LOCATION_TIER.get(severity)
+    pool = [loc for loc in locations if loc.tier == tier] or list(locations)
+    return rng.choice(pool)
+
+
+# --------------------------------------------------------------------------- #
 # Encounter search
 # --------------------------------------------------------------------------- #
 def find_mix(monsters, budget, count, max_types, min_fill, limit):
@@ -336,6 +393,14 @@ def print_header(difficulty, levels, band=None, roll=None):
         )
 
 
+def print_location_section(location):
+    print("\n=== ENCOUNTER SITE ===")
+    living = " - inhabited" if location.status == "inhabited" else ""
+    print(f"  {location.name} ({location.faction}, {location.tier} site{living})")
+    if location.summary:
+        print(f"       {location.summary}")
+
+
 def print_monster_section(args, results, budget):
     print("\n=== MONSTER ENCOUNTERS ===")
     print(f"Budget: {budget:,} XP  (no monster-count multiplier in 2024)")
@@ -420,6 +485,13 @@ encounter half of the table (1-10) maps to a band:
 
 Rolls 11-20 are loot - use loot.py instead.
 
+encounter location
+------------------
+The more dangerous the encounter, the more likely it takes place at a faction
+location (a ruin, or one of Valvela's rare camps), and the grander that site:
+25% Low (modest), 50% Moderate (notable), 75% High (grand), 100% deadly special
+(grand). Sites live in ../locations/; pass --seed for a reproducible pick.
+
 difficulty levels
 -----------------
   low       {DIFFICULTY_DESCRIPTIONS['low']}
@@ -501,6 +573,10 @@ examples
                        help="path to the monsters folder (default: sibling ../monsters)")
     knobs.add_argument("--environments-dir", default=None,
                        help="path to the environments folder (default: sibling ../environments)")
+    knobs.add_argument("--locations-dir", default=None,
+                       help="path to the locations folder (default: sibling ../locations)")
+    knobs.add_argument("--seed", type=int, default=None,
+                       help="optional RNG seed for a reproducible encounter location")
     return parser
 
 
@@ -554,7 +630,16 @@ def main(argv=None):
         hazards = load_environments(args.environments_dir or default_environments_dir())
         env_results = select_environments(hazards, difficulty, args.limit)
 
+    # The encounter may take place at a faction location; chance and grandeur
+    # scale with how dangerous the encounter is.
+    severity = encounter_severity(difficulty, bool(band and band["deadly"]))
+    lt = _loot_module()
+    locations = lt.load_locations(args.locations_dir or lt.default_locations_dir())
+    location = roll_encounter_location(severity, random.Random(args.seed), locations)
+
     print_header(difficulty, levels, band=band, roll=args.roll)
+    if location is not None:
+        print_location_section(location)
     if want_monsters:
         print_monster_section(args, monster_results, budget)
     if want_environment:

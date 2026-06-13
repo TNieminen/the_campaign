@@ -2,9 +2,10 @@ Great Northwood — Locations
 ===========================
 
 Discoverable sites — faction ruins (and a couple of rare living Valvela camps)
-that can turn up alongside a loot result. One file per location, each with YAML
-frontmatter followed by the themed description, so `../tools/loot.py` and the
-web app can read them while they stay easy to hand-edit.
+that can turn up alongside a loot result, or serve as the setting of an
+encounter. One file per location, each with YAML frontmatter followed by the
+themed description, so `../tools/loot.py`, `../tools/encounter.py`, and the web
+app can read them while they stay easy to hand-edit.
 
 The factions themselves are described in `../factions.md`; these are the marks
 they left on the Northwood.
@@ -30,6 +31,25 @@ guardian then reads naturally as the guardian *of* the grand location.
 
 The chances live in `LOCATION_CHANCE` and the tier mapping in `CATEGORY_TIER`,
 both in `../tools/loot.py`.
+
+## How locations fit encounters
+
+Encounters (the d20 **1-10** half) use the same idea: the more dangerous the
+encounter, the more likely it takes place at a location, and the grander that
+site. Here the scaling key is the encounter's difficulty (a natural-1 "deadly
+special" being its own top step):
+
+| Encounter | Severity | Location chance | Site tier |
+| --- | --- | --- | --- |
+| Minor (roll 7-10) | low | ~25% | `modest` |
+| Medium (roll 4-6) | moderate | ~50% | `notable` |
+| Dangerous (roll 2-3) | high | ~75% | `grand` |
+| Deadly special (roll 1) | deadly | 100% | `grand` |
+
+The monsters then read as guarding (or lurking at) the site, and any
+environmental challenge as part of it. These live in
+`ENCOUNTER_LOCATION_CHANCE` / `ENCOUNTER_LOCATION_TIER` and
+`roll_encounter_location()` in `../tools/encounter.py`.
 
 ## Frontmatter schema
 

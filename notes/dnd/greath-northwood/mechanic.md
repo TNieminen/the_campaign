@@ -31,7 +31,7 @@ encounter band mixes **monster** fights and **environmental** obstacles, and a
 1. Roll the d20 and find the range above.
 2. Open the referenced file and roll the inner sub-table (d6/d8/d10/d12/d20 as noted there), or use the tooling below.
 3. Apply the outcome:
-   - **Encounters** (`encounters.md`): run the combat, hazard, or skill challenge. Environmental challenges may grant advantage on the next travel check, inspiration, or reveal a shortcut on success.
+   - **Encounters** (`encounters.md`): run the combat, hazard, or skill challenge. Environmental challenges may grant advantage on the next travel check, inspiration, or reveal a shortcut on success. The more dangerous the encounter, the more likely it takes place at a faction location (`locations/`) — 25% Minor, 50% Medium, 75% Dangerous, 100% on a natural-1 deadly special — and the grander that site.
    - **Loot & discoveries** (`loot/`): hand out treasure, or use the alternative discovery option on a Nat 20 for a more memorable, story-driven reward.
    - **Locations** (`locations/`): the higher the value of the loot, the more likely the find was made inside a faction ruin (or one of Valvela's rare living camps) — ~25% on mundane, ~60% on magic, always on a Nat 20. The grander the site, the higher the value.
 
@@ -43,5 +43,5 @@ encounter band mixes **monster** fights and **environmental** obstacles, and a
 
 ## Tooling
 
-- `tools/encounter.py` — build encounters (d20 **1–10**) for a given party, drawing monster fights from `monsters/` and/or environmental obstacles from `environments/` (`--filter monster|environmental|both`). Pass the players' travel d20 with `--roll` (1–10) to pick the difficulty band automatically (a natural 1 is a "deadly special" above the High budget), or set `--difficulty` directly.
+- `tools/encounter.py` — build encounters (d20 **1–10**) for a given party, drawing monster fights from `monsters/` and/or environmental obstacles from `environments/` (`--filter monster|environmental|both`). Pass the players' travel d20 with `--roll` (1–10) to pick the difficulty band automatically (a natural 1 is a "deadly special" above the High budget), or set `--difficulty` directly. The encounter may be sited at a `locations/` ruin or camp, with the chance and tier scaling with its danger (see `roll_encounter_location()`); `--seed` makes the pick reproducible.
 - `tools/loot.py` — roll a random loot/discovery result. Takes the players' travel d20 `--roll` (**11–20**) plus party size and level; it maps the roll to a category, level skews magic-item rarity, **coin/value rewards auto-scale by party size and average level**, may attach a **location** from `locations/` (chance and grandeur scale with the loot value), and a natural-20 also rolls a guardian (equal odds: none, a high-severity environmental hazard, or a boss-tier monster).

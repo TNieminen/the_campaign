@@ -213,7 +213,8 @@ def render_encounter_parts(results, budget):
     return "".join(rows)
 
 
-def encounter_markdown(levels, difficulty, budget, results, hazards, band=None, roll=None):
+def encounter_markdown(levels, difficulty, budget, results, hazards, band=None, roll=None,
+                       location=None):
     if band is not None:
         deadly = " x deadly" if band["deadly"] else ""
         title = f"# Encounter \u2014 roll {roll}: {band['label']} ({difficulty.title()}{deadly})"
@@ -222,8 +223,15 @@ def encounter_markdown(levels, difficulty, budget, results, hazards, band=None, 
     lines = [
         title,
         f"Party: {party_line(levels)}  |  Budget: {budget:,} XP",
-        "",
     ]
+    if location is not None:
+        living = ", inhabited" if location.status == "inhabited" else ""
+        lines.append(
+            f"Encounter site: [{location.name}]({location_href(location.slug)}) "
+            f"({faction_label(location.faction)}, {location.tier} site{living}) "
+            f"\u2014 {location.summary}"
+        )
+    lines.append("")
     if results:
         for total, parts in results:
             pieces = " + ".join(f"{qty}x {m.name}" for m, qty in parts)
@@ -329,6 +337,15 @@ def run_encounter(event=None):
         f"</div>"
     )
 
+    # The encounter may take place at a faction location; chance and grandeur
+    # scale with how dangerous the encounter is.
+    severity = encounter.encounter_severity(difficulty, bool(band and band["deadly"]))
+    location = encounter.roll_encounter_location(severity, random.Random(), LOCATIONS)
+    location_html = ""
+    if location is not None:
+        l_html, _ = format_location(location)
+        location_html = f"<div class='loot-location'>Encounter site: {l_html}</div>"
+
     if results:
         body = (
             f"<p class='muted'>Found {len(results)} encounter(s):</p>"
@@ -355,9 +372,10 @@ def run_encounter(event=None):
             f"<ul class='member-list'>{haz}</ul></details>"
         )
 
-    md_text = encounter_markdown(levels, difficulty, budget, results, hazards, band, roll)
+    md_text = encounter_markdown(levels, difficulty, budget, results, hazards, band, roll,
+                                 location)
     top = f"<div class='out-top'>{copy_btn()}</div>"
-    set_html("#enc-out", top + header + body + md_src(md_text))
+    set_html("#enc-out", top + header + location_html + body + md_src(md_text))
 
 
 # --------------------------------------------------------------------------- #
