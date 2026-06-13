@@ -70,6 +70,26 @@ def on(selector, event, handler):
         node.addEventListener(event, create_proxy(handler))
 
 
+def copy_btn():
+    return "<button class='copy-md' type='button' title='Copy as Markdown'>Copy MD</button>"
+
+
+def md_src(text):
+    """Hidden carrier of the raw markdown for the Copy MD button to read."""
+    return f"<pre class='md-src' hidden>{esc(text)}</pre>"
+
+
+def collapsible(title_html, body_md, open_=False):
+    """A click-to-expand card that renders markdown and offers a Copy MD button."""
+    state = " open" if open_ else ""
+    return (
+        f"<details class='card' data-md-card{state}>"
+        f"<summary><span class='card-title'>{title_html}</span>{copy_btn()}</summary>"
+        f"<div class='card-body'>{md(body_md)}{md_src(body_md)}</div>"
+        f"</details>"
+    )
+
+
 # --------------------------------------------------------------------------- #
 # Party parsing (mirrors resolve_party / resolve_levels without argparse)
 # --------------------------------------------------------------------------- #
@@ -115,13 +135,36 @@ def render_encounter_parts(results, budget):
             for m, _ in parts
         )
         rows.append(
-            f"<div class='result-card'>"
-            f"<div class='result-head'>{pieces} "
-            f"<span class='muted'>&mdash; {total:,} XP ({pct}% of budget)</span></div>"
+            f"<details class='result-card' open>"
+            f"<summary class='result-head'>{pieces} "
+            f"<span class='muted'>&mdash; {total:,} XP ({pct}% of budget)</span></summary>"
             f"<ul class='member-list'>{members}</ul>"
-            f"</div>"
+            f"</details>"
         )
     return "".join(rows)
+
+
+def encounter_markdown(levels, difficulty, budget, results, hazards):
+    lines = [
+        f"# Encounter \u2014 {difficulty.title()}",
+        f"Party: {party_line(levels)}  |  Budget: {budget:,} XP",
+        "",
+    ]
+    if results:
+        for total, parts in results:
+            pieces = " + ".join(f"{qty}x {m.name}" for m, qty in parts)
+            pct = round(100 * total / budget) if budget else 0
+            lines.append(f"- **{pieces}** \u2014 {total:,} XP ({pct}% of budget)")
+            for m, _ in parts:
+                lines.append(f"  - {m.name} (CR {m.cr}, {m.xp:,} XP): {m.summary}")
+    else:
+        lines.append("- No monster encounters matched.")
+    if hazards:
+        lines.append("")
+        lines.append(f"## Environmental challenges ({difficulty} severity)")
+        for h in hazards:
+            lines.append(f"- {h.name} (DC {h.dc}, {h.severity}): {h.summary}")
+    return "\n".join(lines)
 
 
 def run_encounter(event=None):
@@ -193,12 +236,14 @@ def run_encounter(event=None):
             for h in hazards
         )
         body += (
-            f"<div class='result-card'><div class='result-head'>"
-            f"Environmental challenges ({difficulty} severity)</div>"
-            f"<ul class='member-list'>{haz}</ul></div>"
+            f"<details class='result-card'><summary class='result-head'>"
+            f"Environmental challenges ({difficulty} severity)</summary>"
+            f"<ul class='member-list'>{haz}</ul></details>"
         )
 
-    set_html("#enc-out", header + body)
+    md_text = encounter_markdown(levels, difficulty, budget, results, hazards)
+    top = f"<div class='out-top'>{copy_btn()}</div>"
+    set_html("#enc-out", top + header + body + md_src(md_text))
 
 
 # --------------------------------------------------------------------------- #
@@ -243,11 +288,17 @@ def run_loot(event=None):
     party_size = len(levels)
 
     parts = [
+        f"<div class='out-top'>{copy_btn()}</div>",
         f"<div class='out-header'>"
         f"<div>Party: <strong>{esc(party_line(levels))}</strong></div>"
         f"<div>Travel roll: <strong>{roll}</strong> &rarr; "
         f"{esc(cat['name'])} <span class='muted'>(d20 {esc(cat['range'])})</span></div>"
         f"</div>"
+    ]
+    md_lines = [
+        f"**Travel roll {roll} \u2014 {cat['name']} (d20 {cat['range']})**",
+        f"Party: {party_line(levels)}",
+        "",
     ]
 
     if slug == "magic":
@@ -256,15 +307,18 @@ def run_loot(event=None):
             f"<div class='loot-result'><span class='tag tier-{tier.lower()}'>{esc(tier)}</span> "
             f"{esc(item)}</div>"
         )
+        md_lines.append(f"- Magic item [{tier}]: {item}")
     else:
         item = rng.choice(loot.all_items(sections))
         parts.append(f"<div class='loot-result'>{esc(item)}</div>")
+        md_lines.append(f"- {item}")
         if slug == "mundane" and party_size != 4:
             mult = party_size / 4
             parts.append(
                 f"<p class='muted'>Suggested coin/value scale for a party of "
                 f"{party_size}: &times;{mult:.2f}</p>"
             )
+            md_lines.append(f"- Suggested value scale for a party of {party_size}: x{mult:.2f}")
 
     if slug == "wondrous":
         guardian = roll_guardian_web(levels, rng)
@@ -273,9 +327,12 @@ def run_loot(event=None):
                 "<div class='guardian none'>Guardian: none this time &mdash; "
                 "the discovery lies unguarded.</div>"
             )
+            md_lines.append("- Guardian: none this time")
         else:
             parts.append(f"<div class='guardian'>Guardian: {esc(guardian)}</div>")
+            md_lines.append(f"- Guardian: {guardian}")
 
+    parts.append(md_src("\n".join(md_lines)))
     set_html("#loot-out", "".join(parts))
 
 
@@ -319,7 +376,12 @@ def show_monster(slug):
     body = MONSTER_BODY.get(slug)
     if body is None:
         return
-    set_html("#mon-detail", f"<article class='statblock'>{md(body)}</article>")
+    set_html(
+        "#mon-detail",
+        f"<div class='out-top'>{copy_btn()}</div>"
+        f"<article class='statblock'>{md(body)}</article>"
+        f"{md_src(body)}",
+    )
 
 
 def on_bestiary_search(event):
@@ -339,18 +401,12 @@ def render_reference():
     blocks = ["<h2 class='ref-title'>Loot &amp; discovery tables</h2>"]
     for slug in ("nothing", "mundane", "magic", "wondrous"):
         cat = DATA["loot"][slug]
-        blocks.append(
-            f"<details class='ref-block' open><summary>{esc(cat['name'])} "
-            f"<span class='muted'>(d20 {esc(cat['range'])})</span></summary>"
-            f"<div class='ref-body'>{md(cat['body'])}</div></details>"
-        )
+        title = f"{esc(cat['name'])} <span class='muted'>(d20 {esc(cat['range'])})</span>"
+        blocks.append(collapsible(title, cat["body"]))
     blocks.append("<h2 class='ref-title'>Environmental hazards</h2>")
     for h in HAZARDS:
-        blocks.append(
-            f"<details class='ref-block'><summary>{esc(h.name)} "
-            f"<span class='muted'>({esc(h.severity)} severity)</span></summary>"
-            f"<div class='ref-body'>{md(ENV_BODY[h.slug])}</div></details>"
-        )
+        title = f"{esc(h.name)} <span class='muted'>({esc(h.severity)} severity)</span>"
+        blocks.append(collapsible(title, ENV_BODY[h.slug]))
     set_html("#ref-out", "".join(blocks))
 
 

@@ -213,14 +213,58 @@ button.ghost:hover { border-color: var(--accent); }
 .result-card {
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 0.7rem 0.9rem;
+  padding: 0.5rem 0.9rem 0.7rem;
   margin-bottom: 0.7rem;
   background: var(--bg-alt);
 }
 
-.result-head { font-weight: 600; margin-bottom: 0.4rem; }
+.result-head {
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  list-style-position: inside;
+}
+.result-head::-webkit-details-marker { color: var(--muted); }
 
-.member-list { margin: 0; padding-left: 1.1rem; }
+.member-list { margin: 0.4rem 0 0; padding-left: 1.1rem; }
+
+/* Copy-as-Markdown button + output toolbar */
+.out-top { display: flex; justify-content: flex-end; margin-bottom: 0.4rem; }
+
+.copy-md {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 6px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+.copy-md:hover { color: var(--text); border-color: var(--accent); }
+.copy-md.copied { color: var(--accent-2); border-color: var(--accent-2); }
+
+/* Collapsible content card (Reference, etc.) */
+.card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+  background: var(--bg-alt);
+}
+.card > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  padding: 0.7rem 0.9rem;
+  font-weight: 600;
+  list-style-position: inside;
+}
+.card > summary::-webkit-details-marker { color: var(--muted); }
+.card-title { flex: 1; }
+.card .copy-md { font-weight: 400; }
+.card-body { padding: 0 1.2rem 0.8rem; }
+.card-body table { border-collapse: collapse; }
+.card-body th, .card-body td { border: 1px solid var(--border); padding: 0.3rem 0.6rem; }
 .member-list li { margin: 0.2rem 0; }
 
 .tag {
@@ -302,16 +346,6 @@ button.ghost:hover { border-color: var(--accent); }
 
 /* --------------------------- Reference -------------------------------- */
 .ref-title { color: var(--accent-2); margin-top: 1.2rem; }
-.ref-block {
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  margin-bottom: 0.6rem;
-  background: var(--bg-alt);
-}
-.ref-block summary { cursor: pointer; padding: 0.7rem 0.9rem; font-weight: 600; }
-.ref-body { padding: 0 1.2rem 0.8rem; }
-.ref-body table { border-collapse: collapse; }
-.ref-body th, .ref-body td { border: 1px solid var(--border); padding: 0.3rem 0.6rem; }
 
 a { color: var(--accent); }
 

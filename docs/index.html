@@ -72,7 +72,7 @@
             </details>
             <button id="enc-run" class="primary">Find encounters</button>
           </div>
-          <div id="enc-out" class="output"><p class="muted">Set your party and press &ldquo;Find encounters&rdquo;.</p></div>
+          <div id="enc-out" class="output" data-md-card><p class="muted">Set your party and press &ldquo;Find encounters&rdquo;.</p></div>
         </section>
 
         <!-- Loot & discovery -->
@@ -86,7 +86,7 @@
             <div class="field"><label>Seed (optional)</label><input id="loot-seed" type="number" placeholder="random" /></div>
             <button id="loot-run" class="primary">Roll loot</button>
           </div>
-          <div id="loot-out" class="output"><p class="muted">Enter the players&rsquo; d20 roll and press &ldquo;Roll loot&rdquo;.</p></div>
+          <div id="loot-out" class="output" data-md-card><p class="muted">Enter the players&rsquo; d20 roll and press &ldquo;Roll loot&rdquo;.</p></div>
         </section>
 
         <!-- Bestiary -->
@@ -96,7 +96,7 @@
               <input id="mon-search" type="search" placeholder="Search monsters&hellip;" />
               <div id="mon-list" class="list"></div>
             </div>
-            <div id="mon-detail" class="bestiary-detail"></div>
+            <div id="mon-detail" class="bestiary-detail" data-md-card></div>
           </div>
         </section>
 
@@ -160,6 +160,30 @@
           tab.classList.add("active");
           document.getElementById("panel-" + tab.dataset.tab).classList.add("active");
         });
+      });
+
+      // Copy-as-Markdown: read the nearest hidden .md-src and copy its text.
+      document.addEventListener("click", async (e) => {
+        const btn = e.target.closest(".copy-md");
+        if (!btn) return;
+        e.preventDefault();
+        e.stopPropagation();
+        const card = btn.closest("[data-md-card]");
+        const src = card && card.querySelector(".md-src");
+        if (!src) return;
+        try {
+          await navigator.clipboard.writeText(src.textContent);
+          const label = btn.textContent;
+          btn.textContent = "Copied!";
+          btn.classList.add("copied");
+          setTimeout(() => {
+            btn.textContent = label;
+            btn.classList.remove("copied");
+          }, 1200);
+        } catch (err) {
+          btn.textContent = "Copy failed";
+          setTimeout(() => (btn.textContent = "Copy MD"), 1200);
+        }
       });
 
       // Hide the loading splash once PyScript signals readiness.

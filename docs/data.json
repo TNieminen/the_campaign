@@ -348,7 +348,7 @@
   "loot": {
     "nothing": {
       "name": "Nothing Found",
-      "die": "d6",
+      "die": "d12",
       "range": "11-13",
       "summary": "A quiet travel beat with no treasure — just flavour and atmosphere.",
       "sections": {
@@ -358,14 +358,20 @@
           "Old campsite",
           "Strange but harmless sounds",
           "Ruined structure long picked clean",
-          "Beautiful view"
+          "Beautiful view",
+          "A doe and fawn watching from the treeline",
+          "Birdsong and an easy, pleasant trail",
+          "A cold spring of clean, sweet water",
+          "Woodsmoke on the wind from somewhere distant",
+          "A field of wildflowers blooming out of season",
+          "A weathered cairn marking a forgotten grave"
         ]
       },
-      "body": "Nothing Found\n=============\n\nThe party finds no treasure on this beat. Roll **d6** for a bit of flavour.\n\n1. Quiet day of travel\n2. Animal tracks leading nowhere\n3. Old campsite\n4. Strange but harmless sounds\n5. Ruined structure long picked clean\n6. Beautiful view"
+      "body": "Nothing Found\n=============\n\nThe party finds no treasure on this beat. Roll **d12** (or run `tools/loot.py`)\nfor a bit of flavour.\n\n1. Quiet day of travel\n2. Animal tracks leading nowhere\n3. Old campsite\n4. Strange but harmless sounds\n5. Ruined structure long picked clean\n6. Beautiful view\n7. A doe and fawn watching from the treeline\n8. Birdsong and an easy, pleasant trail\n9. A cold spring of clean, sweet water\n10. Woodsmoke on the wind from somewhere distant\n11. A field of wildflowers blooming out of season\n12. A weathered cairn marking a forgotten grave"
     },
     "mundane": {
       "name": "Mundane Treasure",
-      "die": "d12",
+      "die": "d24",
       "range": "14-16",
       "summary": "Non-magical treasure and valuable objects — coins, goods, and curiosities.",
       "sections": {
@@ -381,14 +387,26 @@
           "Rare spices worth 75 gp",
           "Map to a nearby point of interest",
           "Valuable monster parts",
-          "Locked strongbox containing 2d10 x 10 gp"
+          "Locked strongbox containing 2d10 x 10 gp",
+          "Mixed coin: 3d6 x 5 gp in an old purse",
+          "Set of bone dice inlaid with silver (15 gp)",
+          "Healer's kit plus a vial of antitoxin",
+          "Two flasks of fine dwarven spirits (40 gp the pair)",
+          "Fur-lined traveler's cloak (15 gp)",
+          "Carved jade pendant (100 gp)",
+          "A week of preserved trail rations and supplies",
+          "Signet ring of a minor noble house (25 gp)",
+          "Tattered spellbook with one usable 1st-level spell",
+          "Climber's kit and 50 ft of silk rope",
+          "Tanned hide of a rare beast (60 gp)",
+          "Quiver of 20 masterwork-fletched arrows"
         ]
       },
-      "body": "Mundane Treasure\n================\n\nMundane treasure and valuable objects. Roll **d12**.\n\nGold values are tuned for a party of 4. Scale coin and object values by roughly\n`party_size / 4` for larger or smaller groups.\n\n1. 4d10 gp in an abandoned cache\n2. Fine silver goblet (25 gp)\n3. Ornate hunting horn (50 gp)\n4. Small pouch of gemstones (50 gp)\n5. Masterwork weapon\n6. Masterwork artisan's tools\n7. Bolt of fine silk\n8. Ivory figurine\n9. Rare spices worth 75 gp\n10. Map to a nearby point of interest\n11. Valuable monster parts\n12. Locked strongbox containing 2d10 x 10 gp"
+      "body": "Mundane Treasure\n================\n\nMundane treasure and valuable objects. Roll on the table below (d12 twice, or\nrun `tools/loot.py`).\n\nGold values are tuned for a party of 4. Scale coin and object values by roughly\n`party_size / 4` for larger or smaller groups.\n\n1. 4d10 gp in an abandoned cache\n2. Fine silver goblet (25 gp)\n3. Ornate hunting horn (50 gp)\n4. Small pouch of gemstones (50 gp)\n5. Masterwork weapon\n6. Masterwork artisan's tools\n7. Bolt of fine silk\n8. Ivory figurine\n9. Rare spices worth 75 gp\n10. Map to a nearby point of interest\n11. Valuable monster parts\n12. Locked strongbox containing 2d10 x 10 gp\n13. Mixed coin: 3d6 x 5 gp in an old purse\n14. Set of bone dice inlaid with silver (15 gp)\n15. Healer's kit plus a vial of antitoxin\n16. Two flasks of fine dwarven spirits (40 gp the pair)\n17. Fur-lined traveler's cloak (15 gp)\n18. Carved jade pendant (100 gp)\n19. A week of preserved trail rations and supplies\n20. Signet ring of a minor noble house (25 gp)\n21. Tattered spellbook with one usable 1st-level spell\n22. Climber's kit and 50 ft of silk rope\n23. Tanned hide of a rare beast (60 gp)\n24. Quiver of 20 masterwork-fletched arrows"
     },
     "magic": {
       "name": "Magic Treasure",
-      "die": "d20",
+      "die": "tiered",
       "range": "17-19",
       "summary": "Magic items grouped by rarity. Higher party level skews toward rarer tiers.",
       "sections": {
@@ -400,7 +418,15 @@
           "Driftglobe",
           "Moon-Touched Sword",
           "Cloak of Billowing",
-          "Hat of Wizardry"
+          "Hat of Wizardry",
+          "Wand of Magic Detection",
+          "Wand of Secrets",
+          "Rope of Mending",
+          "Cloak of Many Fashions",
+          "Boots of False Tracks",
+          "Charlatan's Die",
+          "Pot of Awakening",
+          "Instrument of Illusions"
         ],
         "Uncommon": [
           "Bag of Holding",
@@ -410,22 +436,34 @@
           "Boots of Elvenkind",
           "Rope of Climbing",
           "Pearl of Power",
-          "+1 Weapon"
+          "+1 Weapon",
+          "Cloak of Elvenkind",
+          "Gloves of Thievery",
+          "Slippers of Spider Climbing",
+          "Wand of Magic Missiles",
+          "Bag of Tricks (Gray)",
+          "Eyes of the Eagle",
+          "Boots of Striding and Springing",
+          "Headband of Intellect"
         ],
         "Rare": [
           "+1 Shield",
           "Cloak of Protection",
           "Ring of Water Walking",
-          "Figurine of Wondrous Power (Silver Raven)"
+          "Figurine of Wondrous Power (Silver Raven)",
+          "Flame Tongue",
+          "Boots of Speed",
+          "Wand of Fireballs",
+          "Amulet of Health"
         ]
       },
-      "body": "Magic Treasure\n==============\n\nMagic items, grouped by rarity tier. The tool weights which **tier** is rolled\nby party level (and slightly by party size); it then picks a random item from\nthat tier. Tiers map to standard 5e rarities.\n\n## Common\n\n1. Potion of Healing\n2. Potion of Climbing\n3. Potion of Water Breathing\n4. Spell Scroll (1st level)\n5. Driftglobe\n6. Moon-Touched Sword\n7. Cloak of Billowing\n8. Hat of Wizardry\n\n## Uncommon\n\n1. Bag of Holding\n2. Immovable Rod\n3. Goggles of Night\n4. Sending Stones\n5. Boots of Elvenkind\n6. Rope of Climbing\n7. Pearl of Power\n8. +1 Weapon\n\n## Rare\n\n1. +1 Shield\n2. Cloak of Protection\n3. Ring of Water Walking\n4. Figurine of Wondrous Power (Silver Raven)"
+      "body": "Magic Treasure\n==============\n\nMagic items, grouped by rarity tier. The tool weights which **tier** is rolled\nby party level (and slightly by party size); it then picks a random item from\nthat tier. To roll by hand, choose a tier and roll on it (Common d16, Uncommon\nd16, Rare d8). Tiers map to standard 5e rarities; all items are available on\nD&D Beyond.\n\n## Common\n\n1. Potion of Healing\n2. Potion of Climbing\n3. Potion of Water Breathing\n4. Spell Scroll (1st level)\n5. Driftglobe\n6. Moon-Touched Sword\n7. Cloak of Billowing\n8. Hat of Wizardry\n9. Wand of Magic Detection\n10. Wand of Secrets\n11. Rope of Mending\n12. Cloak of Many Fashions\n13. Boots of False Tracks\n14. Charlatan's Die\n15. Pot of Awakening\n16. Instrument of Illusions\n\n## Uncommon\n\n1. Bag of Holding\n2. Immovable Rod\n3. Goggles of Night\n4. Sending Stones\n5. Boots of Elvenkind\n6. Rope of Climbing\n7. Pearl of Power\n8. +1 Weapon\n9. Cloak of Elvenkind\n10. Gloves of Thievery\n11. Slippers of Spider Climbing\n12. Wand of Magic Missiles\n13. Bag of Tricks (Gray)\n14. Eyes of the Eagle\n15. Boots of Striding and Springing\n16. Headband of Intellect\n\n## Rare\n\n1. +1 Shield\n2. Cloak of Protection\n3. Ring of Water Walking\n4. Figurine of Wondrous Power (Silver Raven)\n5. Flame Tongue\n6. Boots of Speed\n7. Wand of Fireballs\n8. Amulet of Health"
     },
     "wondrous": {
       "name": "Wondrous Discovery",
-      "die": "d12",
+      "die": "d24",
       "range": "20",
-      "summary": "The natural-20 payoff — a rare treasure or story discovery, always guarded.",
+      "summary": "The natural-20 payoff — a rare treasure or story discovery, often guarded.",
       "sections": {
         "Treasures": [
           "Rare Figurine of Wondrous Power",
@@ -439,7 +477,19 @@
           "Ioun Stone",
           "Staff of Healing",
           "Friendly awakened animal companion with a gift",
-          "Hidden fey cache containing two rolls on the Magic Treasure table"
+          "Hidden fey cache containing two rolls on the Magic Treasure table",
+          "Broom of Flying",
+          "Boots of Levitation",
+          "Gem of Brightness",
+          "Bag of Beans",
+          "Necklace of Adaptation",
+          "Eversmoking Bottle",
+          "Decanter of Endless Water",
+          "Winged Boots",
+          "Ring of Free Action",
+          "Wings of Flying",
+          "Horn of Blasting",
+          "Mantle of Spell Resistance"
         ],
         "Discoveries": [
           "Ancient druid grove blessing",
@@ -448,10 +498,17 @@
           "Lost shrine granting a boon",
           "Permanent safe campsite",
           "Secret shortcut that removes several days of travel",
-          "Map to a forgotten dungeon"
+          "Map to a forgotten dungeon",
+          "A bound elemental offering a single service",
+          "An ancient treant who shares a secret of the wood",
+          "A star-metal deposit — raw material for one special item",
+          "A sentient magic weapon seeking a worthy wielder",
+          "A hidden portal to a safe demiplane refuge",
+          "A celestial messenger bearing a quest and a blessing",
+          "A long-dead archmage's cache (one scroll of 3rd level or higher)"
         ]
       },
-      "body": "Wondrous Discovery\n==================\n\nThe natural-20 result. The find is often watched over by a **guardian**. The tool\nrandomizes this with equal odds: nothing, a high-severity environmental hazard, or\na boss-tier monster scaled to the party (drawn from `tools/encounter.py`'s data;\nsee `tools/loot.py`).\n\n## Treasures\n\nA rare item or hoard. Roll **d12**.\n\n1. Rare Figurine of Wondrous Power\n2. Portable Hole\n3. Folding Boat\n4. Helm of Telepathy\n5. Ring of Spell Storing\n6. Cape of the Mountebank\n7. Instant Fortress\n8. Manual of Gainful Exercise (single use remaining)\n9. Ioun Stone\n10. Staff of Healing\n11. Friendly awakened animal companion with a gift\n12. Hidden fey cache containing two rolls on the Magic Treasure table\n\n## Discoveries\n\nInstead of pure treasure, make it a story **discovery**. These tend to create\nmore memorable moments than simply handing out a powerful item.\n\n1. Ancient druid grove blessing\n2. Friendly dragon contact\n3. Fey crossing\n4. Lost shrine granting a boon\n5. Permanent safe campsite\n6. Secret shortcut that removes several days of travel\n7. Map to a forgotten dungeon"
+      "body": "Wondrous Discovery\n==================\n\nThe natural-20 result. The find is often watched over by a **guardian**. The tool\nrandomizes this with equal odds: nothing, a high-severity environmental hazard, or\na boss-tier monster scaled to the party (drawn from `tools/encounter.py`'s data;\nsee `tools/loot.py`).\n\n## Treasures\n\nA rare item or hoard. Roll on the table below (or use the tool). All items are\navailable on D&D Beyond.\n\n1. Rare Figurine of Wondrous Power\n2. Portable Hole\n3. Folding Boat\n4. Helm of Telepathy\n5. Ring of Spell Storing\n6. Cape of the Mountebank\n7. Instant Fortress\n8. Manual of Gainful Exercise (single use remaining)\n9. Ioun Stone\n10. Staff of Healing\n11. Friendly awakened animal companion with a gift\n12. Hidden fey cache containing two rolls on the Magic Treasure table\n13. Broom of Flying\n14. Boots of Levitation\n15. Gem of Brightness\n16. Bag of Beans\n17. Necklace of Adaptation\n18. Eversmoking Bottle\n19. Decanter of Endless Water\n20. Winged Boots\n21. Ring of Free Action\n22. Wings of Flying\n23. Horn of Blasting\n24. Mantle of Spell Resistance\n\n## Discoveries\n\nInstead of pure treasure, make it a story **discovery**. These tend to create\nmore memorable moments than simply handing out a powerful item.\n\n1. Ancient druid grove blessing\n2. Friendly dragon contact\n3. Fey crossing\n4. Lost shrine granting a boon\n5. Permanent safe campsite\n6. Secret shortcut that removes several days of travel\n7. Map to a forgotten dungeon\n8. A bound elemental offering a single service\n9. An ancient treant who shares a secret of the wood\n10. A star-metal deposit — raw material for one special item\n11. A sentient magic weapon seeking a worthy wielder\n12. A hidden portal to a safe demiplane refuge\n13. A celestial messenger bearing a quest and a blessing\n14. A long-dead archmage's cache (one scroll of 3rd level or higher)"
     }
   },
   "xp_budget_per_character": {
