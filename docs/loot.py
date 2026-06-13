@@ -8,7 +8,8 @@ lists from the sibling ``../loot/`` folder so the data stays human-editable.
 Inputs are the party size, the party level, and the discovery category. Party
 level (and, slightly, party size) skews the magic-treasure rarity tier. A
 wondrous discovery additionally rolls a scaled boss-tier **guardian** that
-watches over the find.
+watches over the find. The higher the loot's value, the more likely it was
+found inside a faction **location** (see ../locations/).
 
 Pure standard library, no third-party dependencies. See ``loot.py --help``.
 """
@@ -20,6 +21,7 @@ import os
 import random
 import re
 import sys
+from dataclasses import dataclass
 
 # Category slug -> (display name, loot file). Mirrors the d20 11-20 ranges in
 # ../mechanic.md and the per-category files in ../loot/.
@@ -36,6 +38,23 @@ MAGIC_TIERS = ("Common", "Uncommon", "Rare")
 # The loot half of the travel roll. Rolls 1-10 are encounters (../encounters.md).
 LOOT_ROLL_MIN = 11
 LOOT_ROLL_MAX = 20
+
+# How likely a find was made *inside a location*, by loot category. The higher
+# the value of the loot, the more likely (and the grander the site). See
+# ../locations/README.md.
+LOCATION_CHANCE = {
+    "nothing": 0.0,
+    "mundane": 0.25,
+    "magic": 0.60,
+    "wondrous": 1.0,
+}
+
+# Which location value tier each loot category pulls from.
+CATEGORY_TIER = {
+    "mundane": "modest",
+    "magic": "notable",
+    "wondrous": "grand",
+}
 
 
 def category_for_roll(roll):
@@ -236,6 +255,74 @@ def scale_gold(text, factor):
 
 
 # --------------------------------------------------------------------------- #
+# Locations (faction ruins / camps discovered alongside loot)
+# --------------------------------------------------------------------------- #
+@dataclass
+class Location:
+    name: str
+    faction: str
+    type: str
+    tier: str
+    status: str
+    summary: str
+    purpose: str
+    slug: str
+
+
+def default_locations_dir():
+    here = os.path.dirname(os.path.abspath(__file__))
+    return os.path.normpath(os.path.join(here, "..", "locations"))
+
+
+def load_locations(locations_dir):
+    """Load location records from a folder of markdown files.
+
+    Missing folders return an empty list so locations stay an optional feature.
+    The slug is the filename without ``.md``. Frontmatter is parsed with the
+    sibling ``encounter.py`` parser to avoid duplicating it here.
+    """
+    if not os.path.isdir(locations_dir):
+        return []
+    enc = _encounter_module()
+    locations = []
+    for entry in sorted(os.listdir(locations_dir)):
+        if not entry.endswith(".md") or entry.lower() == "readme.md":
+            continue
+        with open(os.path.join(locations_dir, entry), encoding="utf-8") as fh:
+            fm = enc.parse_frontmatter(fh.read())
+        if "name" not in fm or "tier" not in fm:
+            continue
+        locations.append(
+            Location(
+                name=fm.get("name", entry[:-3]),
+                faction=fm.get("faction", ""),
+                type=fm.get("type", "ruin"),
+                tier=fm.get("tier", "").lower(),
+                status=fm.get("status", "ruined").lower(),
+                summary=fm.get("summary", ""),
+                purpose=fm.get("purpose", ""),
+                slug=entry[:-3],
+            )
+        )
+    return locations
+
+
+def roll_location(slug, rng, locations):
+    """Maybe pick a location the loot was found in, scaled to the loot value.
+
+    The chance scales with the loot category (``LOCATION_CHANCE``); on a hit the
+    site is drawn uniformly from the matching tier (``CATEGORY_TIER``), falling
+    back to any tier if that pool is empty. Returns a ``Location`` or ``None``.
+    """
+    chance = LOCATION_CHANCE.get(slug, 0.0)
+    if not locations or rng.random() >= chance:
+        return None
+    tier = CATEGORY_TIER.get(slug)
+    pool = [loc for loc in locations if loc.tier == tier] or list(locations)
+    return rng.choice(pool)
+
+
+# --------------------------------------------------------------------------- #
 # Guardian (boss monster / environmental) integration
 # --------------------------------------------------------------------------- #
 def _encounter_module():
@@ -292,7 +379,7 @@ def roll_guardian(levels, rng):
 # --------------------------------------------------------------------------- #
 # Output
 # --------------------------------------------------------------------------- #
-def print_result(slug, roll, levels, sections, rng):
+def print_result(slug, roll, levels, sections, rng, locations=None):
     name, _, drange = CATEGORIES[slug]
     avg_level = sum(levels) / len(levels)
     party_size = len(levels)
@@ -315,6 +402,16 @@ def print_result(slug, roll, levels, sections, rng):
                 f"  (gold scaled x{factor:g} for {party_size} PC(s) at "
                 f"avg level {avg_level:g})"
             )
+
+    if locations is None:
+        locations = load_locations(default_locations_dir())
+    location = roll_location(slug, rng, locations)
+    if location is not None:
+        living = " - inhabited" if location.status == "inhabited" else ""
+        print(
+            f"\n  Found at: {location.name} "
+            f"({location.faction}, {location.tier} site{living}): {location.summary}"
+        )
 
     if slug == "wondrous":
         guardian = roll_guardian(levels, rng)
@@ -345,6 +442,10 @@ Rolls 1-10 are encounters - use ../encounters.md and tools/encounter.py instead.
 Party level (and, a little, party size) skews which magic-item rarity tier is
 rolled. Coin and value rewards are auto-scaled by party size and average level
 (see gold_multiplier). A wondrous discovery also rolls a scaled boss guardian.
+
+The higher the loot category, the more likely the find was made inside a
+faction location (modest/notable/grand site): 0% nothing, ~25% mundane, ~60%
+magic, 100% wondrous. Sites live in ../locations/.
 
 examples
 --------
@@ -397,7 +498,8 @@ def main(argv=None):
     if not all_items(sections):
         sys.exit(f"error: no options found in the {slug} loot file")
     rng = random.Random(args.seed)
-    print_result(slug, roll, levels, sections, rng)
+    locations = load_locations(default_locations_dir())
+    print_result(slug, roll, levels, sections, rng, locations)
 
 
 if __name__ == "__main__":

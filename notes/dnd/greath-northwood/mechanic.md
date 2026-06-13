@@ -33,13 +33,15 @@ encounter band mixes **monster** fights and **environmental** obstacles, and a
 3. Apply the outcome:
    - **Encounters** (`encounters.md`): run the combat, hazard, or skill challenge. Environmental challenges may grant advantage on the next travel check, inspiration, or reveal a shortcut on success.
    - **Loot & discoveries** (`loot/`): hand out treasure, or use the alternative discovery option on a Nat 20 for a more memorable, story-driven reward.
+   - **Locations** (`locations/`): the higher the value of the loot, the more likely the find was made inside a faction ruin (or one of Valvela's rare living camps) — ~25% on mundane, ~60% on magic, always on a Nat 20. The grander the site, the higher the value.
 
 ## Content files
 
 - `encounters.md` — d20 **1–10**: dangerous, medium, and minor encounters, each mixing monsters and environmental obstacles. Stat blocks in `monsters/`, hazards in `environments/`.
 - `loot/` — d20 **11–20**: nothing found, mundane treasure, magic treasure, wondrous discoveries (one file per category).
+- `locations/` — faction ruins and rare living camps that can be discovered alongside a loot result, scaled to the loot's value (see `locations/README.md`).
 
 ## Tooling
 
 - `tools/encounter.py` — build encounters (d20 **1–10**) for a given party, drawing monster fights from `monsters/` and/or environmental obstacles from `environments/` (`--filter monster|environmental|both`). Pass the players' travel d20 with `--roll` (1–10) to pick the difficulty band automatically (a natural 1 is a "deadly special" above the High budget), or set `--difficulty` directly.
-- `tools/loot.py` — roll a random loot/discovery result. Takes the players' travel d20 `--roll` (**11–20**) plus party size and level; it maps the roll to a category, level skews magic-item rarity, **coin/value rewards auto-scale by party size and average level**, and a natural-20 also rolls a guardian (equal odds: none, a high-severity environmental hazard, or a boss-tier monster).
+- `tools/loot.py` — roll a random loot/discovery result. Takes the players' travel d20 `--roll` (**11–20**) plus party size and level; it maps the roll to a category, level skews magic-item rarity, **coin/value rewards auto-scale by party size and average level**, may attach a **location** from `locations/` (chance and grandeur scale with the loot value), and a natural-20 also rolls a guardian (equal odds: none, a high-severity environmental hazard, or a boss-tier monster).

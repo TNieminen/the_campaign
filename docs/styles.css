@@ -296,12 +296,22 @@ button.ghost:hover { border-color: var(--accent); }
 }
 .guardian.none { border-left-color: var(--muted); background: var(--bg-alt); color: var(--muted); }
 
+.loot-location {
+  margin-top: 0.8rem;
+  padding: 0.7rem 0.9rem;
+  border-left: 3px solid var(--accent-2);
+  background: #12211d;
+  border-radius: 6px;
+}
+.loot-location .entry-link { color: var(--accent-2); }
+.loot-location .entry-link:hover { color: #a6f0d8; }
+
 /* --------------------------- Bestiary --------------------------------- */
 .bestiary { display: grid; grid-template-columns: 280px 1fr; gap: 1rem; }
 
 .bestiary-side { display: flex; flex-direction: column; gap: 0.5rem; }
 
-#mon-search, #env-search {
+#mon-search, #env-search, #loc-search {
   padding: 0.55rem 0.7rem;
   border-radius: 8px;
   border: 1px solid var(--border);

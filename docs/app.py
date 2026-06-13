@@ -35,8 +35,28 @@ HAZARDS = [
     )
     for h in DATA["environments"]
 ]
+LOCATIONS = [
+    loot.Location(
+        name=l["name"], faction=l["faction"], type=l["type"], tier=l["tier"],
+        status=l["status"], summary=l["summary"], purpose=l["purpose"], slug=l["slug"],
+    )
+    for l in DATA.get("locations", [])
+]
 MONSTER_BODY = {m["slug"]: m["body"] for m in DATA["monsters"]}
 ENV_BODY = {h["slug"]: h["body"] for h in DATA["environments"]}
+LOC_BODY = {l["slug"]: l["body"] for l in DATA.get("locations", [])}
+
+# Pretty labels for the faction slug stored in location frontmatter.
+FACTION_LABELS = {
+    "kutur": "Kutur",
+    "savol": "Savol",
+    "valvela": "Valvela",
+    "hollow-ledger": "Hollow Ledger",
+}
+
+
+def faction_label(slug):
+    return FACTION_LABELS.get(slug, slug.replace("-", " ").title() if slug else "")
 
 
 # --------------------------------------------------------------------------- #
@@ -141,6 +161,10 @@ def environment_href(slug):
     return f"#environment/{slug}"
 
 
+def location_href(slug):
+    return f"#location/{slug}"
+
+
 def monster_link(m, qty=None):
     """Clickable monster name that opens the bestiary entry in a new tab."""
     href = esc(bestiary_href(m.slug))
@@ -155,6 +179,13 @@ def hazard_link(h):
     """Clickable hazard name that opens the environments entry in a new tab."""
     href = esc(environment_href(h.slug))
     name = esc(h.name)
+    return f'<a class="entry-link" href="{href}" target="_blank" rel="noopener">{name}</a>'
+
+
+def location_link(loc):
+    """Clickable location name that opens the locations entry in a new tab."""
+    href = esc(location_href(loc.slug))
+    name = esc(loc.name)
     return f'<a class="entry-link" href="{href}" target="_blank" rel="noopener">{name}</a>'
 
 
@@ -412,6 +443,12 @@ def run_loot(event=None):
                 f"avg level {avg_level:g}"
             )
 
+    location = loot.roll_location(slug, rng, LOCATIONS)
+    if location is not None:
+        l_html, l_md = format_location(location)
+        parts.append(f"<div class='loot-location'>Found at: {l_html}</div>")
+        md_lines.append(f"- Found at: {l_md}")
+
     if slug == "wondrous":
         guardian = roll_guardian_web(levels, rng)
         if guardian is None:
@@ -473,6 +510,22 @@ def format_guardian(guardian):
     return html, md
 
 
+def format_location(loc):
+    """HTML and markdown lines for a location a loot result was found at."""
+    living = " &middot; inhabited" if loc.status == "inhabited" else ""
+    meta = f"{esc(faction_label(loc.faction))} &middot; {esc(loc.tier)} site{living}"
+    html = (
+        f"{location_link(loc)} "
+        f"<span class='muted'>({meta})</span> &mdash; {esc(loc.summary)}"
+    )
+    living_md = ", inhabited" if loc.status == "inhabited" else ""
+    md = (
+        f"[{loc.name}]({location_href(loc.slug)}) "
+        f"({faction_label(loc.faction)}, {loc.tier} site{living_md}): {loc.summary}"
+    )
+    return html, md
+
+
 # --------------------------------------------------------------------------- #
 # Bestiary tab
 # --------------------------------------------------------------------------- #
@@ -510,7 +563,7 @@ def show_monster(slug, *, update_hash=True):
 
 
 def apply_route_from_hash():
-    """Open bestiary or environments from #bestiary/<slug> or #environment/<slug>."""
+    """Open a deep-linked entry from #bestiary/<slug>, #environment/<slug>, or #location/<slug>."""
     raw = (window.location.hash or "").lstrip("#")
     if raw.startswith("bestiary/"):
         slug = raw.split("/", 1)[1]
@@ -523,6 +576,12 @@ def apply_route_from_hash():
         if slug in ENV_BODY:
             activate_tab("environment")
             show_environment(slug, update_hash=False)
+            return True
+    if raw.startswith("location/"):
+        slug = raw.split("/", 1)[1]
+        if slug in LOC_BODY:
+            activate_tab("location")
+            show_location(slug, update_hash=False)
             return True
     return False
 
@@ -592,6 +651,65 @@ def on_environment_click(event):
     btn = event.target.closest(".list-item")
     if btn is not None:
         show_environment(btn.dataset.slug)
+
+
+# --------------------------------------------------------------------------- #
+# Locations tab
+# --------------------------------------------------------------------------- #
+_TIER_ORDER = {"modest": 0, "notable": 1, "grand": 2}
+
+
+def render_locations(filter_text=""):
+    filter_text = filter_text.strip().lower()
+    items = []
+    sorted_locations = sorted(
+        LOCATIONS,
+        key=lambda loc: (
+            faction_label(loc.faction),
+            _TIER_ORDER.get(loc.tier, 9),
+            loc.name,
+        ),
+    )
+    for loc in sorted_locations:
+        hay = f"{loc.name} {faction_label(loc.faction)} {loc.tier} {loc.type} {loc.status}".lower()
+        if filter_text and filter_text not in hay:
+            continue
+        living = " &middot; inhabited" if loc.status == "inhabited" else ""
+        items.append(
+            f"<button class='list-item' data-slug='{esc(loc.slug)}'>"
+            f"<span class='li-name'>{esc(loc.name)}</span>"
+            f"<span class='li-meta'>{esc(faction_label(loc.faction))} &middot; "
+            f"{esc(loc.tier.title())} site{living}</span>"
+            f"</button>"
+        )
+    set_html("#loc-list", "".join(items) or "<p class='muted'>No matches.</p>")
+
+
+def show_location(slug, *, update_hash=True):
+    body = LOC_BODY.get(slug)
+    if body is None:
+        return False
+    set_html(
+        "#loc-detail",
+        f"<div class='out-top'>{copy_btn()}</div>"
+        f"<article class='statblock'>{md(body)}</article>"
+        f"{md_src(body)}",
+    )
+    for node in document.querySelectorAll("#loc-list .list-item"):
+        node.classList.toggle("active", node.dataset.slug == slug)
+    if update_hash:
+        window.location.hash = f"location/{slug}"
+    return True
+
+
+def on_location_search(event):
+    render_locations(el("#loc-search").value)
+
+
+def on_location_click(event):
+    btn = event.target.closest(".list-item")
+    if btn is not None:
+        show_location(btn.dataset.slug)
 
 
 # --------------------------------------------------------------------------- #
@@ -853,10 +971,13 @@ def setup():
     on("#mon-list", "click", on_bestiary_click)
     on("#env-search", "input", on_environment_search)
     on("#env-list", "click", on_environment_click)
+    on("#loc-search", "input", on_location_search)
+    on("#loc-list", "click", on_location_click)
     window.addEventListener("hashchange", create_proxy(on_hash_change))
 
     _guard("bestiary", render_bestiary)
     _guard("environments", render_environments)
+    _guard("locations", render_locations)
     _guard("reference", render_reference)
     _guard("scaling", render_scaling)
     if not apply_route_from_hash():
@@ -864,6 +985,8 @@ def setup():
             _guard("monster-default", show_monster, MONSTERS[0].slug, update_hash=False)
         if HAZARDS:
             _guard("hazard-default", show_environment, HAZARDS[0].slug, update_hash=False)
+        if LOCATIONS:
+            _guard("location-default", show_location, LOCATIONS[0].slug, update_hash=False)
 
     # Tell the page Python is ready (hides the loading splash).
     document.body.classList.add("py-ready")

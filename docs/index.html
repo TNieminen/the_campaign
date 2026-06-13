@@ -35,6 +35,7 @@
           <button class="tab" data-tab="loot">Loot &amp; Discovery</button>
           <button class="tab" data-tab="bestiary">Bestiary</button>
           <button class="tab" data-tab="environment">Environments</button>
+          <button class="tab" data-tab="location">Locations</button>
           <button class="tab" data-tab="reference">Reference</button>
           <button class="tab" data-tab="scaling">Scaling</button>
         </nav>
@@ -115,6 +116,17 @@
           </div>
         </section>
 
+        <!-- Locations -->
+        <section id="panel-location" class="panel">
+          <div class="bestiary">
+            <div class="bestiary-side">
+              <input id="loc-search" type="search" placeholder="Search locations&hellip;" />
+              <div id="loc-list" class="list"></div>
+            </div>
+            <div id="loc-detail" class="bestiary-detail" data-md-card></div>
+          </div>
+        </section>
+
         <!-- Reference -->
         <section id="panel-reference" class="panel">
           <div id="ref-out" class="reference"></div>
@@ -135,7 +147,7 @@
 
     <!-- PyScript app. The ?v= token is bumped on each deploy so a fresh
          index.html can never load a stale, cached app.py/config. -->
-    <script type="py" src="./app.py?v=5" config="./pyscript.json?v=5"></script>
+    <script type="py" src="./app.py?v=6" config="./pyscript.json?v=6"></script>
 
     <!-- ----------------------------------------------------------------- -->
     <!-- Login + tab logic (plain JS)                                       -->

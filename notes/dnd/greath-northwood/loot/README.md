@@ -23,6 +23,25 @@ category and randomizes the reward inside it (scaled to the party).
 
 Rolls **1-10** are encounters — see `../encounters.md` and `../tools/encounter.py`.
 
+## Locations
+
+The higher the value of the loot, the more likely the find was made **inside a
+faction location** (a ruin, or one of Valvela's rare living camps). After the
+reward is rolled, the tool rolls to attach a site, scaling with the category:
+
+| Travel d20 | Category | Location chance | Site tier |
+| --- | --- | --- | --- |
+| 11-13 | Nothing Found | 0% (never) | — |
+| 14-16 | Mundane Treasure | ~25% | `modest` |
+| 17-19 | Magic Treasure | ~60% | `notable` |
+| 20 | Wondrous Discovery | 100% (always) | `grand` |
+
+On a hit the site is picked uniformly from the matching tier (faction is
+flavour). On a natural 20 the wondrous guardian reads as the guardian *of* the
+grand location. Sites and the full design notes live in `../locations/`; the
+odds are `LOCATION_CHANCE` and the tier mapping is `CATEGORY_TIER` in
+`../tools/loot.py`.
+
 ## File format
 
 Each category is a standalone markdown file: a YAML frontmatter block, then the
@@ -126,6 +145,14 @@ treasure itself is drawn from the merged `Treasures` + `Discoveries` pool, so a
 roll may yield a powerful item *or* a story discovery (a fey crossing, a shrine
 boon, etc.). The randomized guardian lives in `roll_guardian()` in
 `../tools/loot.py`.
+
+**Value implies place.** Small finds happen anywhere; great finds tend to come
+from somewhere. Rather than treat that as flavour, the tool models it: the
+chance of a location rises with the loot category, and the *grandeur* of the
+site rises with it too (modest → notable → grand). This ties the loot table to
+the world — a magic item now arrives with a reason it was there — without
+forcing a location on every minor result. The logic is `roll_location()` in
+`../tools/loot.py`; the sites are authored in `../locations/`.
 
 ## Editing the tables
 

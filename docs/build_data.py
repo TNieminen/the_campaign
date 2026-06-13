@@ -30,6 +30,7 @@ TOOLS = os.path.join(GN, "tools")
 MONSTERS_DIR = os.path.join(GN, "monsters")
 ENVIRONMENTS_DIR = os.path.join(GN, "environments")
 LOOT_DIR = os.path.join(GN, "loot")
+LOCATIONS_DIR = os.path.join(GN, "locations")
 
 # Import the real tools so the build and the app share one implementation.
 sys.path.insert(0, TOOLS)
@@ -108,6 +109,26 @@ def build_loot():
     return out
 
 
+def build_locations():
+    out = []
+    for loc in loot.load_locations(LOCATIONS_DIR):
+        text = read(os.path.join(LOCATIONS_DIR, loc.slug + ".md"))
+        out.append({
+            "name": loc.name,
+            "faction": loc.faction,
+            "type": loc.type,
+            "tier": loc.tier,
+            "status": loc.status,
+            "summary": loc.summary,
+            "purpose": loc.purpose,
+            "slug": loc.slug,
+            "body": body_of(text),
+        })
+    tier_order = {"modest": 0, "notable": 1, "grand": 2}
+    out.sort(key=lambda d: (d["faction"], tier_order.get(d["tier"], 9), d["name"]))
+    return out
+
+
 def copy_tools():
     for name in ("encounter.py", "loot.py"):
         shutil.copyfile(os.path.join(TOOLS, name), os.path.join(HERE, name))
@@ -120,6 +141,7 @@ def main():
         "monsters": build_monsters(),
         "environments": build_environments(),
         "loot": build_loot(),
+        "locations": build_locations(),
         "xp_budget_per_character": encounter.XP_BUDGET_PER_CHARACTER,
         "difficulties": list(encounter.DIFFICULTIES),
     }
@@ -127,7 +149,8 @@ def main():
         json.dump(data, fh, indent=2, ensure_ascii=False)
     copy_tools()
     print(f"Wrote data.json: {len(data['monsters'])} monsters, "
-          f"{len(data['environments'])} environments, {len(data['loot'])} loot tables.")
+          f"{len(data['environments'])} environments, {len(data['loot'])} loot tables, "
+          f"{len(data['locations'])} locations.")
     print("Copied encounter.py and loot.py into docs/.")
 
 
