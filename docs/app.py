@@ -832,6 +832,17 @@ def run_scaling_preview(event=None):
 # --------------------------------------------------------------------------- #
 # Wire up
 # --------------------------------------------------------------------------- #
+def _guard(label, fn, *args, **kwargs):
+    """Run a setup step, surfacing any error to the console instead of aborting
+    the whole setup (one failing tab must never silently break the others)."""
+    try:
+        fn(*args, **kwargs)
+    except Exception as exc:  # noqa: BLE001 - report, don't crash the app
+        import traceback
+        traceback.print_exc()
+        window.console.error(f"[{label}] {exc}")
+
+
 def setup():
     on("#enc-run", "click", run_encounter)
     on("#enc-rolld20", "click", roll_d20_encounter)
@@ -844,15 +855,15 @@ def setup():
     on("#env-list", "click", on_environment_click)
     window.addEventListener("hashchange", create_proxy(on_hash_change))
 
-    render_bestiary()
-    render_environments()
-    render_reference()
-    render_scaling()
+    _guard("bestiary", render_bestiary)
+    _guard("environments", render_environments)
+    _guard("reference", render_reference)
+    _guard("scaling", render_scaling)
     if not apply_route_from_hash():
         if MONSTERS:
-            show_monster(MONSTERS[0].slug, update_hash=False)
+            _guard("monster-default", show_monster, MONSTERS[0].slug, update_hash=False)
         if HAZARDS:
-            show_environment(HAZARDS[0].slug, update_hash=False)
+            _guard("hazard-default", show_environment, HAZARDS[0].slug, update_hash=False)
 
     # Tell the page Python is ready (hides the loading splash).
     document.body.classList.add("py-ready")

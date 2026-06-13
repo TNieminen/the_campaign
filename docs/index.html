@@ -133,8 +133,9 @@
       </main>
     </div>
 
-    <!-- PyScript app -->
-    <script type="py" src="./app.py" config="./pyscript.json"></script>
+    <!-- PyScript app. The ?v= token is bumped on each deploy so a fresh
+         index.html can never load a stale, cached app.py/config. -->
+    <script type="py" src="./app.py?v=4" config="./pyscript.json?v=4"></script>
 
     <!-- ----------------------------------------------------------------- -->
     <!-- Login + tab logic (plain JS)                                       -->

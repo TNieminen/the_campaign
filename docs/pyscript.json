@@ -1,7 +1,7 @@
 {
   "files": {
-    "./encounter.py": "./encounter.py",
-    "./loot.py": "./loot.py",
-    "./data.json": "./data.json"
+    "./encounter.py?v=4": "./encounter.py",
+    "./loot.py?v=4": "./loot.py",
+    "./data.json?v=4": "./data.json"
   }
 }
