@@ -541,6 +541,16 @@
       "body": "Disorienting Fog\n================\n\n*Environmental challenge — low severity*\n\n**Description.** A clammy grey fog rolls in, thick enough to hide an outstretched hand. Sound deadens, direction blurs, and the path underfoot seems to wander.\n\n**Resolution.** Holding a true course requires a **DC 13 Wisdom (Survival)** check (or a Wisdom save against the mist's subtle pull). On a failure, the party becomes turned around and loses a day of travel, with a chance of stumbling into another encounter. Magic that fixes direction, or waiting out the fog, bypasses it at the cost of time."
     },
     {
+      "name": "Icy Stepping-Stones",
+      "severity": "low",
+      "dc": "13",
+      "damage": "3 (1d6) cold",
+      "check": "Dexterity (Acrobatics) to keep footing; saving throw on a slip",
+      "summary": "A frozen-slick crossing of stones over a numbingly cold stream.",
+      "slug": "icy-stepping-stones",
+      "body": "Icy Stepping-Stones\n===================\n\n*Environmental challenge — low severity*\n\n**Description.** A shallow stream must be crossed on a line of rounded boulders, each glazed with a treacherous skin of clear ice. The water between them runs fast, shallow, and bone-achingly cold.\n\n**Resolution.** Crossing requires a **DC 13 Dexterity (Acrobatics)** check. On a failure, the creature slips and plunges a leg — or its whole body — into the freezing stream, taking 3 (1d6) cold damage and risking a dropped or soaked item. A rope line, a steadying pole, or a **DC 13 Wisdom (Survival)** read of the safest stones grants advantage. A creature that falls fully in must also be warmed soon or risk exhaustion."
+    },
+    {
       "name": "Steep Cliff",
       "severity": "low",
       "dc": "13",
@@ -549,6 +559,46 @@
       "summary": "A sheer rock face that must be climbed to continue.",
       "slug": "steep-cliff",
       "body": "Steep Cliff\n===========\n\n*Environmental challenge — low severity*\n\n**Description.** The route ends at the foot of a sheer rock face. There is no path around within a reasonable distance — the only way on is up.\n\n**Resolution.** Climbing requires a **DC 13 Strength (Athletics)** check; setting pitons and ropes lets later climbers ascend at advantage and turns a failure into lost progress rather than a fall. An unroped climber who fails by 5 or more falls, taking damage by the height fallen. Bad weather or wet rock raises the DC."
+    },
+    {
+      "name": "Tangled Deadfall",
+      "severity": "low",
+      "dc": "12",
+      "damage": "none",
+      "check": "Strength (Athletics) to clamber through; Survival to find a way around",
+      "summary": "A chaos of storm-felled timber that snags every step and swallows time.",
+      "slug": "tangled-deadfall",
+      "body": "Tangled Deadfall\n================\n\n*Environmental challenge — low severity*\n\n**Description.** An old windstorm has thrown down a whole stand of pines, leaving a chest-high snarl of crisscrossed trunks, snapped limbs, and slick bark. There is no clean path through — only over, under, and around.\n\n**Resolution.** Pushing straight through requires a **DC 12 Strength (Athletics)** check from each creature; failure means cuts, scrapes, and a slow, exhausting crawl that costs the party hours. A **DC 12 Wisdom (Survival)** check instead finds a longer but easier game trail around the deadfall, trading time for effort. Mounts and heavy loads cannot cross the snarl without being led the long way."
+    },
+    {
+      "name": "Weathered Boundary Stones",
+      "severity": "low",
+      "dc": "13",
+      "damage": "none",
+      "check": "Intelligence (History/Investigation) or Wisdom (Survival) to read the markers",
+      "summary": "A ring of old carved stones whose worn glyphs mark the only safe path.",
+      "slug": "weathered-boundary-stones",
+      "body": "Weathered Boundary Stones\n=========================\n\n*Environmental challenge — low severity*\n\n**Description.** A cluster of lichen-crusted standing stones marks an old boundary of the deep wood. Their faces bear worn glyphs and arrows, half-erased by centuries of frost — a key, if anyone can read it, to which of the diverging trails ahead is safe.\n\n**Resolution.** Deciphering the markers takes a **DC 13 Intelligence (History or Investigation)** check, or a **DC 13 Wisdom (Survival)** read of the old trail-signs. Success reveals which path avoids the worse country ahead (granting advantage on the next travel check or skipping the next hazard). Failure isn't dangerous in itself, but a guessed path may lead the party astray and cost a day. Comprehending the glyphs magically solves it outright."
+    },
+    {
+      "name": "Whining Midge Bog",
+      "severity": "low",
+      "dc": "12",
+      "damage": "2 (1d4) poison",
+      "check": "Constitution saving throw (Survival/Medicine to ward off the swarms)",
+      "summary": "Clouds of biting insects that torment travelers and fray their nerves.",
+      "slug": "whining-midge-bog",
+      "body": "Whining Midge Bog\n=================\n\n*Environmental challenge — low severity*\n\n**Description.** The air over this stagnant bog hums with a maddening whine. Dense clouds of midges and biting flies rise from the reeds, crawling into eyes, ears, and every gap in clothing.\n\n**Resolution.** A creature that crosses without protection makes a **DC 12 Constitution saving throw**, taking 2 (1d4) poison damage and having disadvantage on its next travel check from the relentless biting; on a success it shrugs off the worst. A **DC 12 Wisdom (Survival or Medicine)** check — using smoke, mud, or pungent herbs — wards off the swarms for the crossing. Fire, wind, or a brisk pace also disperses them."
+    },
+    {
+      "name": "Bramble-Choked Ravine",
+      "severity": "moderate",
+      "dc": "14",
+      "damage": "5 (2d4) slashing",
+      "check": "Strength (Athletics) to climb/cut through; Dexterity to avoid the worst thorns",
+      "summary": "A steep gully clogged with iron-hard thorns that tear at any who descend.",
+      "slug": "bramble-choked-ravine",
+      "body": "Bramble-Choked Ravine\n=====================\n\n*Environmental challenge — moderate severity*\n\n**Description.** The trail drops into a narrow ravine that decades of neglect have filled with a dense, woody tangle of thorns — some as long as a finger, hard as iron, and hooked to hold what they catch. The far side beckons, but the only way is through.\n\n**Resolution.** Forcing a path down and across requires a **DC 14 Strength (Athletics)** check to climb and cut through. On a failure, the thorns rake the creature for 5 (2d4) slashing damage and snag its gear, slowing the whole party. Hacking a corridor with blades, burning a path, or a **DC 14 Dexterity (Acrobatics)** pick through the gaps reduces the damage or grants advantage. Heavily armoured creatures have an easier climb but still risk the hooks."
     },
     {
       "name": "Crumbling Rope Bridge",
@@ -581,6 +631,16 @@
       "body": "Fast-Flowing River Crossing\n===========================\n\n*Environmental challenge — moderate severity*\n\n**Description.** A broad mountain river cuts across the route, its surface deceptively smooth over a powerful current. The far bank is close, but the footing beneath is slick and the water bone-cold.\n\n**Resolution.** Crossing requires a **DC 14 Strength (Athletics)** check; a **Wisdom (Survival)** check can first locate a shallower ford to grant advantage. On a failure, the creature is swept downstream, taking 7 (2d6) bludgeoning damage against rocks and arriving soaked (doused torches, ruined rations). A rope line or aid from an ally grants advantage."
     },
     {
+      "name": "Freezing Sleet Storm",
+      "severity": "moderate",
+      "dc": "14",
+      "damage": "3 (1d6) cold",
+      "check": "Constitution saving throw (Survival to shelter or press on safely)",
+      "summary": "Driving icy rain that glazes everything and chills travelers to the bone.",
+      "slug": "freezing-sleet-storm",
+      "body": "Freezing Sleet Storm\n====================\n\n*Environmental challenge — moderate severity*\n\n**Description.** The sky opens with a stinging, half-frozen rain that soaks through clothing in minutes and coats every surface in slick, clear ice. Visibility drops, the footing turns glassy, and the cold bites deeper with every hour.\n\n**Resolution.** Pressing on through the storm forces each creature to make a **DC 14 Constitution saving throw**, taking 3 (1d6) cold damage and having disadvantage on Dexterity checks (icy footing) until they warm up; a success halves the cold. A **DC 14 Wisdom (Survival)** check rigs shelter, keeps a fire lit, or finds a lee that lets the party wait out or safely travel the storm with advantage. Cold resistance or magical warmth negates it; a failed party that doesn't dry off risks exhaustion."
+    },
+    {
       "name": "Quicksand Field",
       "severity": "moderate",
       "dc": "13",
@@ -591,6 +651,26 @@
       "body": "Quicksand Field\n===============\n\n*Environmental challenge — moderate severity*\n\n**Description.** A stretch of boggy ground looks no different from the surrounding mire — until a foot plunges through and the earth itself begins to pull downward.\n\n**Resolution.** A **DC 13 Wisdom (Survival)** check spots the hazard before entering. A creature that steps in sinks; at the start of each of its turns it descends, and a submerged creature begins to suffocate. Escaping requires a **DC 13 Strength (Athletics)** check (made with disadvantage once submerged past the waist), or being hauled out by allies with a rope or pole. Thrashing without a plan only sinks it faster."
     },
     {
+      "name": "Snowdrift Field",
+      "severity": "moderate",
+      "dc": "14",
+      "damage": "none (exhaustion risk)",
+      "check": "Constitution saving throw (Survival to break trail efficiently)",
+      "summary": "Thigh-deep snow that saps strength from anyone who tries to cross it.",
+      "slug": "snowdrift-field",
+      "body": "Snowdrift Field\n===============\n\n*Environmental challenge — moderate severity*\n\n**Description.** An open clearing has filled with wind-packed snow, drifted thigh-deep and crusted just hard enough to break through with every step. What looks like a short walk becomes an exhausting wade.\n\n**Resolution.** Crossing the field is difficult terrain that costs hours of hard labour. Each creature makes a **DC 14 Constitution saving throw** at the end of the crossing or gains one level of exhaustion. A **DC 14 Wisdom (Survival)** check to break trail in shifts, fashion snowshoes, or pick the firmest line grants the party advantage on the saves. Flight, a *pass without trace*–style aid, or simply going around (at the cost of more time) avoids it."
+    },
+    {
+      "name": "Thin Ice Lake Crossing",
+      "severity": "moderate",
+      "dc": "14",
+      "damage": "7 (2d6) cold",
+      "check": "Wisdom (Survival) to test the ice; Strength (Athletics) to escape the water",
+      "summary": "A frozen lake whose ice can give way into killing-cold water beneath.",
+      "slug": "thin-ice-lake",
+      "body": "Thin Ice Lake Crossing\n======================\n\n*Environmental challenge — moderate severity*\n\n**Description.** A broad lake offers a tempting shortcut across its frozen surface. But the ice groans and creaks underfoot, thinning treacherously over deep, black, killing-cold water — especially near the inlets and the centre.\n\n**Resolution.** A **DC 14 Wisdom (Survival)** check picks the route over the thickest ice; failure (or a heavy load, or bad luck) means the ice cracks. A creature on breaking ice makes a **DC 14 Dexterity saving throw** to throw itself clear, or plunges in: 7 (2d6) cold damage, and it must spend its turns making **DC 14 Strength (Athletics)** checks to haul out onto solid ice while the cold saps its strength. Spreading the party's weight, crawling, or roping together grants advantage; a soaked creature risks exhaustion if not warmed quickly."
+    },
+    {
       "name": "Avalanche",
       "severity": "high",
       "dc": "17",
@@ -599,6 +679,16 @@
       "summary": "A roaring wall of snow and rock that buries everything in its path.",
       "slug": "avalanche",
       "body": "Avalanche\n=========\n\n*Environmental challenge — high severity*\n\n**Description.** A shelf of snow and loose scree gives way high on the slope, and a thundering wall of white and stone roars down toward the party. There are seconds to react before it hits.\n\n**Resolution.** Each creature in the path makes a **DC 17 Dexterity saving throw**. On a failure: 28 (8d6) bludgeoning damage, knocked prone, and **buried** (restrained and suffocating). On a success: half damage and not buried. A buried creature, or an ally reaching it, can free it with a **DC 15 Strength (Athletics)** check. Reaching the edge of the slide before it arrives (a successful save plus the right positioning) avoids it entirely."
+    },
+    {
+      "name": "Collapsing Ice Cavern",
+      "severity": "high",
+      "dc": "16",
+      "damage": "17 (5d6) bludgeoning",
+      "check": "Dexterity saving throw (Survival to judge the ice, Athletics to dig free)",
+      "summary": "A glittering ice cave whose ceiling sheds killing slabs without warning.",
+      "slug": "collapsing-ice-cavern",
+      "body": "Collapsing Ice Cavern\n=====================\n\n*Environmental challenge — high severity*\n\n**Description.** A glacial cave offers shelter or a shortcut beneath the ice — a breathtaking vault of blue-white walls and frozen pillars. But the ceiling weeps and cracks, and somewhere deep in the ice a deep, grinding groan warns that the whole vault is shifting.\n\n**Resolution.** A **DC 16 Wisdom (Survival or Nature)** check judges the cavern's stability and the safest, quickest route. Loud noise, fire, or a failed read triggers a collapse: each creature beneath it makes a **DC 16 Dexterity saving throw**, taking 17 (5d6) bludgeoning damage and being **buried** (restrained, suffocating) on a failure, or half damage and clear on a success. A buried creature, or an ally reaching it, digs free with a **DC 16 Strength (Athletics)** check. Moving quietly and quickly, or shoring the ice, lowers the chance of a fall."
     },
     {
       "name": "Glacial Flash Flood",
@@ -619,6 +709,26 @@
       "summary": "A sudden cascade of stone down a steep pass.",
       "slug": "rockslide",
       "body": "Rockslide\n=========\n\n*Environmental challenge — high severity*\n\n**Description.** A narrow pass gives a deceptive footing of loose stone. A misstep — or a deliberate shove from above — sends tonnes of rock tumbling down onto the trail.\n\n**Resolution.** Each creature in the slide's path makes a **DC 16 Dexterity saving throw**, taking 14 (4d6) bludgeoning damage and being knocked prone on a failure, or half damage on a success. The fallen rock leaves the pass as difficult terrain (or blocks it entirely), forcing a detour or a climb."
+    },
+    {
+      "name": "Scalding Geyser Field",
+      "severity": "high",
+      "dc": "16",
+      "damage": "14 (4d6) fire",
+      "check": "Wisdom (Survival) to read the vents; Dexterity saving throw to dodge an eruption",
+      "summary": "A field of hot springs and geysers that erupt in bursts of scalding steam.",
+      "slug": "scalding-geyser-field",
+      "body": "Scalding Geyser Field\n=====================\n\n*Environmental challenge — high severity*\n\n**Description.** Steam hisses from cracks in the rock, and pools of mineral-bright water bubble at a rolling boil. The ground is a crust of brittle stone over superheated water, and every so often a geyser blasts skyward without warning, wreathing the field in scalding mist.\n\n**Resolution.** Picking a safe line takes a **DC 16 Wisdom (Survival or Nature)** check to read the steam, mineral stains, and timing of the vents. A creature caught when a geyser erupts — or one that fails the read — must make a **DC 16 Dexterity saving throw**, taking 14 (4d6) fire damage on a failure (half on a success) from the scalding water and steam. Thin crust can also give way; a careful, roped crossing or fire resistance greatly reduces the danger."
+    },
+    {
+      "name": "Whiteout Blizzard",
+      "severity": "high",
+      "dc": "16",
+      "damage": "10 (3d6) cold",
+      "check": "Constitution saving throw (Survival to navigate / shelter, or be lost)",
+      "summary": "A howling blizzard that blinds, freezes, and scatters those caught in it.",
+      "slug": "whiteout-blizzard",
+      "body": "Whiteout Blizzard\n=================\n\n*Environmental challenge — high severity*\n\n**Description.** Without warning the wind rises to a scream and the world vanishes into a roaring wall of white. An arm's length of visibility, cold that knifes through any cloak, and a wind that steals breath and direction alike — this is the storm that kills the unprepared.\n\n**Resolution.** Each creature makes a **DC 16 Constitution saving throw** for each hour in the open, taking 10 (3d6) cold damage and one level of exhaustion on a failure, or half damage and no exhaustion on a success. Worse, the party is **blinded and lost**: a **DC 16 Wisdom (Survival)** check is required to hold course or find shelter, and failure means scattering, losing a day, and risking separation. Digging in, roping the party together, or magical warmth and guidance can turn a deadly storm into a merely miserable one."
     }
   ],
   "loot": {
