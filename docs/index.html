@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Great Northwood &mdash; DM Toolkit</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="https://pyscript.net/releases/2026.3.1/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2026.3.1/core.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  </head>
+  <body>
+    <!-- ----------------------------------------------------------------- -->
+    <!-- Login gate (cosmetic, client-side only - see docs/README.md)       -->
+    <!-- ----------------------------------------------------------------- -->
+    <div id="login" class="login-screen">
+      <form id="login-form" class="login-card" autocomplete="off">
+        <h1>Great Northwood</h1>
+        <p class="muted">Dungeon Master's Toolkit</p>
+        <label>Username<input id="login-user" type="text" autocomplete="username" /></label>
+        <label>Password<input id="login-pass" type="password" autocomplete="current-password" /></label>
+        <button id="login-btn" type="submit">Enter</button>
+        <p id="login-error" class="error" hidden>Incorrect username or password.</p>
+      </form>
+    </div>
+
+    <!-- ----------------------------------------------------------------- -->
+    <!-- Main app                                                           -->
+    <!-- ----------------------------------------------------------------- -->
+    <div id="app" hidden>
+      <header class="topbar">
+        <div class="brand">Great Northwood &mdash; DM Toolkit</div>
+        <nav class="tabs">
+          <button class="tab active" data-tab="encounter">Encounters</button>
+          <button class="tab" data-tab="loot">Loot &amp; Discovery</button>
+          <button class="tab" data-tab="bestiary">Bestiary</button>
+          <button class="tab" data-tab="reference">Reference</button>
+        </nav>
+        <button id="logout" class="logout" title="Lock">Lock</button>
+      </header>
+
+      <div id="loading" class="loading">Loading Python runtime&hellip; (first load takes a few seconds)</div>
+
+      <main class="content">
+        <!-- Encounter builder -->
+        <section id="panel-encounter" class="panel active">
+          <div class="controls">
+            <div class="field"><label>Party size</label><input id="enc-party-size" type="number" min="1" value="4" /></div>
+            <div class="field"><label>Level</label><input id="enc-level" type="number" min="1" max="20" value="6" /></div>
+            <div class="field wide"><label>Levels (overrides, e.g. 4,6,6,7)</label><input id="enc-levels" type="text" placeholder="optional" /></div>
+            <div class="field"><label>Difficulty</label>
+              <select id="enc-difficulty">
+                <option value="low">Low</option>
+                <option value="moderate" selected>Moderate</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+            <div class="field"><label>Monster count</label><input id="enc-count" type="number" min="1" value="3" /></div>
+            <div class="field"><label>Mode</label>
+              <select id="enc-mode">
+                <option value="mix">Mix</option>
+                <option value="boss-minions">Boss + minions</option>
+              </select>
+            </div>
+            <details class="advanced">
+              <summary>Advanced tuning</summary>
+              <div class="adv-grid">
+                <div class="field"><label>Max kinds (mix)</label><input id="enc-max-types" type="number" min="1" value="3" /></div>
+                <div class="field"><label>Min fill (0-1)</label><input id="enc-min-fill" type="number" min="0.1" max="1" step="0.05" value="0.75" /></div>
+                <div class="field"><label>Result limit</label><input id="enc-limit" type="number" min="1" value="15" /></div>
+              </div>
+            </details>
+            <button id="enc-run" class="primary">Find encounters</button>
+          </div>
+          <div id="enc-out" class="output"><p class="muted">Set your party and press &ldquo;Find encounters&rdquo;.</p></div>
+        </section>
+
+        <!-- Loot & discovery -->
+        <section id="panel-loot" class="panel">
+          <div class="controls">
+            <div class="field"><label>Travel d20 roll (11-20)</label><input id="loot-roll" type="number" min="11" max="20" value="17" /></div>
+            <button id="loot-rolld20" class="ghost">Roll d20</button>
+            <div class="field"><label>Party size</label><input id="loot-party-size" type="number" min="1" value="4" /></div>
+            <div class="field"><label>Level</label><input id="loot-level" type="number" min="1" max="20" value="6" /></div>
+            <div class="field wide"><label>Levels (overrides)</label><input id="loot-levels" type="text" placeholder="optional, e.g. 5,6,6,7" /></div>
+            <div class="field"><label>Seed (optional)</label><input id="loot-seed" type="number" placeholder="random" /></div>
+            <button id="loot-run" class="primary">Roll loot</button>
+          </div>
+          <div id="loot-out" class="output"><p class="muted">Enter the players&rsquo; d20 roll and press &ldquo;Roll loot&rdquo;.</p></div>
+        </section>
+
+        <!-- Bestiary -->
+        <section id="panel-bestiary" class="panel">
+          <div class="bestiary">
+            <div class="bestiary-side">
+              <input id="mon-search" type="search" placeholder="Search monsters&hellip;" />
+              <div id="mon-list" class="list"></div>
+            </div>
+            <div id="mon-detail" class="bestiary-detail"></div>
+          </div>
+        </section>
+
+        <!-- Reference -->
+        <section id="panel-reference" class="panel">
+          <div id="ref-out" class="reference"></div>
+        </section>
+      </main>
+    </div>
+
+    <!-- PyScript app -->
+    <script type="py" src="./app.py" config="./pyscript.json"></script>
+
+    <!-- ----------------------------------------------------------------- -->
+    <!-- Login + tab logic (plain JS)                                       -->
+    <!-- ----------------------------------------------------------------- -->
+    <script>
+      // SHA-256 hex of the password. This gate is a cosmetic deterrent only:
+      // the page, data.json and the .py files are all publicly downloadable,
+      // so do not treat this as real security (see docs/README.md).
+      const USERNAME = "pridonia";
+      const PASS_HASH = "ef029656a06e14c118999c324befcaff1da1209b21f8a38255e0d169ec306a86";
+
+      async function sha256(str) {
+        const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+        return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
+      }
+
+      function reveal() {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("app").hidden = false;
+      }
+
+      function lock() {
+        sessionStorage.removeItem("gn_authed");
+        location.reload();
+      }
+
+      if (sessionStorage.getItem("gn_authed") === "1") reveal();
+
+      document.getElementById("login-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const user = document.getElementById("login-user").value.trim().toLowerCase();
+        const pass = document.getElementById("login-pass").value;
+        const ok = user === USERNAME && (await sha256(pass)) === PASS_HASH;
+        if (ok) {
+          sessionStorage.setItem("gn_authed", "1");
+          reveal();
+        } else {
+          document.getElementById("login-error").hidden = false;
+        }
+      });
+
+      document.getElementById("logout").addEventListener("click", lock);
+
+      // Tabs
+      document.querySelectorAll(".tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
+          document.querySelectorAll(".panel").forEach((p) => p.classList.remove("active"));
+          tab.classList.add("active");
+          document.getElementById("panel-" + tab.dataset.tab).classList.add("active");
+        });
+      });
+
+      // Hide the loading splash once PyScript signals readiness.
+      const obs = new MutationObserver(() => {
+        if (document.body.classList.contains("py-ready")) {
+          const l = document.getElementById("loading");
+          if (l) l.style.display = "none";
+          obs.disconnect();
+        }
+      });
+      obs.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+    </script>
+  </body>
+</html>

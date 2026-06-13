@@ -1,0 +1,564 @@
+{
+  "generated_by": "docs/build_data.py",
+  "source": "notes/dnd/greath-northwood",
+  "monsters": [
+    {
+      "name": "Wolf",
+      "cr": "1/4",
+      "xp": 50,
+      "size": "Medium",
+      "type": "beast",
+      "summary": "A lean grey-furred pack predator built for endurance and the hunt.",
+      "slug": "wolf",
+      "body": "Wolf\n====\n\n*Medium beast, unaligned* — **CR 1/4 (50 XP)**\n\n**Appearance.** A lean grey-furred canine predator with a bristling ruff, sharp ears, and keen yellow eyes. Built for endurance and the hunt, it rarely fights alone — where there is one, there is usually a pack.\n\n- **Armor Class** 13 (natural armor)\n- **Hit Points** 11 (2d8 + 2)\n- **Speed** 40 ft.\n\n| STR | DEX | CON | INT | WIS | CHA |\n| --- | --- | --- | --- | --- | --- |\n| 12 (+1) | 15 (+2) | 12 (+1) | 3 (-4) | 12 (+1) | 6 (-2) |\n\n- **Skills** Perception +3, Stealth +4\n- **Senses** passive Perception 13\n\n**Keen Hearing and Smell.** The wolf has advantage on Wisdom (Perception) checks that rely on hearing or smell.\n\n**Pack Tactics.** The wolf has advantage on an attack roll against a creature if at least one of the wolf's allies is within 5 feet of the creature and the ally isn't incapacitated.\n\n### Actions\n\n**Bite.** *Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 7 (2d4 + 2) piercing damage. If the target is a creature, it must succeed on a DC 11 Strength saving throw or be knocked prone."
+    },
+    {
+      "name": "Scout",
+      "cr": "1/2",
+      "xp": 100,
+      "size": "Medium",
+      "type": "humanoid",
+      "summary": "A sharp-eyed wilderness tracker with longbow and shortsword.",
+      "slug": "scout",
+      "body": "Scout\n=====\n\n*Medium humanoid (any race), any alignment* — **CR 1/2 (100 XP)**\n\n**Appearance.** A lean, weathered figure in worn, earth-toned leathers, moving quietly through the wild. Sharp-eyed and unhurried, they carry a longbow over one shoulder and a shortsword at the hip, reading tracks and terrain with practiced ease.\n\n- **Armor Class** 13 (leather armor)\n- **Hit Points** 16 (3d8 + 3)\n- **Speed** 30 ft.\n\n| STR | DEX | CON | INT | WIS | CHA |\n| --- | --- | --- | --- | --- | --- |\n| 11 (+0) | 14 (+2) | 12 (+1) | 11 (+0) | 13 (+1) | 11 (+0) |\n\n- **Skills** Nature +4, Perception +5, Stealth +6, Survival +5\n- **Senses** passive Perception 15\n- **Languages** any one language (usually Common)\n\n**Keen Hearing and Sight.** The scout has advantage on Wisdom (Perception) checks that rely on hearing or sight.\n\n### Actions\n\n**Multiattack.** The scout makes two melee attacks or two ranged attacks.\n\n**Shortsword.** *Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 5 (1d6 + 2) piercing damage.\n\n**Longbow.** *Ranged Weapon Attack:* +4 to hit, range 150/600 ft., one target. *Hit:* 6 (1d8 + 2) piercing damage."
+    },
+    {
+      "name": "Dire Wolf",
+      "cr": "1",
+      "xp": 200,
+      "size": "Large",
+      "type": "beast",
+      "summary": "A pony-sized prehistoric wolf that hunts in disciplined packs.",
+      "slug": "dire-wolf",
+      "body": "Dire Wolf\n=========\n\n*Large beast, unaligned* — **CR 1 (200 XP)**\n\n**Appearance.** An oversized, prehistoric wolf the size of a pony, with shaggy grey-black fur, a powerful neck and jaws, and intelligent, hungry amber eyes. It hunts in coordinated packs, herding and flanking prey with chilling discipline.\n\n- **Armor Class** 14 (natural armor)\n- **Hit Points** 37 (5d10 + 10)\n- **Speed** 50 ft.\n\n| STR | DEX | CON | INT | WIS | CHA |\n| --- | --- | --- | --- | --- | --- |\n| 17 (+3) | 15 (+2) | 15 (+2) | 3 (-4) | 12 (+1) | 7 (-2) |\n\n- **Skills** Perception +3, Stealth +4\n- **Senses** passive Perception 13\n\n**Keen Hearing and Smell.** The wolf has advantage on Wisdom (Perception) checks that rely on hearing or smell.\n\n**Pack Tactics.** The wolf has advantage on an attack roll against a creature if at least one of the wolf's allies is within 5 feet of the creature and the ally isn't incapacitated.\n\n### Actions\n\n**Bite.** *Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 10 (2d6 + 3) piercing damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone."
+    },
+    {
+      "name": "Giant Spider",
+      "cr": "1",
+      "xp": 200,
+      "size": "Large",
+      "type": "beast",
+      "summary": "A horse-sized arachnid that snares prey in thick, sticky webs.",
+      "slug": "giant-spider",
+      "body": "Giant Spider\n============\n\n*Large beast, unaligned* — **CR 1 (200 XP)**\n\n**Appearance.** A horse-sized arachnid with a bulbous, bristle-haired abdomen, eight jointed legs, and a cluster of gleaming black eyes. Venom beads on its curved fangs, and it strings thick, sticky webs across ravines and cave mouths to snare anything that blunders through.\n\n- **Armor Class** 14 (natural armor)\n- **Hit Points** 26 (4d10 + 4)\n- **Speed** 30 ft., climb 30 ft.\n\n| STR | DEX | CON | INT | WIS | CHA |\n| --- | --- | --- | --- | --- | --- |\n| 14 (+2) | 16 (+3) | 12 (+1) | 2 (-4) | 11 (+0) | 4 (-3) |\n\n- **Skills** Stealth +7\n- **Senses** blindsight 10 ft., darkvision 60 ft., passive Perception 10\n\n**Spider Climb.** The spider can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check.\n\n**Web Sense.** While in contact with a web, the spider knows the exact location of any other creature in contact with the same web.\n\n**Web Walker.** The spider ignores movement restrictions caused by webbing.\n\n### Actions\n\n**Bite.** *Melee Weapon Attack:* +5 to hit, reach 5 ft., one creature. *Hit:* 7 (1d8 + 3) piercing damage, and the target must make a DC 11 Constitution saving throw, taking 9 (2d8) poison damage on a failed save, or half as much on a success. If the poison damage reduces the target to 0 hit points, the target is stable but poisoned for 1 hour, even after regaining hit points, and is paralyzed while poisoned in this way.\n\n**Web (Recharge 5–6).** *Ranged Weapon Attack:* +5 to hit, range 30/60 ft., one creature. *Hit:* The target is restrained by webbing. As an action, the restrained target can make a DC 12 Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; HP 5; vulnerability to fire damage; immunity to bludgeoning, poison, and psychic damage)."
+    },
+    {
+      "name": "Harpy",
+      "cr": "1",
+      "xp": 200,
+      "size": "Medium",
+      "type": "monstrosity",
+      "summary": "A vulture-bodied horror with a woman's face and a deadly luring song.",
+      "slug": "harpy",
+      "body": "Harpy\n=====\n\n*Medium monstrosity, chaotic evil* — **CR 1 (200 XP)**\n\n**Appearance.** A foul creature with the taloned body and wings of a vulture and the upper torso and head of a haggard woman. Matted, filthy feathers cover it, and its grasping claws are caked with old gore — yet its voice is hauntingly beautiful, a luring song wholly at odds with its hideous form.\n\n- **Armor Class** 11\n- **Hit Points** 38 (7d8 + 7)\n- **Speed** 20 ft., fly 40 ft.\n\n| STR | DEX | CON | INT | WIS | CHA |\n| --- | --- | --- | --- | --- | --- |\n| 12 (+1) | 13 (+1) | 12 (+1) | 7 (-2) | 10 (+0) | 13 (+1) |\n\n- **Senses** passive Perception 10\n- **Languages** Common\n\n### Actions\n\n**Multiattack.** The harpy makes two attacks: one with its claws and one with its club.\n\n**Claws.** *Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 6 (2d4 + 1) slashing damage.\n\n**Club.** *Melee Weapon Attack:* +3 to hit, reach 5 ft., one target. *Hit:* 3 (1d4 + 1) bludgeoning damage.\n\n**Luring Song.** The harpy sings a magical melody. Every humanoid and giant within 300 feet of the harpy that can hear the song must succeed on a DC 11 Wisdom saving throw or be charmed until the song ends. The harpy must take a bonus action on its subsequent turns to continue singing. It can stop singing at any time. The song ends if the harpy is incapacitated.\n\nWhile charmed by the harpy, a target is incapacitated and ignores the songs of other harpies. If the charmed target is more than 5 feet away from the harpy, the target must move on its turn toward the harpy by the most direct route, trying to get within 5 feet. It doesn't avoid opportunity attacks, but before moving into damaging terrain, such as lava or a pit, and whenever it takes damage from a source other than the harpy, the target can repeat the saving throw. A creature can also repeat the saving throw at the end of each of its turns. If a creature's saving throw is successful, the effect ends on it.\n\nA target that successfully saves is immune to this harpy's song for the next 24 hours."
+    },
+    {
+      "name": "Ankheg",
+      "cr": "2",
+      "xp": 450,
+      "size": "Large",
+      "type": "monstrosity",
+      "summary": "A chitinous burrowing insectoid that erupts from the soil spraying acid.",
+      "slug": "ankheg",
+      "body": "Ankheg\n======\n\n*Large monstrosity, unaligned* — **CR 2 (450 XP)**\n\n**Appearance.** A massive insectoid burrower, like a cross between a centipede and a beetle, sheathed in a chitinous brown shell. Its segmented body ends in spindly digging legs, and its head bears sharp mandibles that drip corrosive acid. It lurks beneath fields and forest floors, erupting upward to seize prey.\n\n- **Armor Class** 14 (natural armor), 11 while prone\n- **Hit Points** 39 (6d10 + 6)\n- **Speed** 30 ft., burrow 10 ft.\n\n| STR | DEX | CON | INT | WIS | CHA |\n| --- | --- | --- | --- | --- | --- |\n| 17 (+3) | 11 (+0) | 13 (+1) | 1 (-5) | 13 (+1) | 6 (-2) |\n\n- **Senses** darkvision 60 ft., tremorsense 60 ft., passive Perception 11\n\n### Actions\n\n**Bite.** *Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 10 (2d6 + 3) slashing damage plus 3 (1d6) acid damage. If the target is a Large or smaller creature, it is grappled (escape DC 13). Until this grapple ends, the ankheg can bite only the grappled creature and has advantage on attack rolls to do so.\n\n**Acid Spray (Recharge 6).** The ankheg spits acid in a line that is 30 feet long and 5 feet wide, provided that it has no creature grappled. Each creature in that line must make a DC 13 Dexterity saving throw, taking 10 (3d6) acid damage on a failed save, or half as much on a success."
+    },
+    {
+      "name": "Bandit Captain",
+      "cr": "2",
+      "xp": 450,
+      "size": "Medium",
+      "type": "humanoid",
+      "summary": "A swaggering, scarred outlaw leader wielding twin scimitars.",
+      "slug": "bandit-captain",
+      "body": "Bandit Captain\n==============\n\n*Medium humanoid (any race), any non-lawful alignment* — **CR 2 (450 XP)**\n\n**Appearance.** A swaggering, well-armed rogue in studded leather, bearing old scars and an easy air of command. A brace of scimitars rides at the hip and a throwing dagger sits ready at hand; sharp eyes size up every newcomer for threat or profit.\n\n- **Armor Class** 15 (studded leather)\n- **Hit Points** 65 (10d8 + 20)\n- **Speed** 30 ft.\n\n| STR | DEX | CON | INT | WIS | CHA |\n| --- | --- | --- | --- | --- | --- |\n| 15 (+2) | 16 (+3) | 14 (+2) | 14 (+2) | 11 (+0) | 14 (+2) |\n\n- **Saving Throws** Str +4, Dex +5, Wis +2\n- **Skills** Athletics +4, Deception +4\n- **Senses** passive Perception 10\n- **Languages** any two languages\n\n### Actions\n\n**Multiattack.** The captain makes three melee attacks: two with its scimitar and one with its dagger. Or the captain makes two ranged attacks with its daggers.\n\n**Scimitar.** *Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 6 (1d6 + 3) slashing damage.\n\n**Dagger.** *Melee or Ranged Weapon Attack:* +5 to hit, reach 5 ft. or range 20/60 ft., one target. *Hit:* 5 (1d4 + 3) piercing damage.\n\n### Reactions\n\n**Parry.** The captain adds 2 to its AC against one melee attack that would hit it. To do so, the captain must see the attacker and be wielding a melee weapon."
+    },
+    {
+      "name": "Gargoyle",
+      "cr": "2",
+      "xp": 450,
+      "size": "Medium",
+      "type": "elemental",
+      "summary": "A living statue of grey stone with bat wings and cruel claws.",
+      "slug": "gargoyle",
+      "body": "Gargoyle\n========\n\n*Medium elemental, chaotic evil* — **CR 2 (450 XP)**\n\n**Appearance.** A squat, winged figure of mottled grey stone seemingly come to life — horned and fanged, with leathery bat-like wings, cruel claws, and a malicious grin. It crouches motionless among statuary and rocky crags until, with a grind of stone, it lunges at the unwary.\n\n- **Armor Class** 15 (natural armor)\n- **Hit Points** 52 (7d8 + 21)\n- **Speed** 30 ft., fly 60 ft.\n\n| STR | DEX | CON | INT | WIS | CHA |\n| --- | --- | --- | --- | --- | --- |\n| 15 (+2) | 11 (+0) | 16 (+3) | 6 (-2) | 11 (+0) | 7 (-2) |\n\n- **Damage Resistances** bludgeoning, piercing, and slashing from nonmagical attacks that aren't adamantine\n- **Damage Immunities** poison\n- **Condition Immunities** exhaustion, petrified, poisoned\n- **Senses** darkvision 60 ft., passive Perception 10\n- **Languages** Terran\n\n**False Appearance.** While the gargoyle remains motionless, it is indistinguishable from an inanimate statue.\n\n### Actions\n\n**Multiattack.** The gargoyle makes two attacks: one with its bite and one with its claws.\n\n**Bite.** *Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 5 (1d6 + 2) piercing damage.\n\n**Claws.** *Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. *Hit:* 5 (1d6 + 2) slashing damage."
+    },
+    {
+      "name": "Ogre",
+      "cr": "2",
+      "xp": 450,
+      "size": "Large",
+      "type": "giant",
+      "summary": "A ten-foot brute of warty muscle swinging a tree-trunk club.",
+      "slug": "ogre",
+      "body": "Ogre\n====\n\n*Large giant, chaotic evil* — **CR 2 (450 XP)**\n\n**Appearance.** A hulking brute some ten feet tall, with thick, warty hide in dull pink, brown, or greyish tones stretched over slabs of muscle. A sloping forehead, jutting jaw, and small mean eyes give it a dull, brutish look; it dresses in filthy stitched hides and stinks of rot. It favors a crude tree-trunk greatclub.\n\n- **Armor Class** 11 (hide armor)\n- **Hit Points** 59 (7d10 + 21)\n- **Speed** 40 ft.\n\n| STR | DEX | CON | INT | WIS | CHA |\n| --- | --- | --- | --- | --- | --- |\n| 19 (+4) | 8 (-1) | 16 (+3) | 5 (-3) | 7 (-2) | 7 (-2) |\n\n- **Senses** darkvision 60 ft., passive Perception 8\n- **Languages** Common, Giant\n\n### Actions\n\n**Greatclub.** *Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 13 (2d8 + 4) bludgeoning damage.\n\n**Javelin.** *Melee or Ranged Weapon Attack:* +6 to hit, reach 5 ft. or range 30/120 ft., one target. *Hit:* 11 (2d6 + 4) piercing damage."
+    },
+    {
+      "name": "Swarm of Poisonous Snakes",
+      "cr": "2",
+      "xp": 450,
+      "size": "Medium",
+      "type": "swarm",
+      "summary": "A writhing carpet of venomous serpents striking from all sides.",
+      "slug": "swarm-of-poisonous-snakes",
+      "body": "Swarm of Poisonous Snakes\n=========================\n\n*Medium swarm of Tiny beasts, unaligned* — **CR 2 (450 XP)**\n\n**Appearance.** A writhing carpet of dozens of small serpents, their mottled scales glistening as they slither over and around one another. The mass hisses and strikes from every direction at once, fangs beading with venom — impossible to fend off with a single blow.\n\n- **Armor Class** 14\n- **Hit Points** 36 (8d8)\n- **Speed** 30 ft., swim 30 ft.\n\n| STR | DEX | CON | INT | WIS | CHA |\n| --- | --- | --- | --- | --- | --- |\n| 8 (-1) | 18 (+4) | 11 (+0) | 1 (-5) | 10 (+0) | 3 (-4) |\n\n- **Damage Resistances** bludgeoning, piercing, slashing\n- **Condition Immunities** charmed, frightened, grappled, paralyzed, petrified, prone, restrained, stunned\n- **Senses** blindsight 10 ft., passive Perception 10\n\n**Swarm.** The swarm can occupy another creature's space and vice versa, and the swarm can move through any opening large enough for a Tiny snake. The swarm can't regain hit points or gain temporary hit points.\n\n### Actions\n\n**Bites.** *Melee Weapon Attack:* +6 to hit, reach 0 ft., one creature in the swarm's space. *Hit:* 7 (2d6) piercing damage, or 3 (1d6) piercing damage if the swarm has half of its hit points or fewer. The target must make a DC 11 Constitution saving throw, taking 14 (4d6) poison damage on a failed save, or half as much on a success."
+    },
+    {
+      "name": "Displacer Beast",
+      "cr": "3",
+      "xp": 700,
+      "size": "Large",
+      "type": "monstrosity",
+      "summary": "A six-legged panther with barbed tentacles that always seems to stand where it isn't.",
+      "slug": "displacer-beast",
+      "body": "Displacer Beast\n===============\n\n*Large monstrosity, lawful evil* — **CR 3 (700 XP)**\n\n**Appearance.** A sleek, panther-like predator of midnight blue to black, lean and powerfully muscled, prowling on six legs. A pair of barbed tentacles sprout from its shoulders. Its innate magic warps light around it, so it always appears to stand a few feet from where it truly is — a shimmering, displaced afterimage that makes it maddeningly hard to strike.\n\n- **Armor Class** 13 (natural armor)\n- **Hit Points** 85 (10d10 + 30)\n- **Speed** 40 ft.\n\n| STR | DEX | CON | INT | WIS | CHA |\n| --- | --- | --- | --- | --- | --- |\n| 18 (+4) | 15 (+2) | 16 (+3) | 6 (-2) | 12 (+1) | 8 (-1) |\n\n- **Senses** darkvision 60 ft., passive Perception 11\n\n**Avoidance.** If the displacer beast is subjected to an effect that allows it to make a saving throw to take only half damage, it instead takes no damage if it succeeds on the saving throw, and only half damage if it fails.\n\n**Displacement.** The displacer beast projects a magical illusion that makes it appear to be standing near its actual location, causing attack rolls against it to have disadvantage. If it is hit by an attack, this trait is disrupted until the end of its next turn. This trait is also disrupted while the displacer beast is incapacitated or has a speed of 0.\n\n### Actions\n\n**Multiattack.** The displacer beast makes two tentacle attacks.\n\n**Tentacle.** *Melee Weapon Attack:* +6 to hit, reach 10 ft., one target. *Hit:* 7 (1d6 + 4) bludgeoning damage plus 3 (1d6) piercing damage."
+    },
+    {
+      "name": "Manticore",
+      "cr": "3",
+      "xp": 700,
+      "size": "Large",
+      "type": "monstrosity",
+      "summary": "A winged lion with a man's cruel face and a volley of launchable tail spikes.",
+      "slug": "manticore",
+      "body": "Manticore\n=========\n\n*Large monstrosity, lawful evil* — **CR 3 (700 XP)**\n\n**Appearance.** A monstrous predator with the muscular body of a lion, broad bat-like wings, and the face of a malevolent man set with rows of shark-like teeth. Its long tail ends in a bristling cluster of dagger-like spikes that it can launch like arrows. Cruel and talkative, it delights in toying with prey.\n\n- **Armor Class** 14 (natural armor)\n- **Hit Points** 68 (8d10 + 24)\n- **Speed** 30 ft., fly 50 ft.\n\n| STR | DEX | CON | INT | WIS | CHA |\n| --- | --- | --- | --- | --- | --- |\n| 17 (+3) | 16 (+3) | 17 (+3) | 7 (-2) | 12 (+1) | 8 (-1) |\n\n- **Senses** darkvision 60 ft., passive Perception 11\n- **Languages** Common\n\n**Tail Spike Regrowth.** The manticore has twenty-four tail spikes. Used spikes regrow when the manticore finishes a long rest.\n\n### Actions\n\n**Multiattack.** The manticore makes three attacks: one with its bite and two with its claws, or three with its tail spikes.\n\n**Bite.** *Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 7 (1d8 + 3) piercing damage.\n\n**Claw.** *Melee Weapon Attack:* +5 to hit, reach 5 ft., one target. *Hit:* 6 (1d6 + 3) slashing damage.\n\n**Tail Spike.** *Ranged Weapon Attack:* +5 to hit, range 100/200 ft., one target. *Hit:* 7 (1d8 + 3) piercing damage."
+    },
+    {
+      "name": "Owlbear",
+      "cr": "3",
+      "xp": 700,
+      "size": "Large",
+      "type": "monstrosity",
+      "summary": "A bear-bodied, owl-headed brute infamous for its ferocity and screech.",
+      "slug": "owlbear",
+      "body": "Owlbear\n=======\n\n*Large monstrosity, unaligned* — **CR 3 (700 XP)**\n\n**Appearance.** A terrifying hybrid with the shaggy, powerful body of a great bear and the feathered head, hooked beak, and bulging eyes of a giant owl. Reddish-brown to grey plumage bristles as it bellows a piercing screech; it is infamous for its foul temper and unrelenting ferocity in defense of its territory.\n\n- **Armor Class** 13 (natural armor)\n- **Hit Points** 59 (7d10 + 21)\n- **Speed** 40 ft.\n\n| STR | DEX | CON | INT | WIS | CHA |\n| --- | --- | --- | --- | --- | --- |\n| 20 (+5) | 12 (+1) | 17 (+3) | 3 (-4) | 12 (+1) | 7 (-2) |\n\n- **Skills** Perception +3\n- **Senses** darkvision 60 ft., passive Perception 13\n\n**Keen Sight and Smell.** The owlbear has advantage on Wisdom (Perception) checks that rely on sight or smell.\n\n### Actions\n\n**Multiattack.** The owlbear makes two attacks: one with its beak and one with its claws.\n\n**Beak.** *Melee Weapon Attack:* +7 to hit, reach 5 ft., one creature. *Hit:* 10 (1d10 + 5) piercing damage.\n\n**Claws.** *Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 14 (2d8 + 5) slashing damage."
+    },
+    {
+      "name": "Bulette",
+      "cr": "5",
+      "xp": 1800,
+      "size": "Large",
+      "type": "monstrosity",
+      "summary": "The armored 'land shark' that bursts from the earth to devour prey.",
+      "slug": "bulette",
+      "body": "Bulette\n=======\n\n*Large monstrosity, unaligned* — **CR 5 (1,800 XP)**\n\n**Appearance.** Known as the \"land shark,\" the bulette is an armored burrowing monstrosity resembling a cross between a snapping turtle and a shark. A thick, plated blue-brown shell covers its bulk, and a fin-like dorsal ridge breaks the surface of the soil as it tunnels. It moves on powerful clawed legs and lunges with a gaping, tooth-filled maw. Mindless, territorial, and always hungry.\n\n- **Armor Class** 17 (natural armor)\n- **Hit Points** 94 (9d10 + 45)\n- **Speed** 40 ft., burrow 40 ft.\n\n| STR | DEX | CON | INT | WIS | CHA |\n| --- | --- | --- | --- | --- | --- |\n| 19 (+4) | 11 (+0) | 21 (+5) | 2 (-4) | 10 (+0) | 5 (-3) |\n\n- **Skills** Perception +4\n- **Senses** darkvision 60 ft., tremorsense 60 ft., passive Perception 14\n\n**Standing Leap.** The bulette's long jump is up to 30 feet and its high jump up to 15 feet, with or without a running start.\n\n### Actions\n\n**Bite.** *Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 30 (4d12 + 4) piercing damage.\n\n**Deadly Leap.** If the bulette jumps at least 15 feet as part of its movement, it can then use this action to land on its feet in a space that contains one or more other creatures. Each of those creatures must succeed on a DC 16 Strength or Dexterity saving throw (target's choice) or be knocked prone and take 14 (3d6 + 4) bludgeoning damage plus 14 (3d6 + 4) slashing damage. On a successful save, the creature takes only half the damage, isn't knocked prone, and is pushed 5 feet out of the bulette's space into an unoccupied space of its choice."
+    },
+    {
+      "name": "Troll",
+      "cr": "5",
+      "xp": 1800,
+      "size": "Large",
+      "type": "giant",
+      "summary": "A rubbery green giant whose wounds regrow unless seared by fire or acid.",
+      "slug": "troll",
+      "body": "Troll\n=====\n\n*Large giant, chaotic evil* — **CR 5 (1,800 XP)**\n\n**Appearance.** A gangling, rubbery-skinned giant in sickly shades of green and grey, its warty hide crusted with moss and lichen. Long arms end in rending claws, a hunched frame towers over a man, and a drooping nose juts above black, soulless eyes. Most unnerving of all: its wounds knit shut and regrow before your eyes.\n\n- **Armor Class** 15 (natural armor)\n- **Hit Points** 84 (8d10 + 40)\n- **Speed** 30 ft.\n\n| STR | DEX | CON | INT | WIS | CHA |\n| --- | --- | --- | --- | --- | --- |\n| 18 (+4) | 13 (+1) | 20 (+5) | 7 (-2) | 9 (-1) | 7 (-2) |\n\n- **Skills** Perception +2\n- **Senses** darkvision 60 ft., passive Perception 12\n- **Languages** Giant\n\n**Keen Smell.** The troll has advantage on Wisdom (Perception) checks that rely on smell.\n\n**Regeneration.** The troll regains 10 hit points at the start of its turn. If the troll takes acid or fire damage, this trait doesn't function at the start of the troll's next turn. The troll dies only if it starts its turn with 0 hit points and doesn't regenerate.\n\n### Actions\n\n**Multiattack.** The troll makes three attacks: one with its bite and two with its claws.\n\n**Bite.** *Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 7 (1d6 + 4) piercing damage.\n\n**Claw.** *Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 11 (2d6 + 4) slashing damage."
+    },
+    {
+      "name": "Chimera",
+      "cr": "6",
+      "xp": 2300,
+      "size": "Large",
+      "type": "monstrosity",
+      "summary": "A three-headed fusion of lion, goat, and fire-breathing dragon.",
+      "slug": "chimera",
+      "body": "Chimera\n=======\n\n*Large monstrosity, chaotic evil* — **CR 6 (2,300 XP)**\n\n**Appearance.** A nightmarish fusion of three beasts: the muscular body and hindquarters of a great lion, a horned goat's head rising from the middle of its back, and a leathery dragon's head and wings sprouting from its shoulders. The dragon head smolders with inner fire, and the three heads snarl, bleat, and roar in disturbing discord.\n\n- **Armor Class** 14 (natural armor)\n- **Hit Points** 114 (12d10 + 48)\n- **Speed** 30 ft., fly 60 ft.\n\n| STR | DEX | CON | INT | WIS | CHA |\n| --- | --- | --- | --- | --- | --- |\n| 19 (+4) | 11 (+0) | 19 (+4) | 3 (-4) | 14 (+2) | 10 (+0) |\n\n- **Skills** Perception +8\n- **Senses** darkvision 60 ft., passive Perception 18\n- **Languages** understands Draconic but can't speak\n\n### Actions\n\n**Multiattack.** The chimera makes three attacks: one with its bite, one with its horns, and one with its claws. When its fire breath is available, it can use the breath in place of its bite or horns.\n\n**Bite.** *Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 11 (2d6 + 4) piercing damage.\n\n**Horns.** *Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 10 (1d12 + 4) bludgeoning damage.\n\n**Claws.** *Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 11 (2d6 + 4) slashing damage.\n\n**Fire Breath (Recharge 5–6).** The dragon head exhales fire in a 15-foot cone. Each creature in that area must make a DC 15 Dexterity saving throw, taking 31 (7d8) fire damage on a failed save, or half as much on a success."
+    },
+    {
+      "name": "Wyvern",
+      "cr": "6",
+      "xp": 2300,
+      "size": "Large",
+      "type": "dragon",
+      "summary": "A two-legged dragon-kin with a venom-tipped scorpion tail.",
+      "slug": "wyvern",
+      "body": "Wyvern\n======\n\n*Large dragon, unaligned* — **CR 6 (2,300 XP)**\n\n**Appearance.** A lesser dragon-kin with a single pair of clawed, leathery wings and no forelegs, its dull brown-to-grey scales worn like cracked armor. A long, muscular tail whips behind it, tipped with a wicked scorpion-like stinger that drips venom. Less cunning than a true dragon, but a savage, relentless aerial hunter.\n\n- **Armor Class** 13 (natural armor)\n- **Hit Points** 110 (13d10 + 39)\n- **Speed** 20 ft., fly 80 ft.\n\n| STR | DEX | CON | INT | WIS | CHA |\n| --- | --- | --- | --- | --- | --- |\n| 19 (+4) | 10 (+0) | 16 (+3) | 5 (-3) | 12 (+1) | 6 (-2) |\n\n- **Skills** Perception +4\n- **Senses** darkvision 60 ft., passive Perception 14\n\n### Actions\n\n**Multiattack.** The wyvern makes two attacks: one with its bite and one with its stinger. While flying, it can use its claws in place of one other attack.\n\n**Bite.** *Melee Weapon Attack:* +7 to hit, reach 10 ft., one creature. *Hit:* 11 (2d6 + 4) piercing damage.\n\n**Claws.** *Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 13 (2d8 + 4) slashing damage.\n\n**Stinger.** *Melee Weapon Attack:* +7 to hit, reach 10 ft., one creature. *Hit:* 11 (2d6 + 4) piercing damage. The target must make a DC 15 Constitution saving throw, taking 24 (7d6) poison damage on a failed save, or half as much on a success."
+    },
+    {
+      "name": "Stone Giant",
+      "cr": "7",
+      "xp": 2900,
+      "size": "Huge",
+      "type": "giant",
+      "summary": "A lean grey giant that hurls boulders with carved-from-mountain grace.",
+      "slug": "stone-giant",
+      "body": "Stone Giant\n===========\n\n*Huge giant, neutral* — **CR 7 (2,900 XP)**\n\n**Appearance.** A lean, gangly giant with smooth grey skin like polished river stone, sunken dark eyes, and a hairless head. Despite its size it moves with a quiet, deliberate grace, as if carved from the mountain itself, and is most at home in the deep places of the earth. Reclusive rather than cruel, but devastating when roused.\n\n- **Armor Class** 17 (natural armor)\n- **Hit Points** 126 (11d12 + 55)\n- **Speed** 40 ft.\n\n| STR | DEX | CON | INT | WIS | CHA |\n| --- | --- | --- | --- | --- | --- |\n| 23 (+6) | 15 (+2) | 20 (+5) | 10 (+0) | 12 (+1) | 9 (-1) |\n\n- **Saving Throws** Dex +5, Con +8, Wis +4\n- **Skills** Athletics +12, Perception +4\n- **Senses** darkvision 60 ft., passive Perception 14\n- **Languages** Giant\n\n**Stone Camouflage.** The giant has advantage on Dexterity (Stealth) checks made to hide in rocky terrain.\n\n### Actions\n\n**Multiattack.** The giant makes two greatclub attacks.\n\n**Greatclub.** *Melee Weapon Attack:* +9 to hit, reach 15 ft., one target. *Hit:* 19 (3d8 + 6) bludgeoning damage.\n\n**Rock.** *Ranged Weapon Attack:* +9 to hit, range 60/240 ft., one target. *Hit:* 28 (4d10 + 6) bludgeoning damage. If the target is a creature, it must succeed on a DC 17 Strength saving throw or be knocked prone.\n\n### Reactions\n\n**Rock Catching.** If a rock or similar object is hurled at the giant, the giant can, with a successful DC 10 Dexterity saving throw, catch the missile and take no bludgeoning damage from it."
+    },
+    {
+      "name": "Young Green Dragon",
+      "cr": "8",
+      "xp": 3900,
+      "size": "Large",
+      "type": "dragon",
+      "summary": "A cunning, emerald forest dragon reeking of chlorine and poison.",
+      "slug": "young-green-dragon",
+      "body": "Young Green Dragon\n==================\n\n*Large dragon, lawful evil* — **CR 8 (3,900 XP)**\n\n**Appearance.** A sleek, forest-dwelling dragon clad in scales shading from emerald to deep olive, darkening along the spine. A spiny crest sweeps back from a horned, beak-tipped head, and the reek of chlorine gas hangs about it. It moves with serpentine grace and a sly, calculating intelligence, equally at home gliding between trees or slipping through water.\n\n- **Armor Class** 18 (natural armor)\n- **Hit Points** 136 (16d10 + 48)\n- **Speed** 40 ft., fly 80 ft., swim 40 ft.\n\n| STR | DEX | CON | INT | WIS | CHA |\n| --- | --- | --- | --- | --- | --- |\n| 19 (+4) | 12 (+1) | 17 (+3) | 16 (+3) | 13 (+1) | 15 (+2) |\n\n- **Saving Throws** Dex +4, Con +6, Wis +4, Cha +5\n- **Skills** Deception +5, Perception +7, Stealth +4\n- **Damage Immunities** poison\n- **Condition Immunities** poisoned\n- **Senses** blindsight 30 ft., darkvision 120 ft., passive Perception 17\n- **Languages** Common, Draconic\n\n**Amphibious.** The dragon can breathe air and water.\n\n### Actions\n\n**Multiattack.** The dragon makes three attacks: one with its bite and two with its claws.\n\n**Bite.** *Melee Weapon Attack:* +7 to hit, reach 10 ft., one target. *Hit:* 15 (2d10 + 4) piercing damage plus 7 (2d6) poison damage.\n\n**Claw.** *Melee Weapon Attack:* +7 to hit, reach 5 ft., one target. *Hit:* 11 (2d6 + 4) slashing damage.\n\n**Poison Breath (Recharge 5–6).** The dragon exhales poisonous gas in a 30-foot cone. Each creature in that area must make a DC 14 Constitution saving throw, taking 42 (12d6) poison damage on a failed save, or half as much on a success."
+    },
+    {
+      "name": "Fire Giant",
+      "cr": "9",
+      "xp": 5000,
+      "size": "Huge",
+      "type": "giant",
+      "summary": "A towering, coal-skinned giant in blackened plate with a flaming beard and massive greatsword.",
+      "slug": "fire-giant",
+      "body": "Fire Giant\n==========\n\n*Huge giant, lawful evil* — **CR 9 (5,000 XP)**\n\n**Appearance.** A towering, barrel-chested humanoid with skin like coal or soot-grey stone and hair and beard of living flame-orange. Built broad and dwarf-like in its proportions of muscle, it wears blackened plate armor scavenged from forge and battlefield, and the air around it shimmers with heat. It wields a greatsword as long as a person is tall.\n\n- **Armor Class** 18 (plate armor)\n- **Hit Points** 162 (13d12 + 78)\n- **Speed** 30 ft.\n\n| STR | DEX | CON | INT | WIS | CHA |\n| --- | --- | --- | --- | --- | --- |\n| 25 (+7) | 9 (-1) | 23 (+6) | 10 (+0) | 14 (+2) | 13 (+1) |\n\n- **Saving Throws** Dex +3, Con +10, Cha +5\n- **Skills** Athletics +11, Perception +6\n- **Damage Immunities** fire\n- **Senses** passive Perception 16\n- **Languages** Giant\n\n### Actions\n\n**Multiattack.** The giant makes two greatsword attacks.\n\n**Greatsword.** *Melee Weapon Attack:* +11 to hit, reach 10 ft., one target. *Hit:* 28 (6d6 + 7) slashing damage.\n\n**Rock.** *Ranged Weapon Attack:* +11 to hit, range 60/240 ft., one target. *Hit:* 29 (4d10 + 7) bludgeoning damage."
+    },
+    {
+      "name": "Behir",
+      "cr": "11",
+      "xp": 7200,
+      "size": "Huge",
+      "type": "monstrosity",
+      "summary": "A 40-foot serpent-centipede with twelve legs and a lightning-spewing maw.",
+      "slug": "behir",
+      "body": "Behir\n=====\n\n*Huge monstrosity, neutral evil* — **CR 11 (7,200 XP)**\n\n**Appearance.** A serpentine horror up to 40 feet long, like a cross between a crocodile and a centipede. Blue-banded scales sheathe a long body carried on twelve clawed legs, and a crocodilian head crowned with a crest crackles with arcs of lightning. It climbs sheer cliffs and coils through caves with unsettling speed.\n\n- **Armor Class** 17 (natural armor)\n- **Hit Points** 168 (16d12 + 64)\n- **Speed** 50 ft., climb 40 ft.\n\n| STR | DEX | CON | INT | WIS | CHA |\n| --- | --- | --- | --- | --- | --- |\n| 23 (+6) | 16 (+3) | 18 (+4) | 7 (-2) | 14 (+2) | 12 (+1) |\n\n- **Skills** Perception +6, Stealth +7\n- **Damage Immunities** lightning\n- **Senses** darkvision 90 ft., passive Perception 16\n- **Languages** Draconic\n\n### Actions\n\n**Multiattack.** The behir makes two attacks: one with its bite and one to constrict.\n\n**Bite.** *Melee Weapon Attack:* +10 to hit, reach 10 ft., one target. *Hit:* 22 (3d10 + 6) piercing damage.\n\n**Constrict.** *Melee Weapon Attack:* +10 to hit, reach 5 ft., one Large or smaller creature. *Hit:* 17 (2d10 + 6) bludgeoning damage plus 17 (2d10 + 6) slashing damage. The target is grappled (escape DC 16) if the behir isn't already constricting a creature, and the target is restrained until this grapple ends.\n\n**Lightning Breath (Recharge 5–6).** The behir exhales a line of lightning that is 20 feet long and 5 feet wide. Each creature in that line must make a DC 16 Dexterity saving throw, taking 66 (12d10) lightning damage on a failed save, or half as much on a success.\n\n**Swallow.** The behir makes one bite attack against a Medium or smaller target it is grappling. If the attack hits, the target is also swallowed, and the grapple ends. While swallowed, the target is blinded and restrained, has total cover against attacks and other effects outside the behir, and takes 21 (6d6) acid damage at the start of each of the behir's turns. A behir can have only one creature swallowed at a time."
+    },
+    {
+      "name": "Roc",
+      "cr": "11",
+      "xp": 7200,
+      "size": "Gargantuan",
+      "type": "monstrosity",
+      "summary": "A mountain-sized eagle whose wingspan blots out the sun.",
+      "slug": "roc",
+      "body": "Roc\n===\n\n*Gargantuan monstrosity, unaligned* — **CR 11 (7,200 XP)**\n\n**Appearance.** A colossal eagle-like bird large enough to carry off an elephant, with brown or golden plumage, a hooked beak the size of a rowboat, and talons that could crush a horse. When it passes overhead its wingspan blots out the sun and casts whole hillsides into shadow.\n\n- **Armor Class** 15 (natural armor)\n- **Hit Points** 248 (16d20 + 80)\n- **Speed** 20 ft., fly 120 ft.\n\n| STR | DEX | CON | INT | WIS | CHA |\n| --- | --- | --- | --- | --- | --- |\n| 28 (+9) | 10 (+0) | 20 (+5) | 3 (-4) | 10 (+0) | 9 (-1) |\n\n- **Saving Throws** Dex +4, Con +9, Wis +4, Cha +3\n- **Skills** Perception +4\n- **Senses** passive Perception 14\n\n**Keen Sight.** The roc has advantage on Wisdom (Perception) checks that rely on sight.\n\n### Actions\n\n**Multiattack.** The roc makes two attacks: one with its beak and one with its talons.\n\n**Beak.** *Melee Weapon Attack:* +13 to hit, reach 10 ft., one target. *Hit:* 27 (4d8 + 9) piercing damage.\n\n**Talons.** *Melee Weapon Attack:* +13 to hit, reach 5 ft., one target. *Hit:* 23 (4d6 + 9) slashing damage, and the target is grappled (escape DC 19). Until this grapple ends, the target is restrained, and the roc can't use its talons on another target."
+    },
+    {
+      "name": "Adult White Dragon",
+      "cr": "13",
+      "xp": 10000,
+      "size": "Huge",
+      "type": "dragon",
+      "summary": "A savage, frost-scaled chromatic dragon wreathed in freezing mist.",
+      "slug": "adult-white-dragon",
+      "body": "Adult White Dragon\n==================\n\n*Huge dragon, chaotic evil* — **CR 13 (10,000 XP)**\n\n**Appearance.** A massive reptilian predator armored in scales like wind-sculpted ice, shading from frost-white to translucent blue-grey. A short, thick neck supports a beak-like snout and a spined crest; a freezing mist rolls off its hide, and its feral eyes gleam with cold, animal cunning. The least cunning but most savage of the chromatic dragons.\n\n- **Armor Class** 18 (natural armor)\n- **Hit Points** 200 (16d12 + 96)\n- **Speed** 40 ft., burrow 30 ft., fly 80 ft., swim 40 ft.\n\n| STR | DEX | CON | INT | WIS | CHA |\n| --- | --- | --- | --- | --- | --- |\n| 22 (+6) | 10 (+0) | 22 (+6) | 8 (-1) | 12 (+1) | 12 (+1) |\n\n- **Saving Throws** Dex +5, Con +11, Wis +6, Cha +6\n- **Skills** Perception +11, Stealth +5\n- **Damage Immunities** cold\n- **Senses** blindsight 60 ft., darkvision 120 ft., passive Perception 21\n- **Languages** Common, Draconic\n\n**Ice Walk.** The dragon can move across and climb icy surfaces without needing to make an ability check. Difficult terrain composed of ice or snow doesn't cost it extra movement.\n\n**Legendary Resistance (3/Day).** If the dragon fails a saving throw, it can choose to succeed instead.\n\n### Actions\n\n**Multiattack.** The dragon can use its Frightful Presence. It then makes three attacks: one with its bite and two with its claws.\n\n**Bite.** *Melee Weapon Attack:* +11 to hit, reach 10 ft., one target. *Hit:* 17 (2d10 + 6) piercing damage plus 4 (1d8) cold damage.\n\n**Claw.** *Melee Weapon Attack:* +11 to hit, reach 5 ft., one target. *Hit:* 13 (2d6 + 6) slashing damage.\n\n**Tail.** *Melee Weapon Attack:* +11 to hit, reach 15 ft., one target. *Hit:* 15 (2d8 + 6) bludgeoning damage.\n\n**Frightful Presence.** Each creature of the dragon's choice within 120 feet and aware of it must succeed on a DC 14 Wisdom saving throw or become frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. On a success or after the effect ends, the creature is immune to the dragon's Frightful Presence for the next 24 hours.\n\n**Cold Breath (Recharge 5–6).** The dragon exhales an icy blast in a 60-foot cone. Each creature in that area must make a DC 19 Constitution saving throw, taking 54 (12d8) cold damage on a failed save, or half as much on a success.\n\n### Legendary Actions\n\nThe dragon can take 3 legendary actions, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn.\n\n- **Detect.** The dragon makes a Wisdom (Perception) check.\n- **Tail Attack.** The dragon makes a tail attack.\n- **Wing Attack (Costs 2 Actions).** The dragon beats its wings. Each creature within 10 feet must succeed on a DC 19 Dexterity saving throw or take 13 (2d6 + 6) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed."
+    }
+  ],
+  "environments": [
+    {
+      "name": "Ancient Puzzle Gate",
+      "severity": "low",
+      "dc": "13",
+      "damage": "none (possible minor ward)",
+      "check": "Intelligence (Investigation or Arcana)",
+      "summary": "A sealed doorway of old stone that yields only to a solved riddle.",
+      "slug": "ancient-puzzle-gate",
+      "body": "Ancient Puzzle Gate\n===================\n\n*Environmental challenge — low severity*\n\n**Description.** A weathered archway of carved stone blocks the way, its surface set with shifting glyphs, dials, or a worn inscription. It will not open by force alone — not without a fight.\n\n**Resolution.** Studying the mechanism is an **Intelligence (Investigation)** check; reading the glyphs is **Intelligence (Arcana)** or a relevant language. A **DC 13** success opens the gate. Failure costs time, and a careless attempt may trigger a minor ward (an alarm, a glyph, or a brief restraining effect) before the party reasons it out. Brute force is possible but slow and may damage what lies beyond."
+    },
+    {
+      "name": "Dense Thorn Maze",
+      "severity": "low",
+      "dc": "13",
+      "damage": "1d6 piercing",
+      "check": "Wisdom (Survival) to navigate",
+      "summary": "A thicket of clawing thorns that snags and slows travelers.",
+      "slug": "thorn-maze",
+      "body": "Dense Thorn Maze\n================\n\n*Environmental challenge — low severity*\n\n**Description.** The trail vanishes into a sprawling thicket of head-high briars. The thorns pluck at cloak and skin, and every gap seems to close into another dead end.\n\n**Resolution.** Navigating cleanly requires a **DC 13 Wisdom (Survival)** check. On a failure, the party loses hours backtracking and each creature takes 3 (1d6) piercing damage from the thorns. Hacking straight through is always possible but slow, noisy, and tiring (and may draw attention)."
+    },
+    {
+      "name": "Disorienting Fog",
+      "severity": "low",
+      "dc": "13",
+      "damage": "none",
+      "check": "Wisdom saving throw / Wisdom (Survival) to hold course",
+      "summary": "An unnatural mist that turns travelers around and steals the day.",
+      "slug": "disorienting-fog",
+      "body": "Disorienting Fog\n================\n\n*Environmental challenge — low severity*\n\n**Description.** A clammy grey fog rolls in, thick enough to hide an outstretched hand. Sound deadens, direction blurs, and the path underfoot seems to wander.\n\n**Resolution.** Holding a true course requires a **DC 13 Wisdom (Survival)** check (or a Wisdom save against the mist's subtle pull). On a failure, the party becomes turned around and loses a day of travel, with a chance of stumbling into another encounter. Magic that fixes direction, or waiting out the fog, bypasses it at the cost of time."
+    },
+    {
+      "name": "Steep Cliff",
+      "severity": "low",
+      "dc": "13",
+      "damage": "by height (fall)",
+      "check": "Strength (Athletics) to climb",
+      "summary": "A sheer rock face that must be climbed to continue.",
+      "slug": "steep-cliff",
+      "body": "Steep Cliff\n===========\n\n*Environmental challenge — low severity*\n\n**Description.** The route ends at the foot of a sheer rock face. There is no path around within a reasonable distance — the only way on is up.\n\n**Resolution.** Climbing requires a **DC 13 Strength (Athletics)** check; setting pitons and ropes lets later climbers ascend at advantage and turns a failure into lost progress rather than a fall. An unroped climber who fails by 5 or more falls, taking damage by the height fallen. Bad weather or wet rock raises the DC."
+    },
+    {
+      "name": "Crumbling Rope Bridge",
+      "severity": "moderate",
+      "dc": "15",
+      "damage": "5d6 bludgeoning (fall)",
+      "check": "Dexterity (Acrobatics) to cross; Dexterity save when it gives way",
+      "summary": "A rotted span over a deep ravine, one frayed rope from collapse.",
+      "slug": "crumbling-rope-bridge",
+      "body": "Crumbling Rope Bridge\n=====================\n\n*Environmental challenge — moderate severity*\n\n**Description.** An old rope-and-plank bridge sags across a deep ravine. Half its slats are missing, the ropes are frayed and grey, and it groans with every gust of wind.\n\n**Resolution.** Crossing calls for a **DC 15 Dexterity (Acrobatics)** check; moving slowly and testing each plank grants advantage but costs time. On a failure, a plank or rope gives way and the creature must succeed on a **DC 15 Dexterity saving throw** to catch the bridge (ending up dangling), or fall 17 (5d6) bludgeoning damage to the ravine floor. Heavy loads or multiple creatures at once may collapse the span outright."
+    },
+    {
+      "name": "Deep Crevasse",
+      "severity": "moderate",
+      "dc": "14",
+      "damage": "by depth (fall)",
+      "check": "Strength (Athletics) to climb; Survival/Perception to find a route",
+      "summary": "A yawning split in the rock or ice that bars the direct path.",
+      "slug": "deep-crevasse",
+      "body": "Deep Crevasse\n=============\n\n*Environmental challenge — moderate severity*\n\n**Description.** The ground splits into a deep, shadowed crevasse — too wide to leap and too sheer to descend casually. Cold air rises from the dark below.\n\n**Resolution.** The party can search for a natural span or narrow point (**DC 14 Wisdom (Survival)** or Perception), climb down and across (**DC 14 Strength (Athletics)**, fall damage by depth on a failure), or bridge it with rope and gear. A roped climber who fails is caught by the line rather than falling. Skipping the search and free-climbing risks the full drop."
+    },
+    {
+      "name": "Fast-Flowing River Crossing",
+      "severity": "moderate",
+      "dc": "14",
+      "damage": "2d6 bludgeoning",
+      "check": "Strength (Athletics) or Wisdom (Survival) to find a ford",
+      "summary": "A cold, fast river barring the way, its current deceptively strong.",
+      "slug": "river-crossing",
+      "body": "Fast-Flowing River Crossing\n===========================\n\n*Environmental challenge — moderate severity*\n\n**Description.** A broad mountain river cuts across the route, its surface deceptively smooth over a powerful current. The far bank is close, but the footing beneath is slick and the water bone-cold.\n\n**Resolution.** Crossing requires a **DC 14 Strength (Athletics)** check; a **Wisdom (Survival)** check can first locate a shallower ford to grant advantage. On a failure, the creature is swept downstream, taking 7 (2d6) bludgeoning damage against rocks and arriving soaked (doused torches, ruined rations). A rope line or aid from an ally grants advantage."
+    },
+    {
+      "name": "Quicksand Field",
+      "severity": "moderate",
+      "dc": "13",
+      "damage": "none (suffocation risk)",
+      "check": "Strength (Athletics) to escape; Survival to spot in advance",
+      "summary": "A deceptive bog that swallows the careless and drags them under.",
+      "slug": "quicksand",
+      "body": "Quicksand Field\n===============\n\n*Environmental challenge — moderate severity*\n\n**Description.** A stretch of boggy ground looks no different from the surrounding mire — until a foot plunges through and the earth itself begins to pull downward.\n\n**Resolution.** A **DC 13 Wisdom (Survival)** check spots the hazard before entering. A creature that steps in sinks; at the start of each of its turns it descends, and a submerged creature begins to suffocate. Escaping requires a **DC 13 Strength (Athletics)** check (made with disadvantage once submerged past the waist), or being hauled out by allies with a rope or pole. Thrashing without a plan only sinks it faster."
+    },
+    {
+      "name": "Avalanche",
+      "severity": "high",
+      "dc": "17",
+      "damage": "8d6 bludgeoning",
+      "check": "Dexterity saving throw (then Athletics DC 15 to dig free)",
+      "summary": "A roaring wall of snow and rock that buries everything in its path.",
+      "slug": "avalanche",
+      "body": "Avalanche\n=========\n\n*Environmental challenge — high severity*\n\n**Description.** A shelf of snow and loose scree gives way high on the slope, and a thundering wall of white and stone roars down toward the party. There are seconds to react before it hits.\n\n**Resolution.** Each creature in the path makes a **DC 17 Dexterity saving throw**. On a failure: 28 (8d6) bludgeoning damage, knocked prone, and **buried** (restrained and suffocating). On a success: half damage and not buried. A buried creature, or an ally reaching it, can free it with a **DC 15 Strength (Athletics)** check. Reaching the edge of the slide before it arrives (a successful save plus the right positioning) avoids it entirely."
+    },
+    {
+      "name": "Glacial Flash Flood",
+      "severity": "high",
+      "dc": "16",
+      "damage": "4d6 bludgeoning",
+      "check": "Strength (Athletics) or Constitution; risk of drowning",
+      "summary": "A meltwater torrent that surges down a ravine without warning.",
+      "slug": "glacial-flash-flood",
+      "body": "Glacial Flash Flood\n===================\n\n*Environmental challenge — high severity*\n\n**Description.** A distant crack echoes as an ice dam fails upstream. Moments later a churning wall of frigid meltwater and debris surges down the ravine, filling it shoulder-deep in seconds.\n\n**Resolution.** Each creature caught in the channel makes a **DC 16 Strength (Athletics)** check (or Constitution save against the cold shock). On a failure: 14 (4d6) bludgeoning damage and swept downstream, then begin to drown unless they surface (a creature can hold its breath, but must reach the bank). On a success: the creature holds footing or grabs an anchor. Scrambling to high ground before the surge arrives avoids it; soaked gear and doused torches are likely either way."
+    },
+    {
+      "name": "Rockslide",
+      "severity": "high",
+      "dc": "16",
+      "damage": "4d6 bludgeoning",
+      "check": "Dexterity saving throw (Athletics/Acrobatics to scramble clear)",
+      "summary": "A sudden cascade of stone down a steep pass.",
+      "slug": "rockslide",
+      "body": "Rockslide\n=========\n\n*Environmental challenge — high severity*\n\n**Description.** A narrow pass gives a deceptive footing of loose stone. A misstep — or a deliberate shove from above — sends tonnes of rock tumbling down onto the trail.\n\n**Resolution.** Each creature in the slide's path makes a **DC 16 Dexterity saving throw**, taking 14 (4d6) bludgeoning damage and being knocked prone on a failure, or half damage on a success. The fallen rock leaves the pass as difficult terrain (or blocks it entirely), forcing a detour or a climb."
+    }
+  ],
+  "loot": {
+    "nothing": {
+      "name": "Nothing Found",
+      "die": "d6",
+      "range": "11-13",
+      "summary": "A quiet travel beat with no treasure — just flavour and atmosphere.",
+      "sections": {
+        "": [
+          "Quiet day of travel",
+          "Animal tracks leading nowhere",
+          "Old campsite",
+          "Strange but harmless sounds",
+          "Ruined structure long picked clean",
+          "Beautiful view"
+        ]
+      },
+      "body": "Nothing Found\n=============\n\nThe party finds no treasure on this beat. Roll **d6** for a bit of flavour.\n\n1. Quiet day of travel\n2. Animal tracks leading nowhere\n3. Old campsite\n4. Strange but harmless sounds\n5. Ruined structure long picked clean\n6. Beautiful view"
+    },
+    "mundane": {
+      "name": "Mundane Treasure",
+      "die": "d12",
+      "range": "14-16",
+      "summary": "Non-magical treasure and valuable objects — coins, goods, and curiosities.",
+      "sections": {
+        "": [
+          "4d10 gp in an abandoned cache",
+          "Fine silver goblet (25 gp)",
+          "Ornate hunting horn (50 gp)",
+          "Small pouch of gemstones (50 gp)",
+          "Masterwork weapon",
+          "Masterwork artisan's tools",
+          "Bolt of fine silk",
+          "Ivory figurine",
+          "Rare spices worth 75 gp",
+          "Map to a nearby point of interest",
+          "Valuable monster parts",
+          "Locked strongbox containing 2d10 x 10 gp"
+        ]
+      },
+      "body": "Mundane Treasure\n================\n\nMundane treasure and valuable objects. Roll **d12**.\n\nGold values are tuned for a party of 4. Scale coin and object values by roughly\n`party_size / 4` for larger or smaller groups.\n\n1. 4d10 gp in an abandoned cache\n2. Fine silver goblet (25 gp)\n3. Ornate hunting horn (50 gp)\n4. Small pouch of gemstones (50 gp)\n5. Masterwork weapon\n6. Masterwork artisan's tools\n7. Bolt of fine silk\n8. Ivory figurine\n9. Rare spices worth 75 gp\n10. Map to a nearby point of interest\n11. Valuable monster parts\n12. Locked strongbox containing 2d10 x 10 gp"
+    },
+    "magic": {
+      "name": "Magic Treasure",
+      "die": "d20",
+      "range": "17-19",
+      "summary": "Magic items grouped by rarity. Higher party level skews toward rarer tiers.",
+      "sections": {
+        "Common": [
+          "Potion of Healing",
+          "Potion of Climbing",
+          "Potion of Water Breathing",
+          "Spell Scroll (1st level)",
+          "Driftglobe",
+          "Moon-Touched Sword",
+          "Cloak of Billowing",
+          "Hat of Wizardry"
+        ],
+        "Uncommon": [
+          "Bag of Holding",
+          "Immovable Rod",
+          "Goggles of Night",
+          "Sending Stones",
+          "Boots of Elvenkind",
+          "Rope of Climbing",
+          "Pearl of Power",
+          "+1 Weapon"
+        ],
+        "Rare": [
+          "+1 Shield",
+          "Cloak of Protection",
+          "Ring of Water Walking",
+          "Figurine of Wondrous Power (Silver Raven)"
+        ]
+      },
+      "body": "Magic Treasure\n==============\n\nMagic items, grouped by rarity tier. The tool weights which **tier** is rolled\nby party level (and slightly by party size); it then picks a random item from\nthat tier. Tiers map to standard 5e rarities.\n\n## Common\n\n1. Potion of Healing\n2. Potion of Climbing\n3. Potion of Water Breathing\n4. Spell Scroll (1st level)\n5. Driftglobe\n6. Moon-Touched Sword\n7. Cloak of Billowing\n8. Hat of Wizardry\n\n## Uncommon\n\n1. Bag of Holding\n2. Immovable Rod\n3. Goggles of Night\n4. Sending Stones\n5. Boots of Elvenkind\n6. Rope of Climbing\n7. Pearl of Power\n8. +1 Weapon\n\n## Rare\n\n1. +1 Shield\n2. Cloak of Protection\n3. Ring of Water Walking\n4. Figurine of Wondrous Power (Silver Raven)"
+    },
+    "wondrous": {
+      "name": "Wondrous Discovery",
+      "die": "d12",
+      "range": "20",
+      "summary": "The natural-20 payoff — a rare treasure or story discovery, always guarded.",
+      "sections": {
+        "Treasures": [
+          "Rare Figurine of Wondrous Power",
+          "Portable Hole",
+          "Folding Boat",
+          "Helm of Telepathy",
+          "Ring of Spell Storing",
+          "Cape of the Mountebank",
+          "Instant Fortress",
+          "Manual of Gainful Exercise (single use remaining)",
+          "Ioun Stone",
+          "Staff of Healing",
+          "Friendly awakened animal companion with a gift",
+          "Hidden fey cache containing two rolls on the Magic Treasure table"
+        ],
+        "Discoveries": [
+          "Ancient druid grove blessing",
+          "Friendly dragon contact",
+          "Fey crossing",
+          "Lost shrine granting a boon",
+          "Permanent safe campsite",
+          "Secret shortcut that removes several days of travel",
+          "Map to a forgotten dungeon"
+        ]
+      },
+      "body": "Wondrous Discovery\n==================\n\nThe natural-20 result. The find is often watched over by a **guardian**. The tool\nrandomizes this with equal odds: nothing, a high-severity environmental hazard, or\na boss-tier monster scaled to the party (drawn from `tools/encounter.py`'s data;\nsee `tools/loot.py`).\n\n## Treasures\n\nA rare item or hoard. Roll **d12**.\n\n1. Rare Figurine of Wondrous Power\n2. Portable Hole\n3. Folding Boat\n4. Helm of Telepathy\n5. Ring of Spell Storing\n6. Cape of the Mountebank\n7. Instant Fortress\n8. Manual of Gainful Exercise (single use remaining)\n9. Ioun Stone\n10. Staff of Healing\n11. Friendly awakened animal companion with a gift\n12. Hidden fey cache containing two rolls on the Magic Treasure table\n\n## Discoveries\n\nInstead of pure treasure, make it a story **discovery**. These tend to create\nmore memorable moments than simply handing out a powerful item.\n\n1. Ancient druid grove blessing\n2. Friendly dragon contact\n3. Fey crossing\n4. Lost shrine granting a boon\n5. Permanent safe campsite\n6. Secret shortcut that removes several days of travel\n7. Map to a forgotten dungeon"
+    }
+  },
+  "xp_budget_per_character": {
+    "1": [
+      50,
+      75,
+      100
+    ],
+    "2": [
+      100,
+      150,
+      200
+    ],
+    "3": [
+      150,
+      225,
+      400
+    ],
+    "4": [
+      250,
+      375,
+      500
+    ],
+    "5": [
+      500,
+      750,
+      1100
+    ],
+    "6": [
+      600,
+      1000,
+      1400
+    ],
+    "7": [
+      750,
+      1300,
+      1700
+    ],
+    "8": [
+      1000,
+      1700,
+      2100
+    ],
+    "9": [
+      1300,
+      2000,
+      2600
+    ],
+    "10": [
+      1600,
+      2300,
+      3100
+    ],
+    "11": [
+      1900,
+      2900,
+      4100
+    ],
+    "12": [
+      2200,
+      3700,
+      4700
+    ],
+    "13": [
+      2600,
+      4200,
+      5400
+    ],
+    "14": [
+      2900,
+      4900,
+      6200
+    ],
+    "15": [
+      3300,
+      5400,
+      7800
+    ],
+    "16": [
+      3800,
+      6100,
+      9800
+    ],
+    "17": [
+      4500,
+      7200,
+      11700
+    ],
+    "18": [
+      5000,
+      8700,
+      14200
+    ],
+    "19": [
+      5500,
+      10700,
+      17200
+    ],
+    "20": [
+      6400,
+      13200,
+      22000
+    ]
+  },
+  "difficulties": [
+    "low",
+    "moderate",
+    "high"
+  ]
+}
