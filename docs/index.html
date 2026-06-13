@@ -135,7 +135,7 @@
 
     <!-- PyScript app. The ?v= token is bumped on each deploy so a fresh
          index.html can never load a stale, cached app.py/config. -->
-    <script type="py" src="./app.py?v=4" config="./pyscript.json?v=4"></script>
+    <script type="py" src="./app.py?v=5" config="./pyscript.json?v=5"></script>
 
     <!-- ----------------------------------------------------------------- -->
     <!-- Login + tab logic (plain JS)                                       -->
@@ -147,9 +147,34 @@
       const USERNAME = "pridonia";
       const PASS_HASH = "ef029656a06e14c118999c324befcaff1da1209b21f8a38255e0d169ec306a86";
 
+      const AUTH_COOKIE = "gn_authed";
+      const AUTH_DAYS = 30;
+
       async function sha256(str) {
         const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
         return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
+      }
+
+      function setCookie(name, value, days) {
+        const expires = new Date(Date.now() + days * 864e5).toUTCString();
+        document.cookie = `${name}=${value}; expires=${expires}; path=/; SameSite=Lax`;
+      }
+
+      function getCookie(name) {
+        return document.cookie
+          .split("; ")
+          .find((c) => c.startsWith(name + "="))
+          ?.split("=")[1];
+      }
+
+      function deleteCookie(name) {
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax`;
+      }
+
+      function isAuthed() {
+        // Persistent cookie keeps you logged in across browser restarts;
+        // sessionStorage covers anyone already mid-session before this change.
+        return getCookie(AUTH_COOKIE) === "1" || sessionStorage.getItem(AUTH_COOKIE) === "1";
       }
 
       function reveal() {
@@ -158,11 +183,12 @@
       }
 
       function lock() {
-        sessionStorage.removeItem("gn_authed");
+        deleteCookie(AUTH_COOKIE);
+        sessionStorage.removeItem(AUTH_COOKIE);
         location.reload();
       }
 
-      if (sessionStorage.getItem("gn_authed") === "1") reveal();
+      if (isAuthed()) reveal();
 
       document.getElementById("login-form").addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -170,7 +196,8 @@
         const pass = document.getElementById("login-pass").value;
         const ok = user === USERNAME && (await sha256(pass)) === PASS_HASH;
         if (ok) {
-          sessionStorage.setItem("gn_authed", "1");
+          setCookie(AUTH_COOKIE, "1", AUTH_DAYS);
+          sessionStorage.setItem(AUTH_COOKIE, "1");
           reveal();
         } else {
           document.getElementById("login-error").hidden = false;
