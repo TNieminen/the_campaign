@@ -12,6 +12,8 @@ When in doubt, put it here rather than in `src/`.
 - `notes/development/`
   - Technical design notes, tasks and TODOs, implementation plans, and experiments.
   - See `running-tests.md` for how to run the unit tests (xUnit, from repo root).
+  - See `mood-detector.md` for the implementation plan for an automatic D&D music importer that suggests soundboard tags from audio.
+  - See `future-ideas.md` for unscheduled product ideas, starting with a scene intensity control that toggles to lower-intensity songs in combat.
 - `notes/unity/`
   - Unity specific notes, how the editor internals works. Low and high level concepts
 - `notes/csharp/`
