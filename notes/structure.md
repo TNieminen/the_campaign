@@ -13,7 +13,8 @@ When in doubt, put it here rather than in `src/`.
   - Technical design notes, tasks and TODOs, implementation plans, and experiments.
   - See `running-tests.md` for how to run the unit tests (xUnit, from repo root).
   - See `mood-detector.md` for the implementation plan for an automatic D&D music importer that suggests soundboard tags from audio.
-  - See `future-ideas.md` for unscheduled product ideas, starting with a scene intensity control that toggles to lower-intensity songs in combat.
+  - See `future-ideas.md` for unscheduled product ideas: a scene intensity control, and time of day as a future tag option.
+  - See `soundboard-macos.md` for opening an unsigned Mac build, including the Gatekeeper “damaged app” message.
 - `notes/unity/`
   - Unity specific notes, how the editor internals works. Low and high level concepts
 - `notes/csharp/`
